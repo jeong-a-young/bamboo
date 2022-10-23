@@ -11,7 +11,7 @@
 <body>
     <div class="wrapper">
         <header> 
-            <a href="index.jsp"><img src="./images/" id="logo"></a>
+            <a href="index.jsp"><img src="./images/logo.png" id="logo"></a>
 
             <input type="text" id="search">
             <button>검색</button>
