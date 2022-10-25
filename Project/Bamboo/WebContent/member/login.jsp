@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>bamboo - 양디고 대나무숲</title>
-</head>
-<body>
+<%@ include file="../header.jsp" %>
+
     <h1>로그인</h1>
 
     <input type="text" name="id" placeholder="ID를 입력해 주세요."><br>
@@ -18,5 +13,5 @@
         <li><a href="#">ID 찾기</a></li>
         <li><a href="#">비밀번호 찾기</a></li>
     </ul>
-</body>
-</html>
+
+<%@ include file="/footer.jsp" %>
