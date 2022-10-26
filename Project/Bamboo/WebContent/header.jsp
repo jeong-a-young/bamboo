@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="vo.MemberVO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,32 +31,12 @@
                     </li>
                 </ul>
             </div>
-            
-            <%
-				if (login == null) {
-			%>
-				
-				<div class="nav">
-                	<button><img src=""></button>
-                	<ul>
-                    	<li><a href="#">로그인</a></li>
-                    	<li><a href="#">회원가입</a></li>
-                	</ul>
-            	</div>
-				
-			<%
-				} else {
-			%>
-				
-				<div class="nav">
-                	<button><img src=""></button>
-                	<ul>
-                    	<li><a href="#">로그아웃</a></li>
-                    	<li><a href="#">회원정보</a></li>
-                	</ul>
-            	</div>
-				
-			<%
-				}
-			%>
+
+			<div class="nav">
+                <button><img src=""></button>
+                <ul>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                </ul>
+            </div>
         </header>
