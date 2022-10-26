@@ -28,19 +28,21 @@ public class RegisterServlet extends HttpServlet {
 		
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = new MemberVO();
-		boolean overlap = dao.overlapID(request.getParameter("id"));
+		boolean overlapId = dao.overlapID(request.getParameter("id"));
+		boolean overlapEmail = dao.overlapEmail(request.getParameter("email"));
 		String pwd = request.getParameter("pwd");
 		String pwdCk = request.getParameter("pwdCk");
 		String email = request.getParameter("email");
 		int n = 0;
-		
-		// 이메일이 중복이여도 가입이 됨
-		if (overlap) {
+
+		if (overlapId) {
 			out.println("<script> alert('이미 존재하는 ID입니다.'); history.back(); </script>");
 		} else if (!pwd.equals(pwdCk)) {
 			out.println("<script> alert('비밀번호가 일치하지 않습니다.'); history.back(); </script>");
 		} else if (!email.contains("@y-y.hs.kr")) {
-			out.println("<script> alert('이메일 형식이 옳지 않습니다. '@y-y.hs.kr'이 들어가야 합니다.'); history.back(); </script>");
+			out.println("<script> alert('이메일 형식이 옳지 않습니다. @y-y.hs.kr이 들어가야 합니다.'); history.back(); </script>");
+		} else if (overlapEmail) {
+			out.println("<script> alert('이미 가입된 이메일입니다.'); history.back(); </script>");
 		} else {
 			vo.setMemberId(request.getParameter("id"));
 			vo.setMemberPwd(request.getParameter("pwd"));

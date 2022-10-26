@@ -11,14 +11,14 @@ import vo.MemberVO;
 public class MemberDAO {
 
 	// 0.
-	
+
 	// 회원 정보 가져오기
 	public MemberVO getMemberData (String id) {
+		MemberVO vo = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM member WHERE id=?";
-		MemberVO vo = null;
+		String sql = "SELECT * FROM lib_member WHERE member_id=?";
 		
 		try {
 			conn = JDBCUtil.getConnection();
@@ -80,6 +80,33 @@ public class MemberDAO {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
+	
+	// email 중복 확인
+	public boolean overlapEmail (String email) {	
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM member WHERE email=?";
+		
+		boolean result = false;
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
