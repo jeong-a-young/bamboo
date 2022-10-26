@@ -36,7 +36,10 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginOK", vo);
-			System.out.println(vo);
+			session.setAttribute("nowLoginId", vo.getMemberId());
+			session.setAttribute("nowLoginPwd", vo.getMemberPwd());
+			session.setAttribute("nowLoginName", vo.getMemberName());
+			session.setAttribute("nowLoginEmail", vo.getMemberEmail());
 			response.sendRedirect("./index.jsp");
 		}
 	}

@@ -26,6 +26,10 @@ public class LogoutServlet extends HttpServlet {
 		
 		if (vo != null) {
 			session.removeAttribute("loginOK");
+			session.removeAttribute("nowLoginId");
+			session.removeAttribute("nowLoginPwd");
+			session.removeAttribute("nowLoginName");
+			session.removeAttribute("nowLoginEmail");
 			response.sendRedirect("/index.jsp");
 		}
 	}

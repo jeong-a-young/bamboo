@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import common.JDBCUtil;
 import vo.MemberVO;
 
@@ -121,7 +123,33 @@ public class MemberDAO {
 		return result;
 	}
 	
-	// 2. 회원 탈퇴
+	// 2. 회원 정보
+	
+	// 회원 정보 수정
+	public int editMember (String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE member SET pwd=?, name=?, email=?";
+		
+		HttpServletRequest request = null;
+		int n = 0;
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("editPwd"));
+			System.out.println(request.getParameter("editPwd"));
+			pstmt.setString(2, request.getParameter("editName"));
+			pstmt.setString(3, request.getParameter("editEmail"));
+			n = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return n;
+	}
+	
+	// 3. 회원 탈퇴
 	public int unregisterMember (String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

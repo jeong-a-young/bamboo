@@ -8,6 +8,8 @@ import java.sql.SQLException;
 
 public class JDBCUtil {
 
+	// orcl
+	/*
 	public static Connection getConnection() {
 		Connection conn = null;
 
@@ -20,7 +22,22 @@ public class JDBCUtil {
 
 		return conn;
 	}
+	*/
+	
+	// xe
+	public static Connection getConnection() {
+		Connection conn = null;
 
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return conn;
+	}
+	
 	public static void close(Connection conn, PreparedStatement pstmt) {
 		if (pstmt != null) {
 			try {
