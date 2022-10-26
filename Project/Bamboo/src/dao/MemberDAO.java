@@ -120,4 +120,24 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	// 2. 회원 탈퇴
+	public int unregisterMember (String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM member WHERE id=?";
+	
+		int n = 0;
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			n = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return n;
+	}
 }
