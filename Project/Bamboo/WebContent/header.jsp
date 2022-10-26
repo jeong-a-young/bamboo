@@ -53,7 +53,7 @@
 				<div class="nav">
                 	<button><img src=""></button>
                 	<ul>
-                    	<li><a href="#">로그아웃</a></li>
+                    	<li><a href="/logout">로그아웃</a></li>
                     	<li><a href="./member/information.jsp">회원정보</a></li>
                 	</ul>
             	</div>
