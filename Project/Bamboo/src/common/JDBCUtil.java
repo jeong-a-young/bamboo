@@ -50,5 +50,4 @@ public class JDBCUtil {
 
 		close(conn, pstmt);
 	}
-
 }
