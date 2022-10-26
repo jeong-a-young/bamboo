@@ -18,7 +18,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM lib_member WHERE member_id=?";
+		String sql = "SELECT * FROM member WHERE id=?";
 		
 		try {
 			conn = JDBCUtil.getConnection();

@@ -1,3 +1,4 @@
+<%@page import="vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,11 +33,32 @@
                 </ul>
             </div>
 
-			<div class="nav">
-                <button><img src=""></button>
-                <ul>
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="./member/register.jsp">회원가입</a></li>
-                </ul>
-            </div>
+			<%
+				MemberVO login = (MemberVO)session.getAttribute("loginOK");
+			
+				if (login == null) {
+			%>
+			
+				<div class="nav">
+                	<ul>
+                    	<li><a href="./member/login.jsp">로그인</a></li>
+                    	<li><a href="./member/register.jsp">회원가입</a></li>
+                	</ul>
+            	</div>
+            	
+            <%
+				} else {
+			%>
+			
+				<div class="nav">
+                	<button><img src=""></button>
+                	<ul>
+                    	<li><a href="#">로그아웃</a></li>
+                    	<li><a href="./member/information.jsp">회원정보</a></li>
+                	</ul>
+            	</div>
+            	
+            <%
+				}
+			%>
         </header>
