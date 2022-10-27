@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>bamboo</title>
+<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div class="wrapper">
@@ -13,7 +14,28 @@
             <div class="logo">
                 <img src="./images/logo.png">
             </div>
-    
+            
+    		<%
+				MemberVO login = (MemberVO)session.getAttribute("loginOK");
+			
+				if (login == null) {
+			%>
+			
+				<div></div>
+				
+			<%
+				} else {
+			%>
+			
+				<div class="search">
+					<input type="text" name="search">
+					<button><img src="./images/search.png" width="50px" height="50px"></button>
+				</div>
+				
+			<%
+				}
+			%>
+			
             <div class="menu">
                 <ul>
                     <li><a href="#">공지게시판</a></li>
@@ -34,8 +56,6 @@
             </div>
 
 			<%
-				MemberVO login = (MemberVO)session.getAttribute("loginOK");
-			
 				if (login == null) {
 			%>
 			
@@ -51,10 +71,10 @@
 			%>
 			
 				<div class="nav">
-                	<button><img src=""></button>
+                	
                 	<ul>
                     	<li><a href="/logout">로그아웃</a></li>
-                    	<li><a href="./member/information.jsp">회원정보</a></li>
+                    	<li><img src="./images/user.png" width="50px" height="50px"><a href="./member/information.jsp">회원정보</a></li>
                 	</ul>
             	</div>
             	
