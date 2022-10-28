@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>bamboo</title>
 <link rel="stylesheet" href="./css/style.css">
+<script src="./js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -28,7 +29,7 @@
 			%>
 			
 				<div class="search">
-					<input type="text" name="search">
+					<input type="text" name="search" id="search_box">
 					<button><img src="./images/search.png" width="50px" height="50px"></button>
 				</div>
 				
@@ -53,7 +54,7 @@
                 	
                 	<ul>
                     	<li><a href="/logout">로그아웃</a></li>
-                    	<li><img src="./images/user.png" width="50px" height="50px"><a href="./member/information.jsp">회원정보</a></li>
+                    	<li><img src="./images/user.png" width="50px" height="50px"><a href="./member/information.jsp" id="member_information">회원정보</a></li>
                 	</ul>
             	</div>
             	

@@ -3,9 +3,9 @@
 <%@ include file="/header.jsp" %>
 
 <section>
-    <div>
-    	bamboo에서
-    	양영디지털고등학교의
+    <div class="welcome">
+    	bamboo에서 <br>
+    	양영디지털고등학교의 <br>
     	소식을 만나보세요
     </div>
     <div class="post"></div>

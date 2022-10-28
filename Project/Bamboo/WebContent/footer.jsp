@@ -5,5 +5,7 @@
             <p>&copy; (주)bamboo. All rights reserved.</p>
         </footer>
     </div>
+
+    <script src="./js/script.js"></script>
 </body>
 </html>   
