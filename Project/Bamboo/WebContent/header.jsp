@@ -8,6 +8,7 @@
 <title>bamboo</title>
 <link rel="stylesheet" href="./css/style.css">
 <script src="./js/jquery-3.1.1.min.js"></script>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper">
