@@ -30,24 +30,24 @@ public class EditServlet extends HttpServlet {
 		MemberVO vo = new MemberVO();
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("nowLoginId");
+		String pwd = request.getParameter("editPwd");
+		String name = request.getParameter("editName");
 		String email = request.getParameter("editEmail");
 		int n = 0;
 		
 		if (!email.contains("@y-y.hs.kr")) {
 			out.println("<script> alert('이메일 형식이 옳지 않습니다. @y-y.hs.kr이 들어가야 합니다.'); history.back(); </script>");
 		} else {
-			vo.setMemberPwd(request.getParameter("editPwd"));
-			vo.setMemberName(request.getParameter("editName"));
-			vo.setMemberEmail(request.getParameter("editEmail"));
-			n = dao.editMember(id);
+			vo.setMemberPwd(pwd);
+			vo.setMemberName(name);
+			vo.setMemberEmail(email);
+			n = dao.editMember(id, pwd, name, email);
 			
 			if (n > 0) {
 				out.println("<script> alert('회원 정보가 정상적으로 수정 되었습니다.'); history.back(); </script>");
 			} else {
 				out.println("<script> alert('회원 정보 수정에 실패하였습니다.'); history.back(); </script>");
 			}
-			
-			response.sendRedirect("/index.jsp");
 		}
 	}
 }

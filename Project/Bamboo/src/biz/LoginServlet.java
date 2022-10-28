@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 		if (vo == null || !pwd.equals(vo.getMemberPwd())) {
 			out.println("<script> alert('회원정보가 맞지 않습니다.'); history.back(); </script>");
 		} else {
+			// session 값을 초반에 못 가져온다??? 나중에 찾아보기
 			HttpSession session = request.getSession();
 			session.setAttribute("loginOK", vo);
 			session.setAttribute("nowLoginId", vo.getMemberId());

@@ -126,21 +126,20 @@ public class MemberDAO {
 	// 2. 회원 정보
 	
 	// 회원 정보 수정
-	public int editMember (String id) {
+	public int editMember (String id, String pwd, String name, String email) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE member SET pwd=?, name=?, email=?";
-		
-		HttpServletRequest request = null;
+		String sql = "UPDATE member SET pwd=?, name=?, email=? WHERE id=?";
+
 		int n = 0;
 		
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("editPwd"));
-			System.out.println(request.getParameter("editPwd"));
-			pstmt.setString(2, request.getParameter("editName"));
-			pstmt.setString(3, request.getParameter("editEmail"));
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			pstmt.setString(4, id);
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
