@@ -7,7 +7,10 @@
     list-style: none;
     box-sizing: border-box;
     font-family: 'NanumSquare';
+    color: #000;
 }
+
+/* header.jsp */
 
 header {
     display: flex; 
@@ -21,12 +24,12 @@ header {
 }
 
 .logo {
-    padding-left: 30px;
+    padding-left: 50px;
 }
 
 .logo img {
-    width: 340px;
-    height: 106.25px;
+    width: 300px;
+    height: 93.75px;
 }
 
 .search {
@@ -76,4 +79,64 @@ header {
     font-size: 50px;
     font-weight: 900;
     padding: 50px 0px 0px 50px;
+}
+
+/* login.jsp */
+
+#login_title {
+    position: relative;
+    text-align: center;
+    top: 60px;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 400px;
+}
+
+#id_box {
+    width: 350px;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+#pwd_box {
+    width: 350px;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+#login_btn {
+    border: none;
+    border-radius: 100px;
+    margin-top: 15px;
+    width: 200px;
+    height: 50px;
+    background-color: #7DB249;
+    color: white;
+    font-size: 20px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+#login_btn:hover {
+    background-color: #568A35;
+}
+
+.find {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -80px;
+}
+
+.find li {
+    padding: 0 10px;
 }

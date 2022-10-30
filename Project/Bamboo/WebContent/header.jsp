@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>bamboo</title>
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 <script src="./js/jquery-3.1.1.min.js"></script>
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 </head>
@@ -14,7 +14,7 @@
     <div class="wrapper">
         <header>
             <div class="logo">
-                <a href="./index.jsp"><img src="./images/logo.png"></a>
+                <a href="../index.jsp"><img src="../images/logo.png"></a>
             </div>
             
     		<%
