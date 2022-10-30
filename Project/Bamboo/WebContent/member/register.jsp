@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-	<h1>회원가입</h1>
+	<h1 id="register_title">회원가입</h1>
 
 	<form action="/register" method="post">
 		<p>ID</p><br>
