@@ -9,11 +9,14 @@
     	소식을 만나보세요	
     </div>
     
-    <div>
+    <div class="notice">
     	<p>지금 로그인 하고
     	새 글을 확인해 보세요.</p>
-    	<button id="index_login_btn"><a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a></button>
-    	<button id="index_register_btn"><a href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a></button>
+    	
+    	<div class="indexBtn">
+    		<button id="index_login_btn"><a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a></button>
+    		<button id="index_register_btn"><a href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a></button>
+    	</div>
     </div>
     	
     <div class="post"></div>

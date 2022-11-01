@@ -75,14 +75,28 @@ header {
     padding-left: 3px;
 }
 
+/* index.jsp */
+
 .welcome {
     font-size: 50px;
     font-weight: 900;
     padding: 50px 0px 0px 50px;
 }
 
-/* index.jsp */
-section button a {
+.notice p {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    font-size: 28px;
+}
+
+.indexBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.indexBtn a {
     color: white;
 }
 
@@ -298,7 +312,7 @@ section button a {
     background-color: #919191;
 }
 
-.btn {
+.informationBtn {
     display: flex;
     justify-content: center;
     position: relative;
@@ -311,5 +325,7 @@ section button a {
 footer p {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
+    margin: 50px 0 15px 0;
     font-size: 14px;
 }

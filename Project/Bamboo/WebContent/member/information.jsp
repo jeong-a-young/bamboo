@@ -26,7 +26,7 @@
 			</table>
 	    </div>
 	
-		<div class="btn">
+		<div class="informationBtn">
 			<input type="submit" id="edit_btn" value="수정">
 	    	<button id="unregister_btn">탈퇴하기</button>
 		</div>
