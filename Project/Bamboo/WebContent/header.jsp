@@ -14,7 +14,7 @@
     <div class="wrapper">
         <header>
             <div class="logo">
-                <a href="../index.jsp"><img src="../images/logo.png"></a>
+                <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png"></a>
             </div>
             
     		<%
@@ -31,7 +31,7 @@
 			
 				<div class="search">
 					<input type="text" name="search" id="search_box">
-					<button id="search_btn"><img src="./images/search.png" width="50px" height="50px"></button>
+					<button id="search_btn"><img src="${pageContext.request.contextPath}/images/search.png" width="50px" height="50px"></button>
 				</div>
 				
 			<%
@@ -42,8 +42,8 @@
 			
 				<div class="nav">
                 	<ul>
-                    	<li><a href="./member/login.jsp">로그인</a></li>
-                    	<li><a href="./member/register.jsp">회원가입</a></li>
+                    	<li><a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a></li>
+                    	<li><a href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a></li>
                 	</ul>
             	</div>
             	
@@ -55,7 +55,7 @@
                 	
                 	<ul>
                     	<li><a href="/logout">로그아웃</a></li>
-                    	<li><img src="./images/user.png" id="user_img"><a href="./member/information.jsp" id="member_information">회원정보</a></li>
+                    	<li><img src="${pageContext.request.contextPath}/images/user.png" id="user_img"><a href="${pageContext.request.contextPath}/member/information.jsp" id="member_information">회원정보</a></li>
                 	</ul>
             	</div>
             	
