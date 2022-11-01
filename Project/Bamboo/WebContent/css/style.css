@@ -81,6 +81,42 @@ header {
     padding: 50px 0px 0px 50px;
 }
 
+/* index.jsp */
+section button a {
+    color: white;
+}
+
+#index_login_btn {
+    border: none;
+    border-radius: 100px;
+    width: 200px;
+    height: 50px;
+    background-color: #7DB249;
+    font-size: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+#index_login_btn:hover {
+    background-color: #568A35;
+}
+
+#index_register_btn {
+    border: none;
+    border-radius: 100px;
+    margin-left: 10px;
+    width: 200px;
+    height: 50px;
+    background-color: #b1b1b1;
+    font-size: 20px;
+    transition: all 0.3s;
+    cursor: pointer
+}
+
+#index_register_btn:hover {
+    background-color: #919191;
+}
+
 /* login.jsp */
 
 #login_title {
@@ -91,7 +127,7 @@ header {
     font-weight: 900;
 }
 
-.input {
+.loginInput {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,7 +149,7 @@ header {
     font-size: 20px;
 }
 
-#login_btn {
+#login_login_btn {
     border: none;
     border-radius: 100px;
     margin-top: 15px;
@@ -126,7 +162,7 @@ header {
     cursor: pointer;
 }
 
-#login_btn:hover {
+#login_login_btn:hover {
     background-color: #568A35;
 }
 
@@ -151,6 +187,45 @@ header {
     font-weight: 900;
 }
 
+.registerInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 670px;
+}
+
+.subTitle {
+    font-size: 25px;
+    margin: 18px 0 5px 0;
+}
+
+.registerTextBox {
+    width: 300px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+#registerBtn {
+    position: relative;
+    left: 45px;
+    top: 40px;
+    border: none;
+    border-radius: 100px;
+    width: 200px;
+    height: 50px;
+    background-color: #7DB249;
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+#registerBtn:hover {
+    background-color: #568A35;
+}
+
 /* information.jsp */
 
 #information_title {
@@ -161,7 +236,7 @@ header {
     font-weight: 900;
 }
 
-.subTitle {
+.boxTitle {
     font-size: 20px;
 }
 
@@ -182,7 +257,7 @@ header {
     font-size: 20px;
 }
 
-.textBox {
+.informationTextBox {
     width: 350px;
     height: 50px;
     padding-left: 10px;

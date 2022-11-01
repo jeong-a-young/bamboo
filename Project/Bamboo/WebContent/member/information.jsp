@@ -8,20 +8,20 @@
 	    <div class="information">
 	    	<table>
 				<tr>
-					<th class="subTitle">ID</th>
+					<th class="boxTitle">ID</th>
 					<td id="id_value"><%= session.getAttribute("nowLoginId") %></td>
 				</tr>
 				<tr>
-					<th class="subTitle">비밀번호</th>
-					<td><input type="text" class="textBox" name="editPwd" value="<%= session.getAttribute("nowLoginPwd") %>"></td>
+					<th class="boxTitle">비밀번호</th>
+					<td><input type="text" class="informationTextBox" name="editPwd" value="<%= session.getAttribute("nowLoginPwd") %>"></td>
 				</tr>
 				<tr>
-					<th class="subTitle">이름</th>
-					<td><input type="text" class="textBox" name="editName" value="<%= session.getAttribute("nowLoginName") %>"></td>
+					<th class="boxTitle">이름</th>
+					<td><input type="text" class="informationTextBox" name="editName" value="<%= session.getAttribute("nowLoginName") %>"></td>
 				</tr>
 				<tr>
-					<th class="subTitle">이메일</th>
-					<td><input type="text" class="textBox" name="editEmail" value="<%= session.getAttribute("nowLoginEmail") %>"></td>
+					<th class="boxTitle">이메일</th>
+					<td><input type="text" class="informationTextBox" name="editEmail" value="<%= session.getAttribute("nowLoginEmail") %>"></td>
 				</tr>
 			</table>
 	    </div>
