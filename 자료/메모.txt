@@ -1,0 +1,5 @@
+<form action="/unregister" method="get">
+	<button id="unregister_btn">탈퇴하기</button>			
+</form>
+
+form 안에 form을 못 쓰니까... 어케 하지???
