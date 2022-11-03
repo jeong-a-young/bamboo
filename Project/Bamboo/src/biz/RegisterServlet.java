@@ -48,6 +48,8 @@ public class RegisterServlet extends HttpServlet {
 			vo.setMemberPwd(request.getParameter("pwd"));
 			vo.setMemberName(request.getParameter("name"));
 			vo.setMemberEmail(request.getParameter("email"));
+			vo.setMemberType(request.getParameter("type"));
+			System.out.println(request.getParameter("type"));
 			n = dao.registerMember(vo);
 			
 			if (n > 0) {

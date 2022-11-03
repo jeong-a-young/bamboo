@@ -30,6 +30,7 @@ public class LogoutServlet extends HttpServlet {
 			session.removeAttribute("nowLoginPwd");
 			session.removeAttribute("nowLoginName");
 			session.removeAttribute("nowLoginEmail");
+			session.removeAttribute("nowLoginType");
 			response.sendRedirect("/index.jsp");
 		}
 	}

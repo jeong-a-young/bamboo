@@ -9,7 +9,7 @@
 	    	<table>
 				<tr>
 					<th class="boxTitle">ID</th>
-					<td id="id_value"><%= session.getAttribute("nowLoginId") %></td>
+					<td class="fixValue"><%= session.getAttribute("nowLoginId") %></td>
 				</tr>
 				<tr>
 					<th class="boxTitle">비밀번호</th>
@@ -23,13 +23,34 @@
 					<th class="boxTitle">이메일</th>
 					<td><input type="text" class="informationTextBox" name="editEmail" value="<%= session.getAttribute("nowLoginEmail") %>"></td>
 				</tr>
+				<tr>
+					<th class="boxTitle">구분</th>
+					<td class="fixValue">
+						<%
+							if (session.getAttribute("nowLoginType").equals("S")) {
+						%>
+						
+							학생	
+						
+						<%
+							} else {
+						%>	
+						
+							교사
+							
+						<%
+							}
+						%>
+					</td>
+				</tr>
 			</table>
 	    </div>
 	
 		<div class="informationBtn">
 			<input type="submit" id="edit_btn" value="수정">
-	    	<button id="unregister_btn">탈퇴하기</button>
 		</div>
     </form>
-
+	<form action="/unregister" method="get">
+		<button id="unregister_btn">탈퇴하기</button>
+	</form>
 <%@ include file="/footer.jsp" %>

@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("nowLoginPwd", vo.getMemberPwd());
 			session.setAttribute("nowLoginName", vo.getMemberName());
 			session.setAttribute("nowLoginEmail", vo.getMemberEmail());
+			session.setAttribute("nowLoginType", vo.getMemberType());
 			response.sendRedirect("./index.jsp");
 		}
 	}

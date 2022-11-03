@@ -16,7 +16,13 @@
 	    	<input type="text" class="registerTextBox" name="name"><br>
 	    	<p class="subTitle">이메일</p>
 	    	<input type="email" class="registerTextBox" name="email" placeholder="'@y-y.hr.kr'이 포함되어야 합니다."><br>
-	    
+	    	
+	    	<p class="subTitle">구분</p>
+	    	<div class="inputRadio">
+				<div><input type="radio" name="type" value="S"> 학생</div>
+				<div><input type="radio" name="type" value="T"> 교사</div>
+	    	</div>
+	    	
 	    	<input type="submit" id="registerBtn" value="가입">
 		</form>
 	</div>

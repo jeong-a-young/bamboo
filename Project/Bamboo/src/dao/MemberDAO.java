@@ -32,6 +32,7 @@ public class MemberDAO {
 				vo.setMemberPwd(rs.getString("pwd"));
 				vo.setMemberName(rs.getString("name"));
 				vo.setMemberEmail(rs.getString("email"));
+				vo.setMemberType(rs.getString("type"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,7 +49,7 @@ public class MemberDAO {
 	public int registerMember (MemberVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO member (id, pwd, name, email) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO member (id, pwd, name, email, type) VALUES (?,?,?,?,?)";
 		
 		int n = 0;
 		
@@ -59,6 +60,7 @@ public class MemberDAO {
 			pstmt.setString(2, vo.getMemberPwd());
 			pstmt.setString(3, vo.getMemberName());
 			pstmt.setString(4, vo.getMemberEmail());
+			pstmt.setString(5, vo.getMemberType());
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

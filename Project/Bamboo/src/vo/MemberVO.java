@@ -5,6 +5,7 @@ public class MemberVO {
 	private String memberPwd;
 	private String memberName;
 	private String memberEmail;
+	private String memberType;
 	
 	public MemberVO() {
 		super();
@@ -41,5 +42,13 @@ public class MemberVO {
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
-	
+
+	public String getMemberType() {
+		return memberType;
+	}
+
+	public void setMemberType(String memberType) {
+		this.memberType = memberType;
+	}
+
 }

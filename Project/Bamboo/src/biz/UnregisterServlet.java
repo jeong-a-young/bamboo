@@ -43,8 +43,9 @@ public class UnregisterServlet extends HttpServlet {
 				alert = "회원 탈퇴에 실패했습니다.";
 			}
 			
+			// 알림창이 뜨지 않음
 			session.setAttribute("quit", alert);
-			response.sendRedirect("/member/quitResult.jsp");
+			response.sendRedirect("/index.jsp");
 		}
 	}
 }
