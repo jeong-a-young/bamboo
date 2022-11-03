@@ -3,3 +3,5 @@
 </form>
 
 form 안에 form을 못 쓰니까... 어케 하지???
+
+index if문 써서 정리
