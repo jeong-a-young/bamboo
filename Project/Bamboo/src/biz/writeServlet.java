@@ -31,6 +31,7 @@ public class writeServlet extends HttpServlet {
 		int n = 0;
 
 		// 현재 로그인 된 사용자의 이름을 가져오지 못함
+		// session.getAttribute("nowLoginName")
 		vo.setPostWriter(request.getParameter("nowLoginName"));
 		vo.setPostTitle(request.getParameter("postTitle"));
 		vo.setPostType(request.getParameter("postType"));
