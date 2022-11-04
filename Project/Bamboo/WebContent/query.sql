@@ -10,6 +10,7 @@ CREATE TABLE post (
 	post_id NUMBER (10) PRIMARY KEY,
 	post_writer VARCHAR2 (4),
 	post_title VARCHAR2 (30),
+	post_set CHAR (1),
 	post_type VARCHAR2 (20),
 	post_contents VARCHAR2 (3000)
 );
@@ -18,8 +19,8 @@ CREATE SEQUENCE post_seq;
 
 INSERT INTO member VALUES ('admin', '1234', '관리자', 'ys2220205@y-y.hs.kr', 'S');
 
-DROP TABLE member;
+DROP TABLE post;
 
-SELECT * FROM member;
+SELECT * FROM post;
 
 DELETE FROM member WHERE id='a12';

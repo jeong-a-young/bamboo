@@ -49,11 +49,11 @@ public class RegisterServlet extends HttpServlet {
 			vo.setMemberName(request.getParameter("name"));
 			vo.setMemberEmail(request.getParameter("email"));
 			vo.setMemberType(request.getParameter("type"));
-			System.out.println(request.getParameter("type"));
 			n = dao.registerMember(vo);
 			
 			if (n > 0) {
 				HttpSession session = request.getSession();
+				// 알림이 안 뜸
 				out.println("<script> alert('bamboo의 회원이 되신 것을 환영합니다.'); history.back(); </script>");
 				session.setAttribute("loginOK", vo);
 			} else {

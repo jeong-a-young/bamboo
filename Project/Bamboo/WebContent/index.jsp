@@ -26,7 +26,8 @@
     <%
     	} else {
     %>
-    
+   
+   		<a href="${pageContext.request.contextPath}/postWrite.jsp">글쓰기</a>
     	<div class="post"></div>
     	
     <%

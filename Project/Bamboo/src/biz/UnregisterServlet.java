@@ -39,13 +39,18 @@ public class UnregisterServlet extends HttpServlet {
 			if (n > 0) {
 				alert = "회원 탈퇴에 성공했습니다.";
 				session.removeAttribute("loginOK");
+				session.removeAttribute("nowLoginId");
+				session.removeAttribute("nowLoginPwd");
+				session.removeAttribute("nowLoginName");
+				session.removeAttribute("nowLoginEmail");
+				session.removeAttribute("nowLoginType");
 			} else {
 				alert = "회원 탈퇴에 실패했습니다.";
 			}
 			
 			// 알림창이 뜨지 않음
-			session.setAttribute("quit", alert);
 			response.sendRedirect("/index.jsp");
+			session.setAttribute("quit", alert);
 		}
 	}
 }

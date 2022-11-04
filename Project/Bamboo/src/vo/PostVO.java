@@ -5,6 +5,7 @@ public class PostVO {
 	private String postWriter;
 	private String postTitle;
 	private String postType;
+	private String postSet;
 	private String postContents;
 	
 	public PostVO() {
@@ -41,6 +42,14 @@ public class PostVO {
 
 	public void setPostType(String postType) {
 		this.postType = postType;
+	}
+
+	public String getPostSet() {
+		return postSet;
+	}
+
+	public void setPostSet(String postSet) {
+		this.postSet = postSet;
 	}
 
 	public String getPostContents() {
