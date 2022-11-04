@@ -14,17 +14,18 @@ public class PostDAO {
 	public int uploadPost(PostVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO post (id, pwd, name, email) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO post (post_id, post_writer, post_title, post_type, post_contents) VALUES (?,?,?,?,?)";
 		
 		int n = 0;
 		
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getMemberId());
-			pstmt.setString(2, vo.getMemberPwd());
-			pstmt.setString(3, vo.getMemberName());
-			pstmt.setString(4, vo.getMemberEmail());
+			pstmt.setInt(1, vo.getPostId());
+			pstmt.setString(2, vo.getPostWriter());
+			pstmt.setString(3, vo.getPostTitle());
+			pstmt.setString(4, vo.getPostType());
+			pstmt.setString(5, vo.getPostContents());
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
