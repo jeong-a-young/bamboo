@@ -8,15 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.PostDAO;
 import vo.PostVO;
 
 @WebServlet("/write")
-public class writeServlet extends HttpServlet {
+public class WriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public writeServlet() {
+	public WriteServlet() {
 		super();
 	}
 
@@ -26,19 +27,19 @@ public class writeServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		HttpSession session = request.getSession();
 		PostDAO dao = new PostDAO();
 		PostVO vo = new PostVO();
 		int n = 0;
 
-		// 현재 로그인 된 사용자의 이름을 가져오지 못함
-		// session.getAttribute("nowLoginName")
-		vo.setPostWriter(request.getParameter("nowLoginName"));
+		vo.setPostWriter((String) session.getAttribute("nowLoginName"));
 		vo.setPostTitle(request.getParameter("postTitle"));
 		vo.setPostType(request.getParameter("postType"));
 		vo.setPostSet(request.getParameter("postSet"));
 		vo.setPostContents(request.getParameter("postContent"));
 		n = dao.uploadPost(vo);
 
+		// 알림이 안 뜬다
 		if (n > 0) {
 			out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");
 		} else {
