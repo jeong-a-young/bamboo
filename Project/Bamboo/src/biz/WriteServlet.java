@@ -30,22 +30,30 @@ public class WriteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		PostDAO dao = new PostDAO();
 		PostVO vo = new PostVO();
+		String postTitle = request.getParameter("postTitle");
+		String postType = request.getParameter("postType");
+		String postSet = request.getParameter("postSet");
+		String postContent = request.getParameter("postContent");
 		int n = 0;
 
-		vo.setPostWriter((String) session.getAttribute("nowLoginName"));
-		vo.setPostTitle(request.getParameter("postTitle"));
-		vo.setPostType(request.getParameter("postType"));
-		vo.setPostSet(request.getParameter("postSet"));
-		vo.setPostContents(request.getParameter("postContent"));
-		n = dao.uploadPost(vo);
-
-		// 알림이 안 뜬다
-		if (n > 0) {
-			out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");
+		if (postTitle == null || postType == null || postSet == null || postContent == null) {
+			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
 		} else {
-			out.println("<script> alert('게시글 업로드에 실패했습니다.'); history.back(); </script>");
+			vo.setPostWriter((String) session.getAttribute("nowLoginName"));
+			vo.setPostTitle(postTitle);
+			vo.setPostType(postType);
+			vo.setPostSet(postSet);
+			vo.setPostContents(postContent);
+			n = dao.uploadPost(vo);
+			
+			// 알림이 안 뜬다
+			if (n > 0) {
+				out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");
+			} else {
+				out.println("<script> alert('게시글 업로드에 실패했습니다.'); history.back(); </script>");
+			}
 		}
-
+	
 		response.sendRedirect("/index.jsp");
 	}
 }
