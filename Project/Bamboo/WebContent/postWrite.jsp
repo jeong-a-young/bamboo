@@ -3,7 +3,7 @@
 <%@ include file="/header.jsp" %>
 
 	<div class="writeInput">
-		<form action="/write" method="post">
+		<form action="/write" method="post" enctype="multipart/form-data">
 			<div class="headerWrite">
 				<p id="titleTitle">제목</p>
 				<input type="text" name="postTitle" id="titleBox">
@@ -25,12 +25,16 @@
 					<input type="radio" name="postSet" value="a"> 익명
 					<input type="radio" name="postSet" value="r"> 실명
 				</div>
+
+				<p id="titleTitle">이미지</p>
+				<input type="file" id="photoInput" name="postPhoto" accept="image/*" multiple>
 			</div>
 			
-			
-
 			<div class="bodyWrite">
 				<textarea name="postContent" id="contetnBox"></textarea>
+				<table name="postPhotoList" id="photoList">
+					<td></td>
+				</table>
 			</div>
 
 			<div class="footerWrite">
