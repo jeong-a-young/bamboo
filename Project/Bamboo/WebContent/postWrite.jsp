@@ -32,9 +32,6 @@
 			
 			<div class="bodyWrite">
 				<textarea name="postContent" id="contetnBox"></textarea>
-				<table name="postPhotoList" id="photoList">
-					<td></td>
-				</table>
 			</div>
 
 			<div class="footerWrite">
