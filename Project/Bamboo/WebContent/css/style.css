@@ -96,10 +96,6 @@ header {
     margin-top: 15px;
 }
 
-.indexBtn a {
-    color: white;
-}
-
 #index_login_btn {
     border: none;
     border-radius: 100px;
@@ -107,6 +103,7 @@ header {
     height: 50px;
     background-color: #7DB249;
     font-size: 20px;
+    color: white;
     transition: all 0.3s;
     cursor: pointer;
 }
@@ -123,12 +120,29 @@ header {
     height: 50px;
     background-color: #b1b1b1;
     font-size: 20px;
+    color: white;
     transition: all 0.3s;
     cursor: pointer
 }
 
 #index_register_btn:hover {
     background-color: #919191;
+}
+
+#post_write_btn {
+    border: none;
+    border-radius: 100px;
+    width: 200px;
+    height: 50px;
+    background-color: #7DB249;
+    font-size: 20px;
+    color: white;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+#post_write_btn:hover {
+    background-color: #568A35;
 }
 
 /* login.jsp */
@@ -334,7 +348,7 @@ header {
 .headerWrite {
     display: flex;
     justify-content: center;
-    margin: 100px 0 3px 0;
+    margin: 100px 0 25px 100px;
 }
 
 #titleTitle {
@@ -369,6 +383,10 @@ header {
     margin: 6px;
 }
 
+#photoInput {
+    margin: 4px 0 0 10px;
+}
+
 .bodyWrite {
     display: flex;
     justify-content: center;
@@ -378,7 +396,7 @@ header {
 #contetnBox {
     resize: none;
     padding: 7px 0 0 7px;
-    width: 900px;
+    width: 1150px;
     height: 400px;
     font-size: 20px;
 }

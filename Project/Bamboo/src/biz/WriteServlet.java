@@ -38,6 +38,11 @@ public class WriteServlet extends HttpServlet {
 
 		if (postTitle == null || postType == null || postSet == null || postContent == null) {
 			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
+			System.out.println("@@2");
+			System.out.println(postTitle);
+			System.out.println(postType);
+			System.out.println(postSet);
+			System.out.println(postContent);
 		} else {
 			vo.setPostWriter((String) session.getAttribute("nowLoginName"));
 			vo.setPostTitle(postTitle);
@@ -45,7 +50,7 @@ public class WriteServlet extends HttpServlet {
 			vo.setPostSet(postSet);
 			vo.setPostContents(postContent);
 			n = dao.uploadPost(vo);
-			
+			System.out.println("@@!");
 			// 알림이 안 뜬다
 			if (n > 0) {
 				out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");

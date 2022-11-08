@@ -18,17 +18,39 @@
 	    	새 글을 확인해 보세요.</p>
 	    	
 	    	<div class="indexBtn">
-	    		<button id="index_login_btn"><a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a></button>
-	    		<button id="index_register_btn"><a href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a></button>
+	    		<button id="index_login_btn" onclick="location.href='${pageContext.request.contextPath}/member/login.jsp'">로그인</button>
+	    		<button id="index_register_btn" onclick="location.href='${pageContext.request.contextPath}/member/register.jsp'">회원가입</button>
 	    	</div>
 	    </div>
 	    
     <%
     	} else {
     %>
-   
-   		<a href="${pageContext.request.contextPath}/postWrite.jsp">글쓰기</a>
-    	<div class="post"></div>
+    
+   		<button id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/postWrite.jsp'">글쓰기</button>
+   		
+   		<select name="postType" id="typeSelect">
+   			<option value="전체">전체</option>
+			<option value="공지게시판">공지게시판</option>
+			<option value="자유게시판">자유게시판</option>
+			<option value="질문게시판">질문게시판</option>
+			<option value="정보게시판">정보게시판</option>
+			<option value="분실물게시판">분실물게시판</option>
+			<option value="스마트전자과게시판">스마트전자과게시판</option>
+			<option value="정보통신과게시판">정보통신과게시판</option>
+			<option value="소프트웨어개발과게시판">소프트웨어개발과게시판</option>
+			<option value="바이오화학과게시판">바이오화학과게시판</option>
+			<option value="생명정보과게시판">생명정보과게시판</option>
+		</select>
+		
+    	<div class="post">
+    		<table>
+    			<th>게시글 ID</th>
+    			<th>제목</th>
+    			<th>작성자</th>
+    			<th>작성일</th>
+    		</table>
+    	</div>
     	
     <%
     	}

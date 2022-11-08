@@ -1,5 +1,7 @@
 package vo;
 
+import java.sql.Date;
+
 public class PostVO {
 	private int postId;
 	private String postWriter;
@@ -7,6 +9,7 @@ public class PostVO {
 	private String postType;
 	private String postSet;
 	private String postContents;
+	private Date postTime;
 	
 	public PostVO() {
 		super();
@@ -58,6 +61,14 @@ public class PostVO {
 
 	public void setPostContents(String postContents) {
 		this.postContents = postContents;
+	}
+
+	public Date getPostTime() {
+		return postTime;
+	}
+
+	public void setPostTime(Date postTime) {
+		this.postTime = postTime;
 	}
 	
 }

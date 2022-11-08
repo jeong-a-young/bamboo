@@ -12,7 +12,8 @@ CREATE TABLE post (
 	post_title VARCHAR2 (30),
 	post_set CHAR (1),
 	post_type VARCHAR2 (20),
-	post_contents VARCHAR2 (3000)
+	post_contents VARCHAR2 (3000),
+	post_time DATE
 );
 
 CREATE SEQUENCE post_seq;
