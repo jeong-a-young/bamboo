@@ -2,7 +2,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import common.JDBCUtil;
@@ -10,7 +12,33 @@ import vo.PostVO;
 
 public class PostDAO {
 
-	// 1. upload
+	// 1. view
+	
+	public ArrayList<String> getPostList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM post";
+		
+		ArrayList<String> list = new ArrayList<String>();
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(rs.getString("post_id"));
+				list.add(rs.getString("post_writer"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	// 2. upload
 	
 	public int uploadPost(PostVO vo) {
 		Connection conn = null;

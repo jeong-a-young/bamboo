@@ -1,3 +1,5 @@
+<%@page import="dao.PostDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp" %>
@@ -25,9 +27,19 @@
 	    
     <%
     	} else {
+    	
+	    	PostDAO dao = new PostDAO();
+	    	ArrayList<String> list = dao.getPostList();
+	%>
+	
+		<button id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/postWrite.jsp'">글쓰기</button>
+		
+	<%
+	    	if(list.isEmpty()) {
+	    		out.print("<tr><td>게시글이 없습니다.</td></tr>");
+	    	} else {
+	    		for (String data : list) {
     %>
-    
-   		<button id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/postWrite.jsp'">글쓰기</button>
    		
    		<select name="postType" id="typeSelect">
    			<option value="전체">전체</option>
@@ -45,14 +57,21 @@
 		
     	<div class="post">
     		<table>
-    			<th>게시글 ID</th>
-    			<th>제목</th>
-    			<th>작성자</th>
-    			<th>작성일</th>
+    			<tr>
+    				<th>게시글 ID</th>
+	    			<th>제목</th>
+	    			<th>작성자</th>
+	    			<th>작성일</th>
+    			</tr>
+    			<tr>
+    				<% System.out.print(list.indexOf(1)); %>
+    				<td><%= list.indexOf(1) %></td>
+    			</tr>
     		</table>
     	</div>
     	
-    <%
+    <%			}
+	    	}
     	}
     %>
 </section>
