@@ -3,7 +3,7 @@
 <%@ include file="/header.jsp" %>
 
 	<div class="writeInput">
-		<form action="/write" method="post" enctype="multipart/form-data">
+		<form action="/write" method="post">
 			<div class="headerWrite">
 				<p id="titleTitle">제목</p>
 				<input type="text" name="postTitle" id="titleBox">
@@ -37,6 +37,8 @@
 			<div class="footerWrite">
 				<input type="submit" id="upload_btn" value="업로드">
 			</div>
+			
+			
 		</form>
 	</div>
 	

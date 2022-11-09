@@ -20,8 +20,9 @@ CREATE SEQUENCE post_seq;
 
 INSERT INTO member VALUES ('admin', '1234', '관리자', 'ys2220205@y-y.hs.kr', 'S');
 
-DROP TABLE post;
+DROP TABLE member;
 
+SELECT * FROM member WHERE id='admin';
 SELECT * FROM post;
 
 DELETE FROM member WHERE id='a12';
