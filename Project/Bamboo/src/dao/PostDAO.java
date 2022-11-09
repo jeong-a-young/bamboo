@@ -31,6 +31,7 @@ public class PostDAO {
 				list.add(rs.getString("post_id"));
 				list.add(rs.getString("post_writer"));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
