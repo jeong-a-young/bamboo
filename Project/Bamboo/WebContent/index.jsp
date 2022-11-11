@@ -34,6 +34,71 @@
 	
 		<button id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/postWrite.jsp'">글쓰기</button>
 		
+		<div class="menu">
+			<ul class="mainMenu">
+				<li>
+					공지게시판
+					<ul class="subMenu">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</li>
+				<li>
+					자유게시판
+					<ul class="subMenu">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</li>
+				<li>
+					질문게시판
+					<ul class="subMenu">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</li>
+				<li>
+					정보게시판
+					<ul class="subMenu">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</li>
+				<li>
+					분실물게시판
+					<ul class="subMenu">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</li>
+				<li id="major">
+					과별게시판
+					<ul class="subMenu">
+						<li>스마트전자과게시판</li>
+						<li>정보통신과게시판</li>
+						<li>소프트웨어개발과게시판</li>
+						<li>바이오화학과게시판</li>
+						<li>생명정보과게시판</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
 	<%
 	    	if(list.isEmpty()) {
 	    		out.print("<tr><td>게시글이 없습니다.</td></tr>");
