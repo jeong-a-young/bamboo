@@ -24,13 +24,13 @@ public class SendMailAction implements CommandProcess {
 		String message = request.getParameter("message");
 		
 		Properties p = new Properties(); // 정보를 담을 객체
-		p.put("mail.smtp.host","gmail-smtp.l.google.com"); // 네이버 SMTP
+		p.put("mail.smtp.host","smtp.google.com"); // 네이버 SMTP
 		
-		p.put("mail.smtp.port", "465");
+		p.put("mail.smtp.port", "587");
 		p.put("mail.smtp.starttls.enable", "true");
 		p.put("mail.smtp.auth", "true");
 		p.put("mail.smtp.debug", "true");
-		p.put("mail.smtp.socketFactory.port", "465");
+		p.put("mail.smtp.socketFactory.port", "587");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
 		// SMTP 서버에 접속하기 위한 정보들
@@ -48,7 +48,7 @@ public class SendMailAction implements CommandProcess {
 		    Address fromAddr = new InternetAddress(email);
 		    msg.setFrom(fromAddr); // 보내는 사람
 		    
-		    Address toAddr = new InternetAddress("ys2110208@y-y.hs.kr");
+		    Address toAddr = new InternetAddress("a01025869419@gmail.com");
 		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
 		    
 		    msg.setContent(email+"님께서 "+message, "text/html;charset=UTF-8"); // 내용과 인코딩
