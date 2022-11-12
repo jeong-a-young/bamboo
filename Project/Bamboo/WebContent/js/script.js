@@ -1,3 +1,22 @@
+// 회원가입 할 때 비밀번호 일치 확인
+$(function(){
+    $('#password').keyup(function(){
+      $('#chkNotice').html('');
+    });
+
+    $('#password_check').keyup(function(){
+
+        if($('#password').val() != $('#password_check').val()){
+          $('#chkNotice').html('비밀번호 일치하지 않음<br><br>');
+          $('#chkNotice').attr('color', '#f82a2aa3');
+        } else{
+          $('#chkNotice').html('비밀번호 일치함<br><br>');
+          $('#chkNotice').attr('color', '#199894b3');
+        }
+
+    });
+});
+
 // 검색창 눌렀을 때 shadow 효과
 $("#search_box").click (
     function() {

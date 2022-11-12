@@ -8,10 +8,11 @@
 			<p class="subTitle">ID</p>
 	    	<input type="text" class="registerTextBox" name="id"><br>
 	    	<p class="subTitle">비밀번호</p>
-	    	<input type="password" class="registerTextBox" name="pwd"><br>
+	    	<input type="password" class="registerTextBox" id="password" name="pwd"><br>
 	    	<p class="subTitle">비밀번호 확인</p>
-	    	<input type="password" class="registerTextBox" name="pwdCk" placeholder="비밀번호를 한 번 더 입력해 주세요."><br>
-	    
+	    	<input type="password" class="registerTextBox" id="password_check" name="pwdCk" placeholder="비밀번호를 한 번 더 입력해 주세요."><br>
+			<font id="chkNotice" size = "2"></font>
+			
 	    	<p class="subTitle">이름</p>
 	    	<input type="text" class="registerTextBox" name="name"><br>
 	    	<p class="subTitle">이메일</p>
