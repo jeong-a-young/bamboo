@@ -47,6 +47,30 @@ public class MailDAO {
 		return id;
 	}
 	
+	// ID랑 이메일로 비밀번호 불러오기
+	public String idEmailToPwd(String id, String email) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT pwd FROM member WHERE id=? AND email=?";
+		
+		String pwd = null;
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, email);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				pwd = rs.getString("pwd");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pwd;
+	}
+	
 	// 1. 회원가입
 	
 	// 인증 메일 전송

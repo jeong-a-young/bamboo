@@ -241,6 +241,48 @@ header {
     padding: 0 10px;
 }
 
+/* forgotID.jsp */
+
+#forgotID_title {
+    position: relative;
+    text-align: center;
+    top: 60px;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.forgotIdInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 475px;
+}
+
+.forgotIdBox {
+    padding-left: 8px;
+    height: 50px;
+    width: 500px;
+    font-size: 20px;
+}
+
+#forgotIdBtn {
+    border: none;
+    border-radius: 100px;
+    margin-top: 50px;
+    width: 200px;
+    height: 50px;
+    background-color: #7DB249;
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+#forgotIdBtn:hover {
+    background-color: #568A35;
+}
+
 /* register.jsp */
 
 #register_title {

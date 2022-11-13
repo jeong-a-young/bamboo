@@ -12,8 +12,8 @@
 		</div>
     	
     	<ul class="find">
-	        <li><a href="#">ID 찾기</a></li>
-	        <li><a href="#">비밀번호 찾기</a></li>
+	        <li><a href="${pageContext.request.contextPath}/member/forgotID.jsp">ID 찾기</a></li>
+	        <li><a href="${pageContext.request.contextPath}/member/forgotPassword.jsp">비밀번호 찾기</a></li>
     	</ul>
     </form>
 
