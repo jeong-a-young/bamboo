@@ -149,4 +149,35 @@ public class MailDAO {
 		
 		return id;
 	}
+	
+	// 비밀번호 찾기
+	public String pwdMailSend(String id, String pwd, String email) {	
+		Properties prop = System.getProperties();
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		prop.put("mail.smtp.host", "smtp.gmail.com");
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.port", "587");
+		Authenticator auth = new SMTPAuthenticator();
+		Session session = Session.getDefaultInstance(prop, auth);
+		MimeMessage msg = new MimeMessage(session);
+		
+		try {
+			msg.setSentDate(new Date());
+			msg.setFrom(new InternetAddress("a01025869419@gmail.com", "bamboo"));
+			InternetAddress to = new InternetAddress(email);
+			msg.setRecipient(Message.RecipientType.TO, to);
+			msg.setSubject(id + "님의 비밀번호입니다.", "UTF-8");
+			msg.setText(id + "님의 비밀번호는 " + pwd + "입니다.", "UTF-8");
+			Transport.send(msg);
+		} catch (AddressException ae) {
+			System.out.println("AddressException: " + ae.getMessage());
+		} catch (MessagingException me) {
+			System.out.println("MessagingException: " + me.getMessage());
+		} catch (UnsupportedEncodingException ue) {
+			System.out.println("UnsupportedEncodingException: " + ue.getMessage());
+		}
+		
+		return pwd;
+	}
 }
