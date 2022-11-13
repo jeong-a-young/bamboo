@@ -4,6 +4,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp" %>
 
+<!-- 서버 경로: / -->
+
 <section>
     <div class="welcome">
     	bamboo에서 <br>
