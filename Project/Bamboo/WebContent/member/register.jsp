@@ -11,19 +11,16 @@
 	    	<input type="password" class="registerTextBox" id="password" name="pwd"><br>
 	    	<p class="subTitle">비밀번호 확인</p>
 	    	<input type="password" class="registerTextBox" id="password_check" name="pwdCk" placeholder="비밀번호를 한 번 더 입력해 주세요."><br>
-			<font id="chkNotice" size = "2"></font>
+			<p id="pwdCheck"></p>
 			
 	    	<p class="subTitle">이름</p>
 	    	<input type="text" class="registerTextBox" name="name"><br>
 	    	<p class="subTitle">이메일</p>
-	    	<input type="email" class="registerTextBox" name="email" placeholder="'@y-y.hr.kr'이 포함되어야 합니다.">
-	    	<input type="submit" value="인증 코드 발송" formaction="/mail">
-	    	<a href="#">이메일이 오지 않았을 땐?</a>
-	    	<br>
+	    	<input type="email" class="registerTextBox" name="email" placeholder="'@y-y.hr.kr'이 포함되어야 합니다." style="margin-bottom: 5px;"><br>
+	    	<input type="submit" id="authenticator_code_btn" value="인증 코드 받기" formaction="/mail">
+	    	<a href="https://support.bespinglobal.com/ko/support/solutions/articles/73000545270--gmail-pop-%EB%B0%8F-imap-%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%98%EA%B8%B0" target="_black" id="email_notice">이메일이 오지 않았을 땐?</a><br>
 	    	<p class="subTitle">인증 코드</p>
-	    	<input type="text" class="registerTextBox" name="code" placeholder="위 이메일로 발송된 인증 코드를 입력해 주세요.">
-	    	<button>코드 일치 확인</button>
-	    	<br>
+	    	<input type="text" class="registerTextBox" id="authenticator_code" name="code" placeholder="위 이메일로 발송된 인증 코드를 입력해 주세요.">
 	    	<p class="subTitle">구분</p>
 	    	<div class="inputRadio">
 				<div><input type="radio" name="type" value="S"> 학생</div>
