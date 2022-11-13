@@ -41,6 +41,7 @@ public class PostDAO {
 	
 	// 2. upload
 	
+	// 게시글 업로드
 	public int uploadPost(PostVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -67,5 +68,20 @@ public class PostDAO {
 		}
 		
 		return n;
+	}
+	
+	// 금칙어 확인
+	public boolean checkForbidden (String content) {
+		// 선생님... 죄송합니다 익명 게시판 특성 상 금칙어를 설정하기 위해 어쩔 수 없이 욕설을 적어놓을 수 밖에 없었어요 (T_T)
+		String [] forbidden = { "개새끼", "개새기", "개소리", "꺼져", "병신", "븅신", "좆", "지랄", "또라이", "똘아이", "닥쳐", "등신", "대가리" };
+		boolean check = false;
+				
+		for (int i = 0; i <= forbidden.length - 1; i++) {
+			if (content.indexOf(forbidden[i]) != -1) {
+				check = true;
+			}
+		}
+		
+		return check;
 	}
 }

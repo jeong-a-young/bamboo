@@ -19,10 +19,12 @@ CREATE TABLE post (
 CREATE SEQUENCE post_seq;
 
 INSERT INTO member VALUES ('admin', '1234', '관리자', 'ys2220205@y-y.hs.kr', 'S');
+INSERT INTO post VALUES (1, 'admin', 'test1', 'a', '공지게시판','test', '2022-11-13');
 
-DROP TABLE member;
+DROP TABLE post;
 
 SELECT * FROM member;
 SELECT * FROM post;
 
 DELETE FROM member WHERE id='3';
+DELETE FROM post;

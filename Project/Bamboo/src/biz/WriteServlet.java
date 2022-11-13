@@ -35,9 +35,13 @@ public class WriteServlet extends HttpServlet {
 		String postSet = request.getParameter("postSet");
 		String postContent = request.getParameter("postContent");
 		int n = 0;
+		boolean check = dao.checkForbidden(postContent);
 
+		// 이거 왜 다 알림 안 뜸???
 		if (postTitle == null || postType == null || postSet == null || postContent == null) {
 			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
+		} else if (check) {
+			out.println("<script> alert('욕설이 있습니다.'); history.back(); </script>");
 		} else {
 			vo.setPostWriter((String) session.getAttribute("nowLoginName"));
 			vo.setPostTitle(postTitle);
@@ -45,14 +49,14 @@ public class WriteServlet extends HttpServlet {
 			vo.setPostSet(postSet);
 			vo.setPostContents(postContent);
 			n = dao.uploadPost(vo);
-			// 알림이 안 뜬다
+
 			if (n > 0) {
 				out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");
 			} else {
 				out.println("<script> alert('게시글 업로드에 실패했습니다.'); history.back(); </script>");
 			}
 		}
-	
+
 		response.sendRedirect("/index.jsp");
 	}
 }
