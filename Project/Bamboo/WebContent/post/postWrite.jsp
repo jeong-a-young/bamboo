@@ -28,7 +28,6 @@
 
 				<p id="titleTitle">이미지</p>
 				<input type="file" id="photoInput" name="postPhoto" accept="image/*" multiple>
-				<!-- <input type="submit" value="추가" formaction="<%=request.getContextPath()%>/post/imageUpload.jsp"> -->
 			</div>
 			
 			<div class="bodyWrite">
