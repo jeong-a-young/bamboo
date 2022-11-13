@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import dao.PostDAO;
 import vo.PostVO;
 
@@ -30,10 +33,12 @@ public class WriteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		PostDAO dao = new PostDAO();
 		PostVO vo = new PostVO();
-		String postTitle = request.getParameter("postTitle");
-		String postType = request.getParameter("postType");
-		String postSet = request.getParameter("postSet");
-		String postContent = request.getParameter("postContent");
+		MultipartRequest mr = new MultipartRequest(request, request.getRealPath("/postImage"), 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+		String postTitle = mr.getParameter("postTitle");
+		String postType = mr.getParameter("postType");
+		String postSet = mr.getParameter("postSet");
+		String postContent = mr.getParameter("postContent");
+		String postImage = mr.getFilesystemName("postPhoto");
 		int n = 0;
 		boolean check = dao.checkForbidden(postContent);
 
@@ -49,7 +54,7 @@ public class WriteServlet extends HttpServlet {
 			vo.setPostSet(postSet);
 			vo.setPostContents(postContent);
 			n = dao.uploadPost(vo);
-
+			
 			if (n > 0) {
 				out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");
 			} else {

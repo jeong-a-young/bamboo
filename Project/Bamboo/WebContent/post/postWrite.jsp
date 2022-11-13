@@ -3,7 +3,7 @@
 <%@ include file="/header.jsp" %>
 
 	<div class="writeInput">
-		<form action="/write" method="post">
+		<form action="/write" method="post" enctype="multipart/form-data">
 			<div class="headerWrite">
 				<p id="titleTitle">제목</p>
 				<input type="text" name="postTitle" id="titleBox">
@@ -28,6 +28,7 @@
 
 				<p id="titleTitle">이미지</p>
 				<input type="file" id="photoInput" name="postPhoto" accept="image/*" multiple>
+				<!-- <input type="submit" value="추가" formaction="<%=request.getContextPath()%>/post/imageUpload.jsp"> -->
 			</div>
 			
 			<div class="bodyWrite">
@@ -37,7 +38,6 @@
 			<div class="footerWrite">
 				<input type="submit" id="upload_btn" value="업로드">
 			</div>
-			
 			
 		</form>
 	</div>

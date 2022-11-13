@@ -33,7 +33,7 @@
     	
 	%>
 	
-		<button id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/postWrite.jsp'">글쓰기</button>
+		<button id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
 		
 	<%
 	    	
