@@ -24,8 +24,9 @@ public class MailServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		String mail = request.getParameter("email");
 		MailSend ms = new MailSend();
-		int n = ms.registerMailSend();
+		int n = ms.registerMailSend(mail);
 		
 		if (n > 0) {
 			out.println("<script> alert('메일함을 확인해 주세요.'); history.back(); </script>");

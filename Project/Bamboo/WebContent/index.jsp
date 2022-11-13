@@ -30,116 +30,13 @@
     <%
     	} else {
     	
-	    	PostDAO dao = new PostDAO();
-	    	ArrayList<String> list = dao.getPostList();
 	%>
 	
 		<button id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/postWrite.jsp'">글쓰기</button>
 		
-		<div class="menu">
-			<ul class="mainMenu">
-				<li>
-					공지게시판
-					<ul class="subMenu">
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
-				</li>
-				<li>
-					자유게시판
-					<ul class="subMenu">
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
-				</li>
-				<li>
-					질문게시판
-					<ul class="subMenu">
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
-				</li>
-				<li>
-					정보게시판
-					<ul class="subMenu">
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
-				</li>
-				<li>
-					분실물게시판
-					<ul class="subMenu">
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
-				</li>
-				<li id="major">
-					과별게시판
-					<ul class="subMenu">
-						<li>스마트전자과게시판</li>
-						<li>정보통신과게시판</li>
-						<li>소프트웨어개발과게시판</li>
-						<li>바이오화학과게시판</li>
-						<li>생명정보과게시판</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-
 	<%
-	    	if(list.isEmpty()) {
-	    		out.print("<tr><td>게시글이 없습니다.</td></tr>");
-	    	} else {
-	    		for (String data : list) {
-    %>
-   		
-   		<select name="postType" id="typeSelect">
-   			<option value="전체">전체</option>
-			<option value="공지게시판">공지게시판</option>
-			<option value="자유게시판">자유게시판</option>
-			<option value="질문게시판">질문게시판</option>
-			<option value="정보게시판">정보게시판</option>
-			<option value="분실물게시판">분실물게시판</option>
-			<option value="스마트전자과게시판">스마트전자과게시판</option>
-			<option value="정보통신과게시판">정보통신과게시판</option>
-			<option value="소프트웨어개발과게시판">소프트웨어개발과게시판</option>
-			<option value="바이오화학과게시판">바이오화학과게시판</option>
-			<option value="생명정보과게시판">생명정보과게시판</option>
-		</select>
-		
-    	<div class="post">
-    		<table>
-    			<tr>
-    				<th>게시글 ID</th>
-	    			<th>제목</th>
-	    			<th>작성자</th>
-	    			<th>작성일</th>
-    			</tr>
-    			<tr>
-    				<% System.out.print(list.indexOf(1)); %>
-    				<td><%= list.indexOf(1) %></td>
-    			</tr>
-    		</table>
-    	</div>
-    	
-    <%			}
-	    	}
-    	}
+	    	
+	    }
     %>
 </section>
 

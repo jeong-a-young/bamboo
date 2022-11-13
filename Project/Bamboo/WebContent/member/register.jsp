@@ -4,7 +4,7 @@
 
 	<h1 id="register_title">회원가입</h1>
 	<div class="registerInput">
-		<form action="/register" method="post">
+		<form method="post">
 			<p class="subTitle">ID</p>
 	    	<input type="text" class="registerTextBox" name="id"><br>
 	    	<p class="subTitle">비밀번호</p>
@@ -16,15 +16,21 @@
 	    	<p class="subTitle">이름</p>
 	    	<input type="text" class="registerTextBox" name="name"><br>
 	    	<p class="subTitle">이메일</p>
-	    	<input type="email" class="registerTextBox" name="email" placeholder="'@y-y.hr.kr'이 포함되어야 합니다."><br>
-	    	
+	    	<input type="email" class="registerTextBox" name="email" placeholder="'@y-y.hr.kr'이 포함되어야 합니다.">
+	    	<input type="submit" value="인증 코드 발송" formaction="/mail">
+	    	<a href="#">이메일이 오지 않았을 땐?</a>
+	    	<br>
+	    	<p class="subTitle">인증 코드</p>
+	    	<input type="text" class="registerTextBox" name="code" placeholder="위 이메일로 발송된 인증 코드를 입력해 주세요.">
+	    	<button>코드 일치 확인</button>
+	    	<br>
 	    	<p class="subTitle">구분</p>
 	    	<div class="inputRadio">
 				<div><input type="radio" name="type" value="S"> 학생</div>
 				<div><input type="radio" name="type" value="T"> 교사</div>
 	    	</div>
 	    	
-	    	<input type="submit" id="registerBtn" value="가입">
+	    	<input type="submit" id="registerBtn" value="가입" formaction="/register">
 		</form>
 	</div>
 	

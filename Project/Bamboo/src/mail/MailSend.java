@@ -18,7 +18,7 @@ public class MailSend {
 	// 1. 회원가입
 	
 	// 인증 메일 전송
-	public int registerMailSend() {	
+	public int registerMailSend(String email) {	
 		Properties prop = System.getProperties();
         // 로그인 시 TLS를 사용할 것인지 설정
 		prop.put("mail.smtp.starttls.enable", "true");
@@ -40,7 +40,7 @@ public class MailSend {
 			// 발송자 메일, 발송자명
 			msg.setFrom(new InternetAddress("a01025869419@gmail.com", "bamboo"));
             // 수신자 메일
-			InternetAddress to = new InternetAddress("a01025869419@gmail.com");
+			InternetAddress to = new InternetAddress(email);
             // Message 클래스의 setRecipient() 메소드를 사용하여 수신자를 설정
 			msg.setRecipient(Message.RecipientType.TO, to);
             // 메일 제목
