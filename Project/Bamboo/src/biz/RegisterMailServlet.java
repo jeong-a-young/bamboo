@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mail.MailSend;
+import dao.MailDAO;
 
-@WebServlet("/mail")
-public class MailServlet extends HttpServlet {
+@WebServlet("/registerMail")
+public class RegisterMailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public MailServlet() {
+    public RegisterMailServlet() {
         super();
     }
 
@@ -24,14 +24,14 @@ public class MailServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		String mail = request.getParameter("email");
-		MailSend ms = new MailSend();
-		int n = ms.registerMailSend(mail);
+		String email = request.getParameter("email");
+		MailDAO dao = new MailDAO();
+		int n = dao.registerMailSend(email);
 		
 		if (n > 0) {
-			out.println("<script> alert('메일함을 확인해 주세요.'); history.back(); </script>");
+			out.println("<script> alert('인증 코드를 발송하였습니다. 메일함을 확인해 주세요.'); history.back(); </script>");
 		} else {
-			out.println("<script> alert('메일 전송에 실패했습니다. 이메일을 다시 한 번 확인해 주세요.'); history.back(); </script>");
+			out.println("<script> alert('메일 전송에 실패했습니다.'); history.back(); </script>");
 		}
 	}
 }

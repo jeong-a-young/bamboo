@@ -33,6 +33,7 @@ public class RegisterServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String pwdCk = request.getParameter("pwdCk");
 		String email = request.getParameter("email");
+		String code = request.getParameter("code");
 		int n = 0;
 
 		if (overlapId) {
@@ -43,6 +44,8 @@ public class RegisterServlet extends HttpServlet {
 			out.println("<script> alert('이메일 형식이 옳지 않습니다. @y-y.hs.kr이 들어가야 합니다.'); history.back(); </script>");
 		} else if (overlapEmail) {
 			out.println("<script> alert('이미 가입된 이메일입니다.'); history.back(); </script>");
+		} else if (!code.equals("bamboo")) {
+			out.println("<script> alert('인증 코드가 잘못 되었습니다. 다시 한 번 확인해 주세요.'); history.back(); </script>");
 		} else {
 			vo.setMemberId(request.getParameter("id"));
 			vo.setMemberPwd(request.getParameter("pwd"));
