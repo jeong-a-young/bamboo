@@ -85,4 +85,43 @@ public class PostDAO {
 		
 		return check;
 	}
+	
+	// 3. view
+	
+	// 최근 게시물 불러오기
+	public ArrayList<PostVO> getRecentPost () {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM post WHERE ROWNUM = 1";
+		
+		ArrayList<PostVO> list = new ArrayList<PostVO>();
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				PostVO vo = new PostVO();
+				vo.setPostId(rs.getInt("post_id"));
+				vo.setPostWriter(rs.getString("post_writer"));
+				vo.setPostTitle(rs.getString("post_title"));
+				vo.setPostSet(rs.getString("post_set"));
+				vo.setPostType(rs.getString("post_type"));
+				vo.setPostContents(rs.getString("post_contents"));
+				vo.setPostTime(rs.getDate("post_time"));
+				vo.setPostPhoto(rs.getString("post_photo"));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		
+		return list;
+	}
+	
 }
