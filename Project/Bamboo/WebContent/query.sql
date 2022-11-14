@@ -13,7 +13,8 @@ CREATE TABLE post (
 	post_set CHAR (1),
 	post_type VARCHAR2 (20),
 	post_contents VARCHAR2 (3000),
-	post_time DATE
+	post_time DATE,
+	post_photo VARCHAR2 (500)
 );
 
 CREATE SEQUENCE post_seq;

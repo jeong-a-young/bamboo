@@ -38,7 +38,7 @@ public class WriteServlet extends HttpServlet {
 		String postType = mr.getParameter("postType");
 		String postSet = mr.getParameter("postSet");
 		String postContent = mr.getParameter("postContent");
-		String postImage = mr.getFilesystemName("postPhoto");
+		String postPhoto = request.getContextPath() + "/postImage/" + mr.getFilesystemName("postPhoto");
 		int n = 0;
 		boolean check = dao.checkForbidden(postContent);
 
@@ -46,13 +46,15 @@ public class WriteServlet extends HttpServlet {
 		if (postTitle == null || postType == null || postSet == null || postContent == null) {
 			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
 		} else if (check) {
-			out.println("<script> alert('욕설이 있습니다.'); history.back(); </script>");
+			out.println("<script> alert('금칙어가 포함되어 있습니다.'); history.back(); </script>");
 		} else {
 			vo.setPostWriter((String) session.getAttribute("nowLoginName"));
 			vo.setPostTitle(postTitle);
 			vo.setPostType(postType);
 			vo.setPostSet(postSet);
 			vo.setPostContents(postContent);
+			vo.setPostPhoto(postPhoto);
+			System.out.println("이미지가 저장되는 실제 경로: " + request.getRealPath("/postImage"));
 			n = dao.uploadPost(vo);
 			
 			if (n > 0) {

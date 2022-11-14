@@ -45,7 +45,7 @@ public class PostDAO {
 	public int uploadPost(PostVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO post (post_id, post_writer, post_title, post_type, post_set, post_contents, post_time) VALUES (post_seq.nextval,?,?,?,?,?,?)";
+		String sql = "INSERT INTO post (post_id, post_writer, post_title, post_type, post_set, post_contents, post_time, post_photo) VALUES (post_seq.nextval,?,?,?,?,?,?,?)";
 		
 		int n = 0;
 		
@@ -62,6 +62,7 @@ public class PostDAO {
 			pstmt.setString(4, vo.getPostSet());
 			pstmt.setString(5, vo.getPostContents());
 			pstmt.setDate(6, sqlDate);
+			pstmt.setString(7, vo.getPostPhoto());
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

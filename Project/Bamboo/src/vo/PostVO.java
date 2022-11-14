@@ -10,6 +10,7 @@ public class PostVO {
 	private String postSet;
 	private String postContents;
 	private Date postTime;
+	private String postPhoto;
 	
 	public PostVO() {
 		super();
@@ -69,6 +70,14 @@ public class PostVO {
 
 	public void setPostTime(Date postTime) {
 		this.postTime = postTime;
+	}
+
+	public String getPostPhoto() {
+		return postPhoto;
+	}
+
+	public void setPostPhoto(String postPhoto) {
+		this.postPhoto = postPhoto;
 	}
 	
 }
