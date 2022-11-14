@@ -14,31 +14,76 @@ public class PostDAO {
 
 	// 1. view
 	
-	public ArrayList<String> getPostList() {
+	// 모든 게시물 불러오가
+	public ArrayList<PostVO> getPostList() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post";
-		
-		ArrayList<String> list = new ArrayList<String>();
-		
+		String sql = "SELECT * FROM post ORDER BY post_id DESC";
+			
+		ArrayList<PostVO> list = new ArrayList<PostVO>();
+			
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				list.add(rs.getString("post_id"));
-				list.add(rs.getString("post_writer"));
+				
+			while (rs.next()) {
+				PostVO vo = new PostVO();
+				vo.setPostId(rs.getInt("post_id"));
+				vo.setPostWriter(rs.getString("post_writer"));
+				vo.setPostTitle(rs.getString("post_title"));
+				vo.setPostSet(rs.getString("post_set"));
+				vo.setPostType(rs.getString("post_type"));
+				vo.setPostContents(rs.getString("post_contents"));
+				vo.setPostTime(rs.getDate("post_time"));
+				vo.setPostPhoto(rs.getString("post_photo"));
+				list.add(vo);
 			}
-			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
 		}
-		
+			
 		return list;
 	}
-	
+		
+		// 최근 게시물 불러오기
+		public ArrayList<PostVO> getRecentPost () {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "SELECT * FROM (SELECT * FROM post ORDER BY post_id DESC) WHERE ROWNUM = 1";
+			
+			ArrayList<PostVO> list = new ArrayList<PostVO>();
+			
+			try {
+				conn = JDBCUtil.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					PostVO vo = new PostVO();
+					vo.setPostId(rs.getInt("post_id"));
+					vo.setPostWriter(rs.getString("post_writer"));
+					vo.setPostTitle(rs.getString("post_title"));
+					vo.setPostSet(rs.getString("post_set"));
+					vo.setPostType(rs.getString("post_type"));
+					vo.setPostContents(rs.getString("post_contents"));
+					vo.setPostTime(rs.getDate("post_time"));
+					vo.setPostPhoto(rs.getString("post_photo"));
+					list.add(vo);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(conn, pstmt, rs);
+			}
+			
+			return list;
+		}
+		
 	// 2. upload
 	
 	// 게시글 업로드
@@ -84,44 +129,6 @@ public class PostDAO {
 		}
 		
 		return check;
-	}
-	
-	// 3. view
-	
-	// 최근 게시물 불러오기
-	public ArrayList<PostVO> getRecentPost () {
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM (SELECT * FROM post ORDER BY post_id DESC) WHERE ROWNUM = 1";
-		
-		ArrayList<PostVO> list = new ArrayList<PostVO>();
-		
-		try {
-			conn = JDBCUtil.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while (rs.next()) {
-				PostVO vo = new PostVO();
-				vo.setPostId(rs.getInt("post_id"));
-				vo.setPostWriter(rs.getString("post_writer"));
-				vo.setPostTitle(rs.getString("post_title"));
-				vo.setPostSet(rs.getString("post_set"));
-				vo.setPostType(rs.getString("post_type"));
-				vo.setPostContents(rs.getString("post_contents"));
-				vo.setPostTime(rs.getDate("post_time"));
-				vo.setPostPhoto(rs.getString("post_photo"));
-				list.add(vo);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(conn, pstmt, rs);
-		}
-		
-		return list;
 	}
 	
 }

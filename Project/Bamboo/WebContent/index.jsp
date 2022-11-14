@@ -20,10 +20,8 @@
 		<p>지금 로그인 하고 새 글을 확인해 보세요.</p>
 
 		<div class="indexBtn">
-			<button id="index_login_btn"
-				onclick="location.href='${pageContext.request.contextPath}/member/login.jsp'">로그인</button>
-			<button id="index_register_btn"
-				onclick="location.href='${pageContext.request.contextPath}/member/register.jsp'">회원가입</button>
+			<button id="index_login_btn" onclick="location.href='${pageContext.request.contextPath}/member/login.jsp'">로그인</button>
+			<button id="index_register_btn" onclick="location.href='${pageContext.request.contextPath}/member/register.jsp'">회원가입</button>
 		</div>
 	</div>
 
@@ -35,7 +33,7 @@
 	아래에서 최근 업로드 된 게시글을 확인해 보세요.</p>
 	
 	<button id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
-	<button id="post_list_btn">게시글 목록</button>
+	<button id="post_list_btn" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp'">게시글 목록</button>
 
 	<%
 		PostDAO dao = new PostDAO();
@@ -46,7 +44,6 @@
 		<%
 			if (list != null) {
 					for (PostVO data : list) {
-						System.out.print(data.getPostId());
 		%>
 		
 			<p id="recent_post_title"><%= data.getPostTitle() %></p>

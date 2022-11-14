@@ -122,7 +122,7 @@ header {
 .notice p {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 80px;
     font-size: 28px;
 }
 
@@ -590,6 +590,33 @@ header {
 
 #upload_btn:hover {
     background-color: #568A35;
+}
+
+/* postList.jsp */
+
+#post_list_type {
+    width: 300px;
+    height: 30px;
+    font-size: 18px;
+    margin: 30px 50px 60px 1100px;
+}
+
+.postList {
+    display: flex;
+    justify-content: center;
+}
+
+.postListTable {
+    text-align: center;
+    width: 1200px;
+    font-size: 20px;
+}
+
+#post_list_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100px;
 }
 
 /* footer.jsp */

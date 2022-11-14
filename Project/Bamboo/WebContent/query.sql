@@ -14,7 +14,7 @@ CREATE TABLE post (
 	post_type VARCHAR2 (35),
 	post_contents VARCHAR2 (3000),
 	post_time DATE,
-	post_photo VARCHAR2 (50)
+	post_photo VARCHAR2 (150)
 );
 
 CREATE SEQUENCE post_seq NOCACHE;
@@ -33,7 +33,7 @@ SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'POST_SEQ';
 select * from USER_SEQUENCES where sequence_name='POST_SEQ';
 
 SELECT * FROM member;
-SELECT * FROM post;
+SELECT * FROM post ORDER BY post_id DESC;
 
 DELETE FROM member WHERE id='3';
 DELETE FROM post;
