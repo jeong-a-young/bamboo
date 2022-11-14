@@ -122,7 +122,7 @@ header {
 .notice p {
     display: flex;
     justify-content: center;
-    margin-top: 120px;
+    margin-top: 100px;
     font-size: 28px;
 }
 
@@ -166,6 +166,9 @@ header {
 }
 
 #post_write_btn {
+    position: relative;
+    left: 900px;
+    top: -275px;
     border: none;
     border-radius: 100px;
     width: 200px;
@@ -180,6 +183,72 @@ header {
 #post_write_btn:hover {
     background-color: #568A35;
 }
+
+#post_list_btn {
+    position: relative;
+    left: 930px;
+    top: -275px;
+    border: none;
+    border-radius: 100px;
+    width: 200px;
+    height: 50px;
+    background-color: #b1b1b1;
+    font-size: 20px;
+    color: white;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+#post_list_btn:hover {
+    background-color: #919191;
+}
+
+#recent_notice {
+    font-size: 25px;
+    padding: 100px 0px 5px 120px;
+}
+
+.recentPost {
+    position: relative;
+    top: -30px;
+    left: 97px;
+    width: 1300px;
+    border-radius: 50px;
+    box-shadow: 0px 3px 10px 0.1px #999;
+}
+
+#recent_post_title {
+    font-size: 25px;
+    padding: 35px 0 0 35px;
+    font-weight: bold;
+}
+
+.recentInfo {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.recentInfo p {
+    padding: 7px 5px 0 0;
+    font-size: 18px;
+    color: rgb(80, 80, 80);
+}
+
+#recent_post_writer {
+    padding-left: 33px;
+}
+
+.contourLine {
+    margin-left: 25px;
+    width: 1250px;
+}
+
+#recent_post_contents {
+    padding: 30px 35px 12px 35px;
+    font-size: 20px;
+}
+
+
 
 /* login.jsp */
 

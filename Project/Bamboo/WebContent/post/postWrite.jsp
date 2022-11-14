@@ -27,7 +27,7 @@
 				</div>
 
 				<p id="titleTitle">이미지</p>
-				<input type="file" id="photoInput" name="postPhoto" accept="image/*" multiple>
+				<input type="file" id="photoInput" name="postPhoto" accept="image/*">
 			</div>
 			
 			<div class="bodyWrite">

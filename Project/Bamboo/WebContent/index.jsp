@@ -31,45 +31,56 @@
 		} else {
 	%>
 
-	<button id="post_write_btn"
-		onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
+	<p id="recent_notice">어서오세요, <%= session.getAttribute("nowLoginName") %>님!<br>
+	아래에서 최근 업로드 된 게시글을 확인해 보세요.</p>
+	
+	<button id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
+	<button id="post_list_btn">게시글 목록</button>
 
 	<%
-		ArrayList<PostVO> list = (ArrayList<PostVO>) request.getAttribute("recentPost");
+		PostDAO dao = new PostDAO();
+		ArrayList<PostVO> list = dao.getRecentPost();
 	%>
 
-	<table>
-		<tr>
-			<th>게시글 ID</th>
-			<th>작성자</th>
-			<th>제목</th>
-			<th>익명 / 실명</th>
-			<th>게시판</th>
-			<th>내용</th>
-			<th>게시일</th>
-			<th>이미지</th>
-		</tr>
-
+	<div class="recentPost">
 		<%
-		System.out.print(list);
 			if (list != null) {
 					for (PostVO data : list) {
 						System.out.print(data.getPostId());
 		%>
-		<tr>
-			<td><%=data.getPostId()%></td>
-			<td><%=data.getPostTitle()%></td>
-			<td><%=data.getPostSet()%></td>
-			<td><%=data.getPostType()%></td>
-			<td><%=data.getPostContents()%></td>
-			<td><%=data.getPostTime()%></td>
-			<td><%=data.getPostPhoto()%></td>
-		</tr>
-	</table>
+		
+			<p id="recent_post_title"><%= data.getPostTitle() %></p>
+			
+			<div class="recentInfo">
+				<%
+					if (data.getPostSet().equals("a")) {
+				%>	
+					
+				<p id="recent_post_writer">익명</p>
+				
+				<%
+					} else {
+				%>	
+				
+				<p id="recent_post_writer"><%= data.getPostWriter() %></p>
+					
+				<%
+					}
+				%>
+				<p> | </p>
+				<p><%= data.getPostType() %></p>
+				<p> | </p>
+				<p><%= data.getPostTime() %></p>
+			</div>
+			
+			<hr class="contourLine">
+			<p id="recent_post_contents"><%= data.getPostContents() %></p>
+			<img src="<%=request.getContextPath()%><%= data.getPostPhoto() %>" style="padding: 0 0 25px 35px;">
+	</div>
 	<%
 		}
 			}
-		}
+				}
 	%>
 </section>
 

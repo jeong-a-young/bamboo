@@ -94,7 +94,7 @@ public class PostDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post WHERE ROWNUM = 1";
+		String sql = "SELECT * FROM (SELECT * FROM post ORDER BY post_id DESC) WHERE ROWNUM = 1";
 		
 		ArrayList<PostVO> list = new ArrayList<PostVO>();
 		
