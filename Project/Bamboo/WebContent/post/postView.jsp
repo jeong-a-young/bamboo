@@ -46,9 +46,24 @@
 		<img src="<%=request.getContextPath()%><%= data.getPostPhoto() %>" style="padding: 0 0 25px 35px;">
 		
 		<%
+			HttpSession s = request.getSession();
+			if (data.getPostWriter().equals(s.getAttribute("")))
+		%>
+		<%			
+					s.setAttribute("commentPostId", data.getPostId());
 				}
 			}
+			
 		%>
+	</div>
+	
+	<div>
+		<form action="/comment" method="post">
+			<input type="radio" name="commentSet" value="a"> 익명
+			<input type="radio" name="commentSet" value="r"> 실명
+			<input type="text" name="commentContent" placeholder="댓글을 입력해 주세요.">
+			<input type="submit" value="작성">
+		</form>
 	</div>
 		
 <%@ include file="/footer.jsp" %>

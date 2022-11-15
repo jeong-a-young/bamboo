@@ -32,10 +32,6 @@ CREATE SEQUENCE post_comment_seq NOCACHE;
 INSERT INTO member VALUES ('admin', '1234', '관리자', 'ys2220205@y-y.hs.kr', 'S');
 INSERT INTO post VALUES (3, 'admin', 'test3', 'a', '자유게시판','test', '2022-11-14', 'url');
 
-SELECT * FROM
-(SELECT *FROM post ORDER BY post_id DESC)
-WHERE ROWNUM= 1
-
 DROP TABLE post;
 DROP SEQUENCE post_seq;
 
@@ -43,6 +39,7 @@ SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'POST_SEQ';
 select * from USER_SEQUENCES where sequence_name='POST_SEQ';
 
 SELECT * FROM member;
+SELECT * FROM post_comment;
 SELECT * FROM post ORDER BY post_id DESC;
 
 DELETE FROM member WHERE id='3';

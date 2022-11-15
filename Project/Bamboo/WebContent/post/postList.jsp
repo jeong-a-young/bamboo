@@ -35,6 +35,7 @@
 			</tr>
 			
 			<%
+			
 			if (list != null) {
 				for (PostVO data : list) {
 			

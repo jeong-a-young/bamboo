@@ -9,7 +9,6 @@ import java.util.Date;
 
 import common.JDBCUtil;
 import vo.CommentVO;
-import vo.PostVO;
 
 public class CommentDAO {
 
@@ -17,7 +16,7 @@ public class CommentDAO {
 	public int uploadComment(CommentVO vo, int postId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO post_comment (post_id, comment_id, comment_writer, comment_set, comment_contents, comment_time) VALUES (?,post_coment_seq.nextval,?,?,?,?)";
+		String sql = "INSERT INTO post_comment (post_id, comment_id, comment_writer, comment_set, comment_contents, comment_time) VALUES (?,post_comment_seq.nextval,?,?,?,?)";
 		
 		int n = 0;
 		

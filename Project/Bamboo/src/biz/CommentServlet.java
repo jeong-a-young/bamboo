@@ -10,13 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 import dao.CommentDAO;
-import dao.PostDAO;
 import vo.CommentVO;
-import vo.PostVO;
 
 @WebServlet("/comment")
 public class CommentServlet extends HttpServlet {
@@ -45,12 +40,13 @@ public class CommentServlet extends HttpServlet {
 			vo.setCommentWriter((String) session.getAttribute("nowLoginName"));
 			vo.setCommentSet(commentSet);
 			vo.setCommentContents(commentContent);
-			n = dao.uploadComment(vo, postId);
+			System.out.println(session.getAttribute("commentPostId"));
+			n = dao.uploadComment(vo, (int) session.getAttribute("commentPostId"));
 			
 			if (n > 0) {
-				out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");
+				out.println("<script> alert('댓글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");
 			} else {
-				out.println("<script> alert('게시글 업로드에 실패했습니다.'); history.back(); </script>");
+				out.println("<script> alert('댓글 업로드에 실패했습니다.'); history.back(); </script>");
 			}
 		}
 
