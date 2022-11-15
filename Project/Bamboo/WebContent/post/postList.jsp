@@ -42,7 +42,7 @@
 			
 			<tr>
 				<td><%= data.getPostType() %></td>
-				<td id="post_list_title"><%= data.getPostTitle() %></td>
+				<td id="post_list_title"><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
 				
 				<%
 					if (data.getPostSet().equals("a")) {
