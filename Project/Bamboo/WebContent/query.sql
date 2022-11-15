@@ -17,7 +17,17 @@ CREATE TABLE post (
 	post_photo VARCHAR2 (150)
 );
 
+CREATE TABLE post_comment (
+	post_id NUMBER (10),
+	comment_id NUMBER (10) PRIMARY KEY,
+	comment_writer VARCHAR2 (20),
+	comment_set CHAR (1),
+	comment_contents VARCHAR2 (3000),
+	comment_time DATE
+);
+
 CREATE SEQUENCE post_seq NOCACHE;
+CREATE SEQUENCE post_comment_seq NOCACHE;
 
 INSERT INTO member VALUES ('admin', '1234', '관리자', 'ys2220205@y-y.hs.kr', 'S');
 INSERT INTO post VALUES (3, 'admin', 'test3', 'a', '자유게시판','test', '2022-11-14', 'url');
