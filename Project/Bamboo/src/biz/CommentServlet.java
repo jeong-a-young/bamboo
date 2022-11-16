@@ -50,7 +50,7 @@ public class CommentServlet extends HttpServlet {
 			}
 		}
 
-		response.sendRedirect("/index.jsp");
+		out.println("<script>history.go(-1);</script>");
 	}
 
 }

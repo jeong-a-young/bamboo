@@ -63,7 +63,5 @@ public class WriteServlet extends HttpServlet {
 				out.println("<script> alert('게시글 업로드에 실패했습니다.'); history.back(); </script>");
 			}
 		}
-
-		response.sendRedirect("/index.jsp");
 	}
 }

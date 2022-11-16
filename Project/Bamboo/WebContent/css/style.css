@@ -651,6 +651,13 @@ header {
     font-size: 20px;
 }
 
+.comment {
+    display: flex;
+    top: 46px;
+    justify-content: center;
+    position: relative;
+}
+
 /* footer.jsp */
 
 footer p {
