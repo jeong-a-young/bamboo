@@ -47,6 +47,7 @@ public class EditPostServlet extends HttpServlet {
 			
 			if (n > 0) {
 				out.println("<script> alert('게시글이 정상적으로 수정 되었습니다.'); history.back(); </script>");
+				session.removeAttribute("editPostId");
 			} else {
 				out.println("<script> alert('게시글 수정에 실패하였습니다.'); history.back(); </script>");
 			}

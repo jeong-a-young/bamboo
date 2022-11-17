@@ -191,4 +191,23 @@ public class PostDAO {
 		return n;
 	}
 	
+	// 게시글 삭제
+	public int deletePost (int postId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM post WHERE post_id=?";
+	
+		int n = 0;
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, postId);
+			n = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return n;
+	}
 }

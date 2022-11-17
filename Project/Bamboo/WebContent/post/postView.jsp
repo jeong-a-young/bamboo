@@ -23,10 +23,13 @@
 					
 					<%
 						if (pv.getPostWriter().equals(hs.getAttribute("nowLoginName"))) {
+							hs.setAttribute("deletePostId", pv.getPostId());
 					%>
-		
-							<button onclick="location.href='postEdit.jsp?postId=<%= pv.getPostId() %>'">수정</button>
-							<button>삭제</button>
+					
+							<form method="post">
+								<button onclick="location.href='postEdit.jsp?postId=<%= pv.getPostId() %>'">수정</button>
+								<button formaction="/deletePost">삭제</button>
+							</form>
 							
 					<%
 						}
