@@ -24,30 +24,28 @@ public class WriteServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession();
-		PostDAO dao = new PostDAO();
-		PostVO vo = new PostVO();
 		MultipartRequest mr = new MultipartRequest(request, request.getRealPath("/postImage"), 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+		PostVO vo = new PostVO();
+		PostDAO dao = new PostDAO();
 		String postTitle = mr.getParameter("postTitle");
 		String postType = mr.getParameter("postType");
 		String postSet = mr.getParameter("postSet");
 		String postContent = mr.getParameter("postContent");
 		String postPhoto = request.getContextPath() + "/postImage/" + mr.getFilesystemName("postPhoto");
-		int n = 0;
 		boolean check = dao.checkForbidden(postContent);
+		int n = 0;
 
 		if (postTitle == null || postType == null || postSet == null || postContent == null) {
 			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
 		} else if (check) {
 			out.println("<script> alert('금칙어가 포함되어 있습니다.'); history.back(); </script>");
 		} else {
-			System.out.println(check);
 			vo.setPostWriter((String) session.getAttribute("nowLoginName"));
 			vo.setPostTitle(postTitle);
 			vo.setPostType(postType);

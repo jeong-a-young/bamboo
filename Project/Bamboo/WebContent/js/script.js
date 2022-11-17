@@ -1,4 +1,4 @@
-// 회원가입 할 때 비밀번호 일치 확인
+// 회원가입 시 비밀번호 일치 확인
 $(function(){
     $('#password').keyup(function() {
       $('#pwdCheck').html('');
@@ -17,7 +17,7 @@ $(function(){
     });
 });
 
-// 검색창 눌렀을 때 shadow 효과
+// 검색창을 눌렀을 때 shadow 효과
 $("#search_box").click (
     function() {
         $(this).css('box-shadow', '0px 3px 10px 0.1px #999');

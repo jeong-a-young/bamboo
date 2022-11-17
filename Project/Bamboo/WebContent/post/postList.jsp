@@ -5,12 +5,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-    <%
-		PostDAO dao = new PostDAO();
-		ArrayList<PostVO> list = dao.getPostList();
-
-	%>
-	
 	<div class="postList">
 		<table class="postListTable">
 			<tr>
@@ -21,41 +15,42 @@
 			</tr>
 			
 			<%
-			
-			if (list != null) {
-				for (PostVO data : list) {
-			
+				PostDAO dao = new PostDAO();
+				ArrayList<PostVO> list = dao.getPostList();
+				
+				if (list != null) {
+					for (PostVO data : list) {
 			%>
 			
-			<tr>
-				<td><%= data.getPostType() %></td>
-				<td id="post_list_title"><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
+						<tr>
+							<td><%= data.getPostType() %></td>
+							<td id="post_list_title"><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
 				
-				<%
-					if (data.getPostSet().equals("a")) {
-				%>
+							<%
+								if (data.getPostSet().equals("A")) {
+							%>
 				
-				<td>익명</td>
+									<td>익명</td>
 				
-				<%
-					} else {
-				%>
+							<%
+								} else {
+							%>
 				
-				<td><%= data.getPostWriter() %></td>
+									<td><%= data.getPostWriter() %></td>
 				
-				<%
-					}
-				%>
+							<%
+								}
+							%>
 				
-				<td><%= data.getPostTime() %></td>
-			</tr>
+							<td><%= data.getPostTime() %></td>
+						</tr>
 			
-		<%
-				}
-			}
-		%>
+						<%
+								}
+							}
+						%>
 		
-		</table>
-	</div>
+						</table>
+					</div>
 
 <%@ include file="/footer.jsp" %>

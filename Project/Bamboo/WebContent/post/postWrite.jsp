@@ -22,8 +22,8 @@
 				</select>
 
 				<div class="setInput">
-					<input type="radio" name="postSet" value="a"> 익명
-					<input type="radio" name="postSet" value="r"> 실명
+					<input type="radio" name="postSet" value="A"> 익명
+					<input type="radio" name="postSet" value="R"> 실명
 				</div>
 
 				<p id="titleTitle">이미지</p>
@@ -37,7 +37,6 @@
 			<div class="footerWrite">
 				<input type="submit" id="upload_btn" value="업로드">
 			</div>
-			
 		</form>
 	</div>
 	

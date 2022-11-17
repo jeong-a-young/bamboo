@@ -26,13 +26,14 @@ public class EditServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
-		MemberDAO dao = new MemberDAO();
-		MemberVO vo = new MemberVO();
 		HttpSession session = request.getSession();
+		MemberVO vo = new MemberVO();
+		MemberDAO dao = new MemberDAO();
 		String id = (String) session.getAttribute("nowLoginId");
 		String pwd = request.getParameter("editPwd");
 		String name = request.getParameter("editName");
 		String email = request.getParameter("editEmail");
+		String type = request.getParameter("editType");
 		int n = 0;
 		
 		if (!email.contains("@y-y.hs.kr")) {
@@ -41,7 +42,8 @@ public class EditServlet extends HttpServlet {
 			vo.setMemberPwd(pwd);
 			vo.setMemberName(name);
 			vo.setMemberEmail(email);
-			n = dao.editMember(id, pwd, name, email);
+			vo.setMemberType(type);
+			n = dao.editMember(id, pwd, name, email, type);
 			
 			if (n > 0) {
 				out.println("<script> alert('회원 정보가 정상적으로 수정 되었습니다.'); history.back(); </script>");

@@ -3,6 +3,7 @@
 <%@ include file="../header.jsp" %>
 
 	<h1 id="register_title">회원가입</h1>
+	
 	<div class="registerInput">
 		<form method="post">
 			<p class="subTitle">ID</p>

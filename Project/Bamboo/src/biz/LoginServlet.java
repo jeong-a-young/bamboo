@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		
+
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		MemberDAO dao = new MemberDAO();
@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		if (vo == null || !pwd.equals(vo.getMemberPwd())) {
 			out.println("<script> alert('회원정보가 맞지 않습니다.'); history.back(); </script>");
 		} else {
-			// session 값을 초반에 못 가져온다??? 나중에 찾아보기
+			// session 값을 초반에 못 가져온다???
 			HttpSession session = request.getSession();
 			session.setAttribute("loginOK", vo);
 			session.setAttribute("nowLoginId", vo.getMemberId());

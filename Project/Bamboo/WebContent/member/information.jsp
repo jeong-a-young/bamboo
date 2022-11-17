@@ -26,21 +26,25 @@
 				<tr>
 					<th class="boxTitle">구분</th>
 					<td class="fixValue">
+					
 						<%
 							if (session.getAttribute("nowLoginType").equals("S")) {
 						%>
 						
-							학생	
+								<input type="radio" name="editType" value="S" checked="checked"> 학생	
+								<input type="radio" name="editType" value="T"> 교사
 						
 						<%
 							} else {
 						%>	
 						
-							교사
+								<input type="radio" name="editType" value="S"> 학생
+								<input type="radio" name="editType" value="T" checked="checked"> 교사
 							
 						<%
 							}
 						%>
+						
 					</td>
 				</tr>
 			</table>

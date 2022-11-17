@@ -26,8 +26,8 @@ public class RegisterServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		MemberDAO dao = new MemberDAO();
 		MemberVO vo = new MemberVO();
+		MemberDAO dao = new MemberDAO();
 		boolean overlapId = dao.overlapID(request.getParameter("id"));
 		boolean overlapEmail = dao.overlapEmail(request.getParameter("email"));
 		String pwd = request.getParameter("pwd");
@@ -56,14 +56,11 @@ public class RegisterServlet extends HttpServlet {
 			
 			if (n > 0) {
 				HttpSession session = request.getSession();
-				// 알림이 안 뜸
 				out.println("<script> alert('bamboo의 회원이 되신 것을 환영합니다.'); history.back(); </script>");
 				session.setAttribute("loginOK", vo);
 			} else {
 				out.println("<script> alert('회원가입에 실패했습니다.'); history.back(); </script>");
 			}
-			
-			response.sendRedirect("/index.jsp");
 		}
 	}
 }

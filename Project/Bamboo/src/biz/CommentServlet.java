@@ -27,11 +27,10 @@ public class CommentServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession();
-		CommentDAO dao = new CommentDAO();
 		CommentVO vo = new CommentVO();
+		CommentDAO dao = new CommentDAO();
 		String commentSet = request.getParameter("commentSet");
 		String commentContent = request.getParameter("commentContent");
-
 		int n = 0;
 		
 		if (commentSet == null || commentContent == null) {
@@ -40,7 +39,6 @@ public class CommentServlet extends HttpServlet {
 			vo.setCommentWriter((String) session.getAttribute("nowLoginName"));
 			vo.setCommentSet(commentSet);
 			vo.setCommentContents(commentContent);
-			System.out.println(session.getAttribute("commentPostId"));
 			n = dao.uploadComment(vo, (int) session.getAttribute("commentPostId"));
 			
 			if (n > 0) {
@@ -52,5 +50,4 @@ public class CommentServlet extends HttpServlet {
 
 		out.println("<script>history.go(-1);</script>");
 	}
-
 }

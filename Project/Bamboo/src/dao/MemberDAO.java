@@ -126,10 +126,10 @@ public class MemberDAO {
 	// 2. 회원 정보
 	
 	// 회원 정보 수정
-	public int editMember (String id, String pwd, String name, String email) {
+	public int editMember (String id, String pwd, String name, String email, String type) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE member SET pwd=?, name=?, email=? WHERE id=?";
+		String sql = "UPDATE member SET pwd=?, name=?, email=?, type=? WHERE id=?";
 
 		int n = 0;
 		
@@ -139,7 +139,8 @@ public class MemberDAO {
 			pstmt.setString(1, pwd);
 			pstmt.setString(2, name);
 			pstmt.setString(3, email);
-			pstmt.setString(4, id);
+			pstmt.setString(4, type);
+			pstmt.setString(5, id);
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
