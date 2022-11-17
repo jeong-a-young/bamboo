@@ -18,12 +18,19 @@
             </div>
             
     		<%
-				MemberVO login = (MemberVO)session.getAttribute("loginOK");
+				MemberVO loginOk = (MemberVO)session.getAttribute("loginOK");
 			
-				if (login == null) {
+				if (loginOk == null) {
 			%>
 			
 					<div></div>
+					
+					<div class="nav">
+	                	<ul>
+	                    	<li><a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a></li>
+	                    	<li><a href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a></li>
+	                	</ul>
+	            	</div>
 				
 			<%
 				} else {
@@ -34,32 +41,15 @@
 						<button id="search_btn"><img src="${pageContext.request.contextPath}/images/search.png" width="50px" height="50px"></button>
 					</div>
 				
-			<%
-				}
-			
-				if (login == null) {
-			%>
-			
-					<div class="nav">
-	                	<ul>
-	                    	<li><a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a></li>
-	                    	<li><a href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a></li>
-	                	</ul>
-	            	</div>
-            	
-            <%
-				} else {
-			%>
-			
-					<div class="nav">
-	                	
+					<div class="nav">	
 	                	<ul>
 	                    	<li><a href="/logout">로그아웃</a></li>
 	                    	<li><img src="${pageContext.request.contextPath}/images/user.png" id="user_img"><a href="${pageContext.request.contextPath}/member/information.jsp" id="member_information">회원정보</a></li>
 	                	</ul>
 	            	</div>
-            	
-            <%
+	            	
+			<%
 				}
 			%>
+			
         </header>

@@ -25,7 +25,7 @@
 						if (pv.getPostWriter().equals(hs.getAttribute("nowLoginName"))) {
 					%>
 		
-							<button>수정</button>
+							<button onclick="location.href='postEdit.jsp?postId=<%= pv.getPostId() %>'">수정</button>
 							<button>삭제</button>
 							
 					<%

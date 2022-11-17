@@ -167,4 +167,28 @@ public class PostDAO {
 		return check;
 	}
 	
+	// 게시글 수정
+	public int editPost(String title, String set, String type, String content, int id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE post SET post_title=?, post_set=?, post_type=?, post_contents=? WHERE post_id=?";
+
+		int n = 0;
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, set);
+			pstmt.setString(3, type);
+			pstmt.setString(4, content);
+			pstmt.setInt(5, id);
+			n = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return n;
+	}
+	
 }
