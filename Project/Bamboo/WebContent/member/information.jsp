@@ -4,7 +4,7 @@
 
     <h1 id="information_title">회원정보</h1>
     
-    <form action="/edit" method="post">
+    <form method="post">
 	    <div class="information">
 	    	<table>
 				<tr>
@@ -47,8 +47,8 @@
 	    </div>
 	
 		<div class="informationBtn">
-			<input type="submit" id="edit_btn" value="수정">
-			<button id="unregister_btn">탈퇴하기</button>
+			<button id="edit_btn" formaction="/edit">수정</button>
+			<button id="unregister_btn" formaction="/unregister">탈퇴하기</button>
 		</div>
     </form>
 	
