@@ -81,16 +81,28 @@
 		
 			<div>
 				<table>
-					<tr>
-						<th>작성자</th>
-						<th>내용</th>
-					</tr>
 					
 					<%
 						CommentDAO cd = new CommentDAO();
 						ArrayList<CommentVO> commentList = cd.getComment(Integer.parseInt(request.getParameter("postId")));
+						
+						if (commentList.toString().equals("[]")) {
+					%>
 					
-						if (commentList != null) {
+						<tr>
+							<td>댓글이 없습니다.</td>
+						</tr>
+						
+					<%	
+						} else {
+					%>
+						
+							<tr>
+								<th>작성자</th>
+								<th>내용</th>
+							</tr>
+							
+						<%
 							for (CommentVO cv : commentList) {
 						%>
 					
