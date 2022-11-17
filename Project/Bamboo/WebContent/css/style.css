@@ -538,6 +538,7 @@ header {
 }
 
 /* postWrite.jsp */
+
 .headerWrite {
     display: flex;
     justify-content: center;
@@ -664,6 +665,17 @@ header {
     display: flex;
     margin-bottom: 25px;
     padding-left: 34px;
+}
+
+.viewInfo > form {
+    position: relative;
+    top: 6px;
+}
+
+.viewInfo button {
+    margin: 0 1px 0 1px;
+    width: 40px;
+    height: 22px;
 }
 
 .viewInfo p {

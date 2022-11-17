@@ -21,20 +21,8 @@
 					<p id="post_view_title"><%= pv.getPostTitle() %></p>
 		
 					<div class="viewInfo">
-					
+						
 					<%
-						if (pv.getPostWriter().equals(hs.getAttribute("nowLoginName"))) {
-							hs.setAttribute("deletePostId", pv.getPostId());
-					%>
-					
-							<form method="post">
-								<button onclick="location.href='postEdit.jsp?postId=<%= pv.getPostId() %>'">수정</button>
-								<button formaction="/deletePost">삭제</button>
-							</form>
-							
-					<%
-						}
-					
 						if (pv.getPostSet().equals("A")) {
 					%>	
 					
@@ -52,8 +40,23 @@
 		
 						<p><%= pv.getPostType() %></p><p> | </p>
 						<p><%= pv.getPostTime() %></p>
+						
+						<%
+							if (pv.getPostWriter().equals(hs.getAttribute("nowLoginName"))) {
+								hs.setAttribute("deletePostId", pv.getPostId());
+						%>
+								<p> | </p>
+								<form method="post">
+									<button onclick="location.href='postEdit.jsp?postId=<%= pv.getPostId() %>'">수정</button>
+									<button formaction="/deletePost">삭제</button>
+								</form>
+					
+						<%
+							}
+						%>
+						
 					</div>
-			
+					
 					<hr class="contourLine">
 		
 					<p id="post_view_contents"><%= pv.getPostContents() %></p>
@@ -113,7 +116,6 @@
 								<tr>
 									<%
 										if (cv.getCommentWriter().equals(hs.getAttribute("nowLoginName"))) {
-											System.out.print(cv.getCommentId());
 									%>
 										
 										<td><a href="/deleteComment?commentId=<%= cv.getCommentId() %>">삭제</a></td>
