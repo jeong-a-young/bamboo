@@ -42,12 +42,12 @@ public class WriteServlet extends HttpServlet {
 		int n = 0;
 		boolean check = dao.checkForbidden(postContent);
 
-		// 이거 왜 다 알림 안 뜸???
 		if (postTitle == null || postType == null || postSet == null || postContent == null) {
 			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
 		} else if (check) {
 			out.println("<script> alert('금칙어가 포함되어 있습니다.'); history.back(); </script>");
 		} else {
+			System.out.println(check);
 			vo.setPostWriter((String) session.getAttribute("nowLoginName"));
 			vo.setPostTitle(postTitle);
 			vo.setPostType(postType);
