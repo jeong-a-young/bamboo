@@ -54,7 +54,14 @@
 		<hr class="contourLine">
 		
 		<p id="post_view_contents"><%= data.getPostContents() %></p>
-		<img src="<%=request.getContextPath()%><%= data.getPostPhoto() %>" style="padding: 0 0 25px 35px;">
+		
+		<%
+				if (!data.getPostPhoto().equals("/postImage/null")) {
+			%>
+			
+				<img src="<%=request.getContextPath()%><%= data.getPostPhoto() %>" style="padding: 0 0 25px 35px;">
+			
+			<% } %>
 
 		<%			
 					s.setAttribute("commentPostId", data.getPostId());
