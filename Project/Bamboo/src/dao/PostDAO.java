@@ -14,7 +14,7 @@ public class PostDAO {
 
 	// 1. view
 	
-	// 모든 게시물 불러오가
+	// 모든 게시물 불러오기
 	public ArrayList<PostVO> getPostList() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -26,6 +26,42 @@ public class PostDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+				
+			while (rs.next()) {
+				PostVO vo = new PostVO();
+				vo.setPostId(rs.getInt("post_id"));
+				vo.setPostWriter(rs.getString("post_writer"));
+				vo.setPostTitle(rs.getString("post_title"));
+				vo.setPostSet(rs.getString("post_set"));
+				vo.setPostType(rs.getString("post_type"));
+				vo.setPostContents(rs.getString("post_contents"));
+				vo.setPostTime(rs.getDate("post_time"));
+				vo.setPostPhoto(rs.getString("post_photo"));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+			
+		return list;
+	}
+	
+	// 검색한 게시글 불러오기
+	public ArrayList<PostVO> getPostSearchList(String keyword) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM post WHERE post_title LIKE (?)";
+			
+		ArrayList<PostVO> list = new ArrayList<PostVO>();
+			
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
 			rs = pstmt.executeQuery();
 				
 			while (rs.next()) {

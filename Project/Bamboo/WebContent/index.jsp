@@ -78,7 +78,7 @@
 						if (!data.getPostPhoto().equals("/postImage/null")) {
 					%>
 			
-							<img src="<%=request.getContextPath()%><%= data.getPostPhoto() %>" style="padding: 0 0 25px 35px;">
+							<img src="<%=request.getContextPath()%><%= data.getPostPhoto() %>" id="recent_post_image">
 			
 					<%
 						}

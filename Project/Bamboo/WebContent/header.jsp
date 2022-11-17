@@ -38,7 +38,8 @@
 			
 					<div class="search">
 						<input type="text" name="search" id="search_box">
-						<button id="search_btn"><img src="${pageContext.request.contextPath}/images/search.png" width="50px" height="50px"></button>
+						<button id="search_btn" onclick="location.href='${pageContext.request.contextPath}/post/postSearch.jsp'"><img src="${pageContext.request.contextPath}/images/search.png" width="50px" height="50px"></button>
+						
 					</div>
 				
 					<div class="nav">	

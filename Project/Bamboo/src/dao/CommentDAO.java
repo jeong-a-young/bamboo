@@ -87,4 +87,24 @@ public class CommentDAO {
 		
 		return check;
 	}
+	
+	// 게시글 삭제
+	public int deleteComment (int commentId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM post_comment WHERE comment_id=?";
+		
+		int n = 0;
+			
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, commentId);
+			n = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return n;
+	}
 }

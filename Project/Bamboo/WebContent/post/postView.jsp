@@ -1,3 +1,4 @@
+<%@page import="javax.sound.midi.SysexMessage"%>
 <%@page import="dao.CommentDAO"%>
 <%@page import="vo.CommentVO"%>
 <%@page import="vo.PostVO"%>
@@ -82,7 +83,7 @@
 				</form>
 			</div>
 		
-			<div>
+			<div class="">
 				<table>
 					
 					<%
@@ -111,6 +112,15 @@
 					
 								<tr>
 									<%
+										if (cv.getCommentWriter().equals(hs.getAttribute("nowLoginName"))) {
+											System.out.print(cv.getCommentId());
+									%>
+										
+										<td><a href="/deleteComment?commentId=<%= cv.getCommentId() %>">삭제</a></td>
+									
+									<%
+										}
+									
 										if (cv.getCommentSet().equals("A")) {
 									%>
 					
@@ -126,7 +136,7 @@
 										}
 									%>
 						
-										<td><%= cv.getCommentContents() %></td>
+										<td><%= cv.getCommentContents() %><%= cv.getCommentId() %></td>
 									</tr>
 									
 									<%
