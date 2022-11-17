@@ -31,10 +31,13 @@ public class CommentServlet extends HttpServlet {
 		CommentDAO dao = new CommentDAO();
 		String commentSet = request.getParameter("commentSet");
 		String commentContent = request.getParameter("commentContent");
+		boolean check = dao.checkForbidden(commentContent);
 		int n = 0;
 		
 		if (commentSet == null || commentContent == null) {
 			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
+		} else if (check) {
+			out.println("<script> alert('금칙어가 포함되어 있습니다.'); history.back(); </script>");
 		} else {
 			vo.setCommentWriter((String) session.getAttribute("nowLoginName"));
 			vo.setCommentSet(commentSet);
