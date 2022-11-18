@@ -222,7 +222,6 @@ header {
     color: white;
     transition: all 0.3s;
     cursor: pointer;
-    z-index: -1;
 }
 
 #post_list_btn:hover {
@@ -710,4 +709,30 @@ footer p {
     align-items: flex-end;
     margin: 50px 0 15px 0;
     font-size: 14px;
+}
+
+.forgotPasswordDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 600px;
+}
+
+.forgotPasswordInput {
+    font-size: 20px;
+    width: 400px;
+    height: 40px;
+    padding-left: 5px;
+}
+
+#forgotPasswordCode {
+    position: relative;
+    top: -10px;
+    left: -158px;
+}
+
+#forgotPasswordBtn {
+    position: relative;
+    top: 50px;
 }

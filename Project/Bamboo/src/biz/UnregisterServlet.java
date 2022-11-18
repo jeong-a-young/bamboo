@@ -34,22 +34,18 @@ public class UnregisterServlet extends HttpServlet {
 		} else {
 			MemberDAO dao = new MemberDAO();
 			n = dao.unregisterMember(vo.getMemberId());
-			String alert;
 
 			if (n > 0) {
-				alert = "회원 탈퇴에 성공했습니다.";
 				session.removeAttribute("loginOK");
 				session.removeAttribute("nowLoginId");
 				session.removeAttribute("nowLoginPwd");
 				session.removeAttribute("nowLoginName");
 				session.removeAttribute("nowLoginEmail");
 				session.removeAttribute("nowLoginType");
+				out.println("<script> alert('회원 탈퇴가 성공적으로 진행 되었습니다.'); window.location.href='./index.jsp'; </script>");
 			} else {
-				alert = "회원 탈퇴에 실패했습니다.";
+				out.println("<script> alert('회원 탈퇴에 실패하였습니다.'); history.back(); </script>");
 			}
-			// 알림창이 뜨지 않음
-			response.sendRedirect("/index.jsp");
-			session.setAttribute("quit", alert);
 		}
 	}
 }

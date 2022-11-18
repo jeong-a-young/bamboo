@@ -53,8 +53,7 @@
 			<p>|</p>
 	
 			<form method="post">
-				<button
-					onclick="location.href='postEdit.jsp?postId=<%=pv.getPostId()%>'">수정</button>
+				<button><a href="postEdit.jsp?postId=<%=pv.getPostId()%>" style="display: block">수정</a></button>
 				<button formaction="/postDelete">삭제</button>
 			</form>
 	
@@ -83,7 +82,7 @@
 			}
 		%>
 
-		<div class="comment">
+		<div class="comment" style="position: relative; top: 105px;">
 			<form action="/commentWrite" method="post">
 				<input type="radio" name="commentSet" value="A"> 익명 <input
 					type="radio" name="commentSet" value="R"> 실명 <input
@@ -93,7 +92,7 @@
 			</form>
 		</div>
 
-		<div class="">
+		<div style="display: flex; justify-content: center; position: relative; top: 124px;">
 			<table>
 
 				<%
@@ -113,6 +112,7 @@
 				%>
 
 				<tr>
+					<th></th>
 					<th>작성자</th>
 					<th>내용</th>
 				</tr>

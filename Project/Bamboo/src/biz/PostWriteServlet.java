@@ -56,7 +56,7 @@ public class PostWriteServlet extends HttpServlet {
 			n = dao.uploadPost(vo);
 			
 			if (n > 0) {
-				out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");
+				out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); window.location.href='./index.jsp'; </script>");
 			} else {
 				out.println("<script> alert('게시글 업로드에 실패했습니다.'); history.back(); </script>");
 			}

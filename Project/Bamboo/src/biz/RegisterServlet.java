@@ -56,8 +56,13 @@ public class RegisterServlet extends HttpServlet {
 			
 			if (n > 0) {
 				HttpSession session = request.getSession();
-				out.println("<script> alert('bamboo의 회원이 되신 것을 환영합니다.'); history.back(); </script>");
 				session.setAttribute("loginOK", vo);
+				session.setAttribute("nowLoginId", vo.getMemberId());
+				session.setAttribute("nowLoginPwd", vo.getMemberPwd());
+				session.setAttribute("nowLoginName", vo.getMemberName());
+				session.setAttribute("nowLoginEmail", vo.getMemberEmail());
+				session.setAttribute("nowLoginType", vo.getMemberType());
+				out.println("<script> alert('bamboo의 회원이 되신 것을 환영합니다.'); window.location.href='./index.jsp'; </script>");
 			} else {
 				out.println("<script> alert('회원가입에 실패했습니다.'); history.back(); </script>");
 			}
