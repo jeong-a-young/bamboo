@@ -126,6 +126,7 @@ header {
 
 .mainMenu > li {
     line-height: 50px;
+    height: 50px;
     width: 350px;
     text-align: center;
 }
@@ -135,17 +136,17 @@ header {
     color: white;
 }
 
-.subMenu {
+#major_type {
     display: none;
+    background-color: #7DB249;
 }
 
-.subMenu > li:hover {
+#major_type > li:hover {
     background-color: #b1b1b1;
 }
 
-.subMenu > li {
+#major_type > li {
     display: block;
-    z-index: 1;
     height: 35px;
     line-height: 35px;
 }
@@ -221,6 +222,7 @@ header {
     color: white;
     transition: all 0.3s;
     cursor: pointer;
+    z-index: -1;
 }
 
 #post_list_btn:hover {

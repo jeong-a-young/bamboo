@@ -33,9 +33,9 @@ $("#login_btn").hover (
 // 메뉴창에 hover 했을 때 slide 효과
 $(".mainMenu > li").hover (
     function() {
-        $(this).children("ul").stop().slideDown("slow");
+        $(this).children("#major_type").stop().slideDown("slow");
     },
     function() {
-        $(this).children("ul").stop().slideUp("slow");
+        $(this).children("#major_type").stop().slideUp("slow");
     }
 );

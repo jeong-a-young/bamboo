@@ -62,11 +62,7 @@
 			<!-- postType에 '공지게시판'이라는 값을 담아서 postList.jsp로 이동 -->
 			<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=공지게시판">공지게시판</a>
 				<ul class="subMenu">
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+					
 				</ul>
 			</li>
 			<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=자유게시판">자유게시판</a>
@@ -106,12 +102,12 @@
 				</ul>
 			</li>
 			<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=과별게시판">과별게시판</a>
-				<ul class="subMenu">
-					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=스마트전자과게시판">스마트전자과게시판</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=정보통신과게시판">정보통신과게시판</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=소프트웨어개발과게시판">소프트웨어개발과게시판</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=바이오화학과게시판">바이오화학과게시판</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=생명정보과게시판">생명정보과게시판</a></li>
+				<ul class="subMenu" id="major_type">
+					<li id="major"><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=스마트전자과게시판">스마트전자과게시판</a></li>
+					<li id="major"><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=정보통신과게시판">정보통신과게시판</a></li>
+					<li id="major"><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=소프트웨어개발과게시판">소프트웨어개발과게시판</a></li>
+					<li id="major"><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=바이오화학과게시판">바이오화학과게시판</a></li>
+					<li id="major"><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=생명정보과게시판">생명정보과게시판</a></li>
 				</ul>
 			</li>
 		</ul>
