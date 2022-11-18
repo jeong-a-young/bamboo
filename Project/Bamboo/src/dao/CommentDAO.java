@@ -58,6 +58,7 @@ public class CommentDAO {
 			while (rs.next()) {
 				CommentVO vo = new CommentVO();
 				vo.setPostId(postId);
+				vo.setCommentId(rs.getInt("comment_id"));
 				vo.setCommentWriter(rs.getString("comment_writer"));
 				vo.setCommentSet(rs.getString("comment_set"));
 				vo.setCommentContents(rs.getString("comment_contents"));

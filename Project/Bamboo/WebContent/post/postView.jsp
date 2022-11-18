@@ -92,7 +92,7 @@
 					<%
 						CommentDAO cd = new CommentDAO();
 						ArrayList<CommentVO> commentList = cd.getComment(Integer.parseInt(request.getParameter("postId")));
-						
+
 						if (commentList.toString().equals("[]")) {
 					%>
 					
@@ -111,6 +111,7 @@
 							
 						<%
 							for (CommentVO cv : commentList) {
+								
 						%>
 					
 								<tr>
@@ -138,7 +139,7 @@
 										}
 									%>
 						
-										<td><%= cv.getCommentContents() %><%= cv.getCommentId() %></td>
+										<td><%= cv.getCommentContents() %></td>
 									</tr>
 									
 									<%
