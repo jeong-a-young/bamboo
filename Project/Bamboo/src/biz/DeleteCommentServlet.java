@@ -24,7 +24,6 @@ public class DeleteCommentServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		CommentDAO dao = new CommentDAO();
-		System.out.println(request.getParameter("commentId"));
 		int n = dao.deleteComment(Integer.parseInt(request.getParameter("commentId")));
 
 		if (n > 0) {

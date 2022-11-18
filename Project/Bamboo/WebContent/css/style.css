@@ -128,6 +128,10 @@ header {
     line-height: 50px;
     width: 350px;
     text-align: center;
+}
+
+.mainMenu > li > a {
+    display: block;
     color: white;
 }
 

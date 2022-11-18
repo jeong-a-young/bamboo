@@ -6,7 +6,7 @@
 <%@ include file="/header.jsp"%>
 
 <!-- 서버 경로: / -->
-
+			
 <section>
 	<div class="welcome">
 		bamboo에서 <br> 양영디지털고등학교의 <br> 소식을 만나보세요
