@@ -121,6 +121,41 @@ public class PostDAO {
 		return list;
 	}
 	
+	// 선택한 타입 게시글만 불러오기
+	public ArrayList<PostVO> getPostMajorList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM post WHERE post_type='스마트전자과게시판' OR post_type='정보통신과게시판' OR post_type='소프트웨어개발과게시판' OR post_type='바이오화학과게시판' OR post_type='생명정보과게시판' ORDER BY post_id DESC";
+				
+		ArrayList<PostVO> list = new ArrayList<PostVO>();
+				
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+					
+			while (rs.next()) {
+				PostVO vo = new PostVO();
+				vo.setPostId(rs.getInt("post_id"));
+				vo.setPostWriter(rs.getString("post_writer"));
+				vo.setPostTitle(rs.getString("post_title"));
+				vo.setPostSet(rs.getString("post_set"));
+				vo.setPostType(rs.getString("post_type"));
+				vo.setPostContents(rs.getString("post_contents"));
+				vo.setPostTime(rs.getDate("post_time"));
+				vo.setPostPhoto(rs.getString("post_photo"));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+				
+		return list;
+	}
+	
 	// 게시글 목록에서 클릭한 게시글 불러오기
 	public ArrayList<PostVO> getClickPost(int postId) {
 		Connection conn = null;

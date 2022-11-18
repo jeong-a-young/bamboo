@@ -37,7 +37,7 @@ DROP SEQUENCE post_seq;
 
 SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'POST_SEQ';
 select * from USER_SEQUENCES where sequence_name='POST_SEQ';
-
+SELECT * FROM post WHERE post_type='스마트전자과게시판' ORDER BY post_id DESC;
 SELECT * FROM post;
 SELECT * FROM post_comment;
 SELECT * FROM post ORDER BY post_id DESC;
