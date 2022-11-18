@@ -21,7 +21,7 @@ public class JDBCUtil {
 
 		return conn;
 	}
-	
+
 	/*
 	// xe
 	public static Connection getConnection() {
@@ -36,7 +36,6 @@ public class JDBCUtil {
 
 		return conn;
 	}
-	
 	*/
 	
 	public static void close(Connection conn, PreparedStatement pstmt) {
