@@ -13,11 +13,11 @@ import javax.servlet.http.HttpSession;
 import dao.CommentDAO;
 import vo.CommentVO;
 
-@WebServlet("/comment")
-public class CommentServlet extends HttpServlet {
+@WebServlet("/commentWrite")
+public class CommentWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public CommentServlet() {
+    public CommentWriteServlet() {
         super();
     }
 
@@ -31,7 +31,7 @@ public class CommentServlet extends HttpServlet {
 		CommentDAO dao = new CommentDAO();
 		String commentSet = request.getParameter("commentSet");
 		String commentContent = request.getParameter("commentContent");
-		boolean check = dao.checkForbidden(commentContent);
+		boolean check = dao.checkForbiddenComment(commentContent);
 		int n = 0;
 		
 		if (commentSet == null || commentContent == null) {

@@ -31,7 +31,7 @@ public class ForgotIdServlet extends HttpServlet {
 		if (id == null) {
 			out.println("<script> alert('가입되지 않은 이메일입니다.'); history.back(); </script>");
 		} else {
-			dao.idMailSend(id, email);
+			dao.forgotIdMailSend(id, email);
 			out.println("<script> alert('메일함을 확인해 주세요.'); history.back(); </script>");
 		}
 	}

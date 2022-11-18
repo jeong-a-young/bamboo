@@ -14,12 +14,12 @@ public class PostDAO {
 
 	// 1. view
 	
-	// 모든 게시물 불러오기
-	public ArrayList<PostVO> getPostList() {
+	// 최근 게시물 불러오기
+	public ArrayList<PostVO> getRecentPost () {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post ORDER BY post_id DESC";
+		String sql = "SELECT * FROM (SELECT * FROM post ORDER BY post_id DESC) WHERE ROWNUM = 1";
 			
 		ArrayList<PostVO> list = new ArrayList<PostVO>();
 			
@@ -45,7 +45,47 @@ public class PostDAO {
 		} finally {
 			JDBCUtil.close(conn, pstmt, rs);
 		}
+		
+		return list;
+	}
+		
+	// 모든 게시물 불러오기
+	public ArrayList<PostVO> getPostList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM post ORDER BY post_id DESC";
 			
+		ArrayList<PostVO> list = new ArrayList<PostVO>();
+			
+		try {
+			conn = JDBCUtil.getConnection();
+			// 쿼리 실행
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			// 실행 결과를 내려가면서 읽는다
+			while (rs.next()) {
+				// 가져온 결과를 vo 객체를 이용해 set
+				PostVO vo = new PostVO();
+				vo.setPostId(rs.getInt("post_id"));
+				vo.setPostWriter(rs.getString("post_writer"));
+				vo.setPostTitle(rs.getString("post_title"));
+				vo.setPostSet(rs.getString("post_set"));
+				vo.setPostType(rs.getString("post_type"));
+				vo.setPostContents(rs.getString("post_contents"));
+				vo.setPostTime(rs.getDate("post_time"));
+				vo.setPostPhoto(rs.getString("post_photo"));
+				// set한 내용을 list에 추가한다
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		
+		// 글 목록이 담긴 list를 리턴
 		return list;
 	}
 	
@@ -85,7 +125,7 @@ public class PostDAO {
 		return list;
 	}
 	
-	// 선택한 타입 게시글만 불러오기
+	// 선택한 게시판의 게시글만 불러오기
 	public ArrayList<PostVO> getPostTypeList(String postType) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -121,7 +161,7 @@ public class PostDAO {
 		return list;
 	}
 	
-	// 선택한 타입 게시글만 불러오기
+	// 과별게시판의 게시글만 불러오기
 	public ArrayList<PostVO> getPostMajorList() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -191,42 +231,7 @@ public class PostDAO {
 		
 		return list;
 	}
-	
-	// 최근 게시물 불러오기
-	public ArrayList<PostVO> getRecentPost () {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM (SELECT * FROM post ORDER BY post_id DESC) WHERE ROWNUM = 1";
-			
-		ArrayList<PostVO> list = new ArrayList<PostVO>();
-			
-		try {
-			conn = JDBCUtil.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-				
-			while (rs.next()) {
-				PostVO vo = new PostVO();
-				vo.setPostId(rs.getInt("post_id"));
-				vo.setPostWriter(rs.getString("post_writer"));
-				vo.setPostTitle(rs.getString("post_title"));
-				vo.setPostSet(rs.getString("post_set"));
-				vo.setPostType(rs.getString("post_type"));
-				vo.setPostContents(rs.getString("post_contents"));
-				vo.setPostTime(rs.getDate("post_time"));
-				vo.setPostPhoto(rs.getString("post_photo"));
-				list.add(vo);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(conn, pstmt, rs);
-		}
-		
-		return list;
-	}
-		
+
 	// 2. upload
 	
 	// 게시글 업로드
@@ -237,6 +242,7 @@ public class PostDAO {
 		
 		int n = 0;
 		
+		// 현재 날짜를 가져와 sql에 insert 할 수 있는 형식으로 변환
 		Date date = new Date();
 		long javaDate = date.getTime();
 		java.sql.Date sqlDate = new java.sql.Date(javaDate);
@@ -254,13 +260,15 @@ public class PostDAO {
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
 		}
 		
 		return n;
 	}
 	
 	// 금칙어 확인
-	public boolean checkForbidden (String content) {
+	public boolean checkForbiddenPost (String content) {
 		// 선생님... 죄송합니다 익명 게시판 특성 상 금칙어를 설정하기 위해 어쩔 수 없이 욕설을 적어놓을 수 밖에 없었어요 (T_T)
 		String [] forbidden = { "개새끼", "개새기", "개소리", "꺼져", "병신", "븅신", "시발", "씨발", "좆", "지랄", "또라이", "똘아이", "닥쳐", "등신", "대가리" };
 		boolean check = false;
@@ -273,6 +281,8 @@ public class PostDAO {
 		
 		return check;
 	}
+	
+	// 3. edit
 	
 	// 게시글 수정
 	public int editPost(String title, String set, String type, String content, int id) {
@@ -293,10 +303,14 @@ public class PostDAO {
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
 		}
 		
 		return n;
 	}
+	
+	// 4. delete
 	
 	// 게시글 삭제
 	public int deletePost (int postId) {
@@ -313,6 +327,8 @@ public class PostDAO {
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
 		}
 		
 		return n;

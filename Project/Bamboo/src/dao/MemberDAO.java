@@ -11,7 +11,7 @@ import vo.MemberVO;
 public class MemberDAO {
 
 	// 0.
-
+	
 	// 회원 정보 가져오기
 	public MemberVO getMemberData (String id) {
 		MemberVO vo = null;
@@ -23,9 +23,12 @@ public class MemberDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			// 첫 번째 물음표에 id 넣기
 			pstmt.setString(1, id);
+			// 쿼리 실행
 			rs = pstmt.executeQuery();
 			
+			// 만약 실행 결과가 있을 시
 			if (rs.next()) {
 				vo = new MemberVO();
 				vo.setMemberId(rs.getString("id"));
@@ -37,13 +40,15 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			// 자원 해제
 			JDBCUtil.close(conn, pstmt, rs);
 		}
 		
+		// 회원 정보가 담긴 vo 객체 리턴
 		return vo;
 	}
 	
-	// 1. 회원가입
+	// 1. register
 	
 	// 회원가입
 	public int registerMember (MemberVO vo) {
@@ -61,11 +66,15 @@ public class MemberDAO {
 			pstmt.setString(3, vo.getMemberName());
 			pstmt.setString(4, vo.getMemberEmail());
 			pstmt.setString(5, vo.getMemberType());
+			// 쿼리가 실행되면 n의 값이 증가한다
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
 		}
 		
+		// n의 값으로 쿼리 실행 여부 확인
 		return n;
 	}
 	
@@ -123,7 +132,7 @@ public class MemberDAO {
 		return result;
 	}
 	
-	// 2. 회원 정보
+	// 2. information
 	
 	// 회원 정보 수정
 	public int editMember (String id, String pwd, String name, String email, String type) {
@@ -144,12 +153,14 @@ public class MemberDAO {
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
 		}
 		
 		return n;
 	}
 	
-	// 3. 회원 탈퇴
+	// 회원 탈퇴
 	public int unregisterMember (String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -164,6 +175,8 @@ public class MemberDAO {
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
 		}
 		
 		return n;

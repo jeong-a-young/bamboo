@@ -18,99 +18,105 @@
             </div>
             
     		<%
+    			// 로그인이 되어있나 확인
 				MemberVO loginOk = (MemberVO)session.getAttribute("loginOK");
 			
+    			// 로그인을 하지 않았을 때
 				if (loginOk == null) {
 			%>
 			
-					<div></div>
+			<!-- 로그인을 하지 않았으므로 검색 기능을 지원하지 않음 -->
+			<div></div>
 					
-					<div class="nav">
-	                	<ul>
-	                    	<li><a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a></li>
-	                    	<li><a href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a></li>
-	                	</ul>
-	            	</div>
-	            </header>
+			<div class="nav">
+				<ul>
+					<li><a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a></li>
+	                <li><a href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a></li>
+	            </ul>
+	        </div>
+	    </header>
 				
-			<%
-				} else {
-			%>
+		<%
+			// 로그인을 했을 때
+			} else {
+		%>
 			
-					<div class="search">
-						<form method="post" action="${pageContext.request.contextPath}/post/postSearch.jsp">
-							<input type="text" name="search" id="search_box">
-							<button id="search_btn"><img src="${pageContext.request.contextPath}/images/search.png" width="50px" height="50px"></button>
-						</form>
-					</div>
+		<div class="search">
+			<form method="post" action="/postSearch">
+				<input type="text" name="search" id="search_box">
+				<input type="submit" value="검색">
+				<button id="search_btn" onclick="location.href='${pageContext.request.contextPath}/post/postSearch.jsp?keyword=<%= request.getParameter("search")%>'"><img src="${pageContext.request.contextPath}/images/search.png" width="50px" height="50px"></button>
+			</form>
+		</div>
 				
-					<div class="nav">	
-	                	<ul>
-	                    	<li><a href="/logout">로그아웃</a></li>
-	                    	<li><img src="${pageContext.request.contextPath}/images/user.png" id="user_img"><a href="${pageContext.request.contextPath}/member/information.jsp" id="member_information">회원정보</a></li>
-	                	</ul>
-	            	</div>			
-        		</header>
+		<div class="nav">
+			<ul>
+				<li><a href="/logout">로그아웃</a></li>
+				<li><img src="${pageContext.request.contextPath}/images/user.png" id="user_img"><a href="${pageContext.request.contextPath}/member/information.jsp" id="member_information">회원정보</a></li>
+	        </ul>
+	    </div>			
+    </header>
         		
-        		<div class="menu">
-					<ul class="mainMenu">
-						<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=공지게시판">공지게시판</a>
-							<ul class="subMenu">
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-						</li>
-						<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=자유게시판">자유게시판</a>
-							<ul class="subMenu">
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-						</li>
-						<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=질문게시판">질문게시판</a>
-							<ul class="subMenu">
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-						</li>
-						<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=정보게시판">정보게시판</a>
-							<ul class="subMenu">
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-						</li>
-						<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=분실물게시판">분실물게시판</a>
-							<ul class="subMenu">
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-						</li>
-						<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=과별게시판">과별게시판</a>
-							<ul class="subMenu">
-								<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=스마트전자과게시판">스마트전자과게시판</a></li>
-								<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=정보통신과게시판">정보통신과게시판</a></li>
-								<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=소프트웨어개발과게시판">소프트웨어개발과게시판</a></li>
-								<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=바이오화학과게시판">바이오화학과게시판</a></li>
-								<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=생명정보과게시판">생명정보과게시판</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
+    <div class="menu">
+		<ul class="mainMenu">
+			<!-- postType에 '공지게시판'이라는 값을 담아서 postList.jsp로 이동 -->
+			<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=공지게시판">공지게시판</a>
+				<ul class="subMenu">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</li>
+			<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=자유게시판">자유게시판</a>
+				<ul class="subMenu">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</li>
+			<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=질문게시판">질문게시판</a>
+				<ul class="subMenu">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</li>
+			<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=정보게시판">정보게시판</a>
+				<ul class="subMenu">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</li>
+			<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=분실물게시판">분실물게시판</a>
+				<ul class="subMenu">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</li>
+			<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=과별게시판">과별게시판</a>
+				<ul class="subMenu">
+					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=스마트전자과게시판">스마트전자과게시판</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=정보통신과게시판">정보통신과게시판</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=소프트웨어개발과게시판">소프트웨어개발과게시판</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=바이오화학과게시판">바이오화학과게시판</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/postList.jsp?postType=생명정보과게시판">생명정보과게시판</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 				
-				<%
-					}
-				%>
+	<%
+		}
+	%>

@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.MailDAO;
 
-@WebServlet("/registerMail")
-public class RegisterMailServlet extends HttpServlet {
+@WebServlet("/codeMailSend")
+public class CodeMailSendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public RegisterMailServlet() {
+    public CodeMailSendServlet() {
         super();
     }
 

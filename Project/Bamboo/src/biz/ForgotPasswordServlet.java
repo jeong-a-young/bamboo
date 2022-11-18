@@ -35,7 +35,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 		} else if (!code.equals("bamboo")) {
 			out.println("<script> alert('인증 코드가 일치하지 않습니다.'); history.back(); </script>");
 		} else {
-			dao.pwdMailSend(id, pwd, email);
+			dao.forgotPasswordMailSend(id, pwd, email);
 			out.println("<script> alert('메일함을 확인해 주세요.'); history.back(); </script>");
 		}
 	}

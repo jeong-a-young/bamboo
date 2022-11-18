@@ -16,11 +16,11 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import dao.PostDAO;
 import vo.PostVO;
 
-@WebServlet("/write")
-public class WriteServlet extends HttpServlet {
+@WebServlet("/postWrite")
+public class PostWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public WriteServlet() {
+	public PostWriteServlet() {
 		super();
 	}
 
@@ -38,7 +38,7 @@ public class WriteServlet extends HttpServlet {
 		String postSet = mr.getParameter("postSet");
 		String postContent = mr.getParameter("postContent");
 		String postPhoto = request.getContextPath() + "/postImage/" + mr.getFilesystemName("postPhoto");
-		boolean check = dao.checkForbidden(postContent);
+		boolean check = dao.checkForbiddenPost(postContent);
 		int n = 0;
 
 		if (postTitle == null || postType == null || postSet == null || postContent == null) {

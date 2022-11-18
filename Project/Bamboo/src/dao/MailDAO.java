@@ -22,8 +22,6 @@ import common.SMTPAuthenticator;
 
 public class MailDAO {
 
-	// 0.
-	
 	// 이메일로 사용자 ID 불러오기
 	public String emailToId(String email) {
 		Connection conn = null;
@@ -38,6 +36,8 @@ public class MailDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
+			
+			// 만약 해당 이메일로 가입한 ID가 존재할 시
 			if (rs.next()) {
 				id = rs.getString("id");
 			}
@@ -62,6 +62,8 @@ public class MailDAO {
 			pstmt.setString(1, id);
 			pstmt.setString(2, email);
 			rs = pstmt.executeQuery();
+			
+			// 사용자가 입력한 ID와 이메일 정보가 있는 사용자의 비밀번호 불러오기
 			if (rs.next()) {
 				pwd = rs.getString("pwd");
 			}
@@ -70,10 +72,8 @@ public class MailDAO {
 		}
 		return pwd;
 	}
-	
-	// 1. 회원가입
-	
-	// 인증 메일 전송
+		
+	// 회원가입 시 인증 메일 전송
 	public int registerMailSend(String email) {	
 		Properties prop = System.getProperties();
         // 로그인 시 TLS를 사용할 것인지 설정
@@ -102,6 +102,7 @@ public class MailDAO {
             // 메일 제목
 			msg.setSubject("회원가입 시 인증 코드를 확인해 주세요.", "UTF-8");
 			// 메일 내용
+			// 인증 코드: bamboo
 			msg.setText("bamboo에 가입하신 것을 환영합니다.\n해당 메일의 발송자명을 인증 코드 창에 적어주세요.", "UTF-8");
             // 메일을 최종적으로 보내는 클래스
 			Transport.send(msg);
@@ -117,10 +118,8 @@ public class MailDAO {
 		return n;
 	}
 	
-	// 2. 로그인
-	
 	// ID 찾기
-	public String idMailSend(String id, String email) {	
+	public String forgotIdMailSend(String id, String email) {	
 		Properties prop = System.getProperties();
 		prop.put("mail.smtp.starttls.enable", "true");
 		prop.put("mail.smtp.ssl.protocols", "TLSv1.2");
@@ -151,7 +150,7 @@ public class MailDAO {
 	}
 	
 	// 비밀번호 찾기
-	public String pwdMailSend(String id, String pwd, String email) {	
+	public String forgotPasswordMailSend(String id, String pwd, String email) {	
 		Properties prop = System.getProperties();
 		prop.put("mail.smtp.starttls.enable", "true");
 		prop.put("mail.smtp.ssl.protocols", "TLSv1.2");

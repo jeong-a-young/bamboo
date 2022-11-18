@@ -13,11 +13,11 @@ import javax.servlet.http.HttpSession;
 import dao.MemberDAO;
 import vo.MemberVO;
 
-@WebServlet("/edit")
-public class EditServlet extends HttpServlet {
+@WebServlet("/memberEdit")
+public class MemberEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public EditServlet() {
+    public MemberEditServlet() {
         super();
     }
 

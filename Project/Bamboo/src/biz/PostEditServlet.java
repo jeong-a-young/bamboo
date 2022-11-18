@@ -13,11 +13,11 @@ import javax.servlet.http.HttpSession;
 import dao.PostDAO;
 import vo.PostVO;
 
-@WebServlet("/editPost")
-public class EditPostServlet extends HttpServlet {
+@WebServlet("/postEdit")
+public class PostEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public EditPostServlet() {
+    public PostEditServlet() {
         super();
     }
 

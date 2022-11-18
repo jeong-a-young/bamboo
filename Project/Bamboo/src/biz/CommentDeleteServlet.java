@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.CommentDAO;
 
-@WebServlet("/deleteComment")
-public class DeleteCommentServlet extends HttpServlet {
+@WebServlet("/commentDelete")
+public class CommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public DeleteCommentServlet() {
+	public CommentDeleteServlet() {
 		super();
 	}
 

@@ -12,11 +12,11 @@ import javax.servlet.http.HttpSession;
 
 import dao.PostDAO;
 
-@WebServlet("/deletePost")
-public class DeletePostServlet extends HttpServlet {
+@WebServlet("/postDelete")
+public class PostDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public DeletePostServlet() {
+	public PostDeleteServlet() {
 		super();
 	}
 
