@@ -42,10 +42,9 @@
 		%>
 			
 		<div class="search">
-			<form method="post" action="/postSearch">
+			<form method="post">
 				<input type="text" name="search" id="search_box">
-				<input type="submit" value="검색">
-				<button id="search_btn" onclick="location.href='${pageContext.request.contextPath}/post/postSearch.jsp?keyword=<%= request.getParameter("search")%>'"><img src="${pageContext.request.contextPath}/images/search.png" width="50px" height="50px"></button>
+				<button id="search_btn"  formaction="/postSearch"><img src="${pageContext.request.contextPath}/images/search.png" width="50px" height="50px"></button>
 			</form>
 		</div>
 				
