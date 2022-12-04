@@ -39,5 +39,5 @@ SELECT * FROM member;
 SELECT * FROM post;
 SELECT * FROM post_comment;
 
-DELETE FROM member WHERE id='3';
+DELETE FROM member WHERE id='1';
 DELETE FROM member;

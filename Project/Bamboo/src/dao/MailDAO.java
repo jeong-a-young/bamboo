@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -22,6 +23,14 @@ import common.SMTPAuthenticator;
 
 public class MailDAO {
 
+	// 인증 번호 생성
+	public int setCode(String email) {
+		Random random = new Random();
+		String code = Integer.toString(random.nextInt(888888) + 111111);
+		int n = 0;
+		return n;
+	}
+	
 	// 이메일로 사용자 ID 불러오기
 	public String emailToId(String email) {
 		Connection conn = null;
@@ -92,6 +101,7 @@ public class MailDAO {
 		int n = 0;
 		
 		try {
+			// 인증 번호 가져오기
 			msg.setSentDate(new Date());
 			// 발송자 메일, 발송자명
 			msg.setFrom(new InternetAddress("a01025869419@gmail.com", "bamboo"));
@@ -103,7 +113,7 @@ public class MailDAO {
 			msg.setSubject("회원가입 시 인증 코드를 확인해 주세요.", "UTF-8");
 			// 메일 내용
 			// 인증 코드: bamboo
-			msg.setText("bamboo에 가입하신 것을 환영합니다.\n해당 메일의 발송자명을 인증 코드 창에 적어주세요.", "UTF-8");
+			msg.setText("http://localhost:8090/member/mailAuthentication.jsp", "UTF-8");
             // 메일을 최종적으로 보내는 클래스
 			Transport.send(msg);
 			n += 1;

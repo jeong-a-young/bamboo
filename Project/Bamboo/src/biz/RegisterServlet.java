@@ -33,9 +33,9 @@ public class RegisterServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String pwdCk = request.getParameter("pwdCk");
 		String email = request.getParameter("email");
-		String code = request.getParameter("code");
 		int n = 0;
 
+		HttpSession session = request.getSession();
 		if (overlapId) {
 			out.println("<script> alert('이미 존재하는 ID입니다.'); history.back(); </script>");
 		} else if (!pwd.equals(pwdCk)) {
@@ -44,8 +44,8 @@ public class RegisterServlet extends HttpServlet {
 			out.println("<script> alert('이메일 형식이 옳지 않습니다. @y-y.hs.kr이 들어가야 합니다.'); history.back(); </script>");
 		} else if (overlapEmail) {
 			out.println("<script> alert('이미 가입된 이메일입니다.'); history.back(); </script>");
-		} else if (!code.equals("bamboo")) {
-			out.println("<script> alert('인증 코드가 잘못 되었습니다. 다시 한 번 확인해 주세요.'); history.back(); </script>");
+		} else if (session.getAttribute("mailCheckNum") == null) {
+			out.println("<script> alert('이메일 인증이 되지 않았습니다.'); history.back(); </script>");
 		} else {
 			vo.setMemberId(request.getParameter("id"));
 			vo.setMemberPwd(request.getParameter("pwd"));
@@ -55,13 +55,13 @@ public class RegisterServlet extends HttpServlet {
 			n = dao.registerMember(vo);
 			
 			if (n > 0) {
-				HttpSession session = request.getSession();
 				session.setAttribute("loginOK", vo);
 				session.setAttribute("nowLoginId", vo.getMemberId());
 				session.setAttribute("nowLoginPwd", vo.getMemberPwd());
 				session.setAttribute("nowLoginName", vo.getMemberName());
 				session.setAttribute("nowLoginEmail", vo.getMemberEmail());
 				session.setAttribute("nowLoginType", vo.getMemberType());
+				session.removeAttribute("mailCheckNum");
 				out.println("<script> alert('bamboo의 회원이 되신 것을 환영합니다.'); window.location.href='./index.jsp'; </script>");
 			} else {
 				out.println("<script> alert('회원가입에 실패했습니다.'); history.back(); </script>");
