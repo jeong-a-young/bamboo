@@ -17,6 +17,9 @@
 			for (PostVO pv : postList) {
 	%>
 	
+	<div class="post-wrap">
+
+	
 	<div class="postView">
 		<p id="post_view_title"><%=pv.getPostTitle()%></p>
 	
@@ -158,6 +161,7 @@
 				
 			</table>
 		</div>
+	</div>
 	</div>
 
 <%@ include file="/footer.jsp"%>

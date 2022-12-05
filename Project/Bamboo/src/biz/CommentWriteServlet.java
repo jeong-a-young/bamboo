@@ -45,7 +45,8 @@ public class CommentWriteServlet extends HttpServlet {
 			n = dao.uploadComment(vo, (int) session.getAttribute("commentPostId"));
 			
 			if (n > 0) {
-				out.println("<script> alert('댓글 업로드가 성공적으로 완료되었습니다.'); history.back(); </script>");
+				out.println("<script> alert('댓글 업로드가 성공적으로 완료되었습니다.'); </script>");
+				out.println("<script> window.location=document.referrer </script>");
 			} else {
 				out.println("<script> alert('댓글 업로드에 실패했습니다.'); history.back(); </script>");
 			}
