@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-인증 되었습니다. 회원가입 창으로 돌아가주세요.
 <%
 	session.setAttribute("mailCheckNum", 1);
+	out.println("<script> alert('이메일 인증에 성공했습니다. 회원가입 창으로 돌아가 회원가입을 진행해 주세요.'); window.close(); </script>");
 %>
 </body>
 </html>

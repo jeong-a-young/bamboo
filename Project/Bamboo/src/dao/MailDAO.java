@@ -99,6 +99,7 @@ public class MailDAO {
 		MimeMessage msg = new MimeMessage(session);
 
 		int n = 0;
+		String mailContent = "아래 링크를 눌러 이메일을 인증해 주세요.\n http://localhost:8090/member/mailAuthentication.jsp";
 		
 		try {
 			// 인증 번호 가져오기
@@ -113,7 +114,7 @@ public class MailDAO {
 			msg.setSubject("회원가입 시 인증 코드를 확인해 주세요.", "UTF-8");
 			// 메일 내용
 			// 인증 코드: bamboo
-			msg.setText("http://localhost:8090/member/mailAuthentication.jsp", "UTF-8");
+			msg.setText(mailContent, "UTF-8");
             // 메일을 최종적으로 보내는 클래스
 			Transport.send(msg);
 			n += 1;
