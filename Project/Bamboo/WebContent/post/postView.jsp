@@ -131,7 +131,8 @@
 						if (cv.getCommentWriter().equals(hs.getAttribute("nowLoginName"))) {
 					%>
 	
-					<td><a href="/commentDelete?commentId=<%=cv.getCommentId()%>">삭제</a></td>
+					<td><button onclick="answerEdit(cv.getCommentId(), cv.getCommentContents())"></button><a href="/commentDelete?commentId=<%=cv.getCommentId()%>">수정</a></td>
+					<td><a href="/commentDelete?commentId=<%= cv.getCommentId() %>">삭제</a></td>
 
 					<%
 						}
