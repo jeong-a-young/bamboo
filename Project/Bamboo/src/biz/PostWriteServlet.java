@@ -1,5 +1,6 @@
 package biz;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -24,13 +25,25 @@ public class PostWriteServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		File Folder = new File(request.getRealPath("/postImage"));
+		if (!Folder.exists()) {
+			try {
+				Folder.mkdir();
+				System.out.println("폴더가 생성되었습니다.");
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+		}
+		
 		HttpSession session = request.getSession();
-		MultipartRequest mr = new MultipartRequest(request, request.getRealPath("/postImage"), 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+		MultipartRequest mr = new MultipartRequest(request, request.getRealPath("/postImage"), 1024 * 1024 * 10,
+				"UTF-8", new DefaultFileRenamePolicy());
 		PostVO vo = new PostVO();
 		PostDAO dao = new PostDAO();
 		String postTitle = mr.getParameter("postTitle");
@@ -45,7 +58,7 @@ public class PostWriteServlet extends HttpServlet {
 			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
 		} else if (check) {
 			out.println("<script> alert('금칙어가 포함되어 있습니다.'); history.back(); </script>");
-		} else {
+		} else {	
 			vo.setPostWriter((String) session.getAttribute("nowLoginName"));
 			vo.setPostTitle(postTitle);
 			vo.setPostType(postType);
@@ -54,7 +67,7 @@ public class PostWriteServlet extends HttpServlet {
 			vo.setPostPhoto(postPhoto);
 			System.out.println("이미지가 저장되는 실제 경로: " + request.getRealPath("/postImage"));
 			n = dao.uploadPost(vo);
-			
+
 			if (n > 0) {
 				out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); window.location.href='./index.jsp'; </script>");
 			} else {
