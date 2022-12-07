@@ -1,4 +1,3 @@
-<%@page import="javax.sound.midi.SysexMessage"%>
 <%@page import="dao.CommentDAO"%>
 <%@page import="vo.CommentVO"%>
 <%@page import="vo.PostVO"%>
@@ -96,6 +95,7 @@
 		</div>
 
 		<div style="display: flex; justify-content: center; position: relative; top: 124px;">
+			<form method="post">
 			<table>
 
 				<%
@@ -131,8 +131,8 @@
 						if (cv.getCommentWriter().equals(hs.getAttribute("nowLoginName"))) {
 					%>
 	
-					<td><button onclick="answerEdit(<%= cv.getCommentId() %>, '<%= cv.getCommentContents() %>');">수정</button></td>
-					<td><a href="/commentDelete?commentId=<%= cv.getCommentId() %>">삭제</a></td>
+					<td><button id="editBtn" onclick="answerEdit(<%= cv.getCommentId() %>, '<%= cv.getCommentContents() %>');">수정</button></td>
+					<td><a href="/commentDelete?commentId=<%= cv.getCommentId() %>" id="deleteBtn">삭제</a></td>
 
 					<%
 						}
@@ -161,15 +161,9 @@
 				%>
 				
 			</table>
+			</form>
 		</div>
 	</div>
 	</div>
-	<script>
-	function answerEdit(answer_idx, acontent){
-		$('#comment'+answer_idx).html('<textarea>' + acontent + '</textarea>');
-	    $('#abt'+answer_idx).html(
-	        "<a onclick='answerEditSave("+answer_idx+")' id='btnEdit'>완료</a> "
-	    );
-	}
-	</script>
+	
 <%@ include file="/footer.jsp"%>

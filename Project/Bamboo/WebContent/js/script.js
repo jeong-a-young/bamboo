@@ -43,6 +43,10 @@ $(".mainMenu > li").hover (
 // 댓글 수정 시 textarea로 변환 효과
 function answerEdit(answer_idx, acontent){
 	$('#comment'+answer_idx).html('<textarea>' + acontent + '</textarea>');
+	$("#editBtn").after("<button id='okBtn'>확인</button>");
+	$("#editBtn").remove();
+	$("#deleteBtn").remove();
+	$("#okBtn").attr("formaction", "/commentEdit");
     
     $('#abt'+answer_idx).html(
         "<a onclick='answerEditSave("+answer_idx+")' id='btnEdit'>완료</a> "

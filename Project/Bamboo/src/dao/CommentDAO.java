@@ -120,4 +120,28 @@ public class CommentDAO {
 		
 		return n;
 	}
+	
+	// 게시글 수정
+	public int editComment(String content, int postId, int commentId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE post_comment SET comment_contents=? WHERE post_id=? AND comment_id=?";
+
+		int n = 0;
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, content);
+			pstmt.setInt(2, postId);
+			pstmt.setInt(3, commentId);
+			n = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+		
+		return n;
+	}
 }
