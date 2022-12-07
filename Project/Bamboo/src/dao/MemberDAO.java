@@ -10,10 +10,8 @@ import vo.MemberVO;
 
 public class MemberDAO {
 
-	// 0.
-	
 	// 회원 정보 가져오기
-	public MemberVO getMemberData (String id) {
+	public MemberVO getMember(String id) {
 		MemberVO vo = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -51,7 +49,7 @@ public class MemberDAO {
 	// 1. register
 	
 	// 회원가입
-	public int registerMember (MemberVO vo) {
+	public int registerMember(MemberVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO member (id, pwd, name, email, type) VALUES (?,?,?,?,?)";
@@ -79,7 +77,7 @@ public class MemberDAO {
 	}
 	
 	// ID 중복 확인
-	public boolean overlapID (String id) {	
+	public boolean overlapId(String id) {	
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -106,7 +104,7 @@ public class MemberDAO {
 	}
 	
 	// email 중복 확인
-	public boolean overlapEmail (String email) {	
+	public boolean overlapEmail(String email) {	
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -135,7 +133,7 @@ public class MemberDAO {
 	// 2. information
 	
 	// 회원 정보 수정
-	public int editMember (String id, String pwd, String name, String email, String type) {
+	public int editMember(String id, String pwd, String name, String email, String type) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE member SET pwd=?, name=?, email=?, type=? WHERE id=?";
@@ -161,7 +159,7 @@ public class MemberDAO {
 	}
 	
 	// 회원 탈퇴
-	public int unregisterMember (String id) {
+	public int unregisterMember(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "DELETE FROM member WHERE id=?";

@@ -30,7 +30,7 @@ public class PostDeleteServlet extends HttpServlet {
 
 			if (n > 0) {
 				session.removeAttribute("deletePostId");
-				out.println("<script> alert('게시글 삭제에 성공했습니다.'); window.location.href='./index.jsp'; </script>");
+				out.println("<script> alert('게시글 삭제에 성공했습니다.'); window.location.href='./post/postList.jsp'; </script>");
 			} else {
 				out.println("<script> alert('게시글 삭제에 실패했습니다.'); history.back(); </script>");
 			}

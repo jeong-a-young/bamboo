@@ -29,24 +29,24 @@ public class PostEditServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		PostVO vo = new PostVO();
 		PostDAO dao = new PostDAO();
-		int id = (int) session.getAttribute("editPostId");
-		String title = request.getParameter("editPostTitle");
-		String set = request.getParameter("editPostSet");
-		String type = request.getParameter("editPostType");
-		String content = request.getParameter("editPostContent");
+		int postId = (int) session.getAttribute("editPostId");
+		String postTitle = request.getParameter("editPostTitle");
+		String postType = request.getParameter("editPostType");
+		String postCategory = request.getParameter("editPostCategory");
+		String postContent = request.getParameter("editPostContent");
 		int n = 0;
 		
-		if (title == null || set == null || type == null || content == null) {
+		if (postTitle == null || postType == null || postCategory == null || postContent == null) {
 			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
 		} else {
-			vo.setPostTitle(title);
-			vo.setPostSet(set);
-			vo.setPostType(type);
-			vo.setPostContents(content);
-			n = dao.editPost(title, set, type, content, id);
+			vo.setPostTitle(postTitle);
+			vo.setPostType(postType);
+			vo.setPostCategory(postCategory);
+			vo.setPostContent(postContent);
+			n = dao.editPost(postId, postTitle, postType, postCategory, postContent);
 			
 			if (n > 0) {
-				out.println("<script> alert('게시글이 정상적으로 수정 되었습니다.'); window.location.href='./index.jsp'; </script>");
+				out.println("<script> alert('게시글이 수정되었습니다.'); window.location.href='./postView.jsp?postId=" + postId + "' </script>");
 				session.removeAttribute("editPostId");
 			} else {
 				out.println("<script> alert('게시글 수정에 실패하였습니다.'); history.back(); </script>");

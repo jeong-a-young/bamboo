@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CommentDAO;
+import dao.ReplyDAO;
 
 @WebServlet("/commentDelete")
 public class CommentDeleteServlet extends HttpServlet {
@@ -23,12 +23,11 @@ public class CommentDeleteServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
-		CommentDAO dao = new CommentDAO();
-		int n = dao.deleteComment(Integer.parseInt(request.getParameter("commentId")));
+		ReplyDAO dao = new ReplyDAO();
+		int n = dao.deleteReply(Integer.parseInt(request.getParameter("replyId")));
 
 		if (n > 0) {
-			out.println("<script> alert('댓글 삭제에 성공했습니다.'); </script>");
-			out.println("<script> window.location=document.referrer </script>");
+			out.println("<script> alert('댓글이 삭제되었습니다.'); window.location=document.referrer; </script>");
 		} else {
 			out.println("<script> alert('댓글 삭제에 실패했습니다.'); history.back(); </script>");
 		}

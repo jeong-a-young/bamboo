@@ -7,10 +7,10 @@ public class PostVO {
 	private String postWriter;
 	private String postTitle;
 	private String postType;
-	private String postSet;
-	private String postContents;
-	private Date postTime;
-	private String postPhoto;
+	private String postCategory;
+	private String postContent;
+	private Date postDate;
+	private String postImage;
 	
 	public PostVO() {
 		super();
@@ -48,36 +48,36 @@ public class PostVO {
 		this.postType = postType;
 	}
 
-	public String getPostSet() {
-		return postSet;
+	public String getPostCategory() {
+		return postCategory;
 	}
 
-	public void setPostSet(String postSet) {
-		this.postSet = postSet;
+	public void setPostCategory(String postCategory) {
+		this.postCategory = postCategory;
 	}
 
-	public String getPostContents() {
-		return postContents;
+	public String getPostContent() {
+		return postContent;
 	}
 
-	public void setPostContents(String postContents) {
-		this.postContents = postContents;
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
 	}
 
-	public Date getPostTime() {
-		return postTime;
+	public Date getPostDate() {
+		return postDate;
 	}
 
-	public void setPostTime(Date postTime) {
-		this.postTime = postTime;
+	public void setPostDate(Date postDate) {
+		this.postDate = postDate;
 	}
 
-	public String getPostPhoto() {
-		return postPhoto;
+	public String getPostImage() {
+		return postImage;
 	}
 
-	public void setPostPhoto(String postPhoto) {
-		this.postPhoto = postPhoto;
+	public void setPostImage(String postImage) {
+		this.postImage = postImage;
 	}
-	
+
 }

@@ -34,9 +34,9 @@ public class PostSearchServlet extends HttpServlet {
 			out.println("<script> alert('검색어를 입력해 주세요.'); history.back(); </script>");
 		} else {
 			HttpSession session = request.getSession();
-			ArrayList<PostVO> list = dao.getPostSearchList(keyword);
-			session.setAttribute("searchPostList", list);
-			response.sendRedirect("./post/postSearchList.jsp");
+			ArrayList<PostVO> data = dao.getSearchPost(keyword);
+			session.setAttribute("searchPost", data);
+			response.sendRedirect("./post/postSearch.jsp");
 		}
 	}
 }

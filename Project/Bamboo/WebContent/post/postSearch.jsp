@@ -16,7 +16,7 @@
 			
 			<%
 				PostDAO dao = new PostDAO();
-				ArrayList<PostVO> list = (ArrayList) session.getAttribute("searchPostList");
+				ArrayList<PostVO> list = (ArrayList) session.getAttribute("searchPost");
 
 				if (list != null) {
 					for (PostVO data : list) {

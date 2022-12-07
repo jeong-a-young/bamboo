@@ -29,13 +29,11 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		MemberDAO dao = new MemberDAO();
-		MemberVO vo = dao.getMemberData(id);
+		MemberVO vo = dao.getMember(id);
 		
 		if (vo == null || !pwd.equals(vo.getMemberPwd())) {
 			out.println("<script> alert('회원정보가 맞지 않습니다.'); history.back(); </script>");
 		} else {
-			// session 값을 초반에 못 가져온다???
-			System.out.println(request.getContextPath());
 			HttpSession session = request.getSession();
 			session.setAttribute("loginOK", vo);
 			session.setAttribute("nowLoginId", vo.getMemberId());

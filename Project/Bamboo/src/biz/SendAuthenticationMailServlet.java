@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.MailDAO;
 
-@WebServlet("/codeMailSend")
-public class CodeMailSendServlet extends HttpServlet {
+@WebServlet("/sendAuthenticationMail")
+public class SendAuthenticationMailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public CodeMailSendServlet() {
+    public SendAuthenticationMailServlet() {
         super();
     }
 
@@ -26,10 +26,10 @@ public class CodeMailSendServlet extends HttpServlet {
 		
 		MailDAO dao = new MailDAO();
 		String email = request.getParameter("email");
-		int n = dao.registerMailSend(email);
+		int n = dao.sendAuthenticationMail(email);
 		
 		if (n > 0) {
-			out.println("<script> alert('인증 코드를 발송하였습니다. 메일함을 확인해 주세요.'); history.back(); </script>");
+			out.println("<script> alert('메일함을 확인해 주세요.'); history.back(); </script>");
 		} else {
 			out.println("<script> alert('메일 전송에 실패했습니다.'); history.back(); </script>");
 		}

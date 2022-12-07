@@ -25,51 +25,49 @@ public class PostWriteServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		// 서버에 이미지를 담은 폴더가 없을 시 폴더 생성
 		File Folder = new File(request.getRealPath("/postImage"));
 		if (!Folder.exists()) {
 			try {
 				Folder.mkdir();
-				System.out.println("폴더가 생성되었습니다.");
 			} catch (Exception e) {
 				e.getStackTrace();
 			}
 		}
 		
+		MultipartRequest mr = new MultipartRequest(request, request.getRealPath("/postImage"), 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
 		HttpSession session = request.getSession();
-		MultipartRequest mr = new MultipartRequest(request, request.getRealPath("/postImage"), 1024 * 1024 * 10,
-				"UTF-8", new DefaultFileRenamePolicy());
 		PostVO vo = new PostVO();
 		PostDAO dao = new PostDAO();
 		String postTitle = mr.getParameter("postTitle");
 		String postType = mr.getParameter("postType");
-		String postSet = mr.getParameter("postSet");
+		String postCategory = mr.getParameter("postCategory");
 		String postContent = mr.getParameter("postContent");
-		String postPhoto = request.getContextPath() + "/postImage/" + mr.getFilesystemName("postPhoto");
-		boolean check = dao.checkForbiddenPost(postContent);
+		String postImage = request.getContextPath() + "/postImage/" + mr.getFilesystemName("postImage");
+		boolean check = dao.checkForbiddenPost(postTitle, postContent);
 		int n = 0;
 
-		if (postTitle == null || postType == null || postSet == null || postContent == null) {
-			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
+		if (postTitle == null || postType == null || postCategory == null || postContent == null) {
+			out.println("<script> alert('입력되지 않은 값이 있습니다.'); history.back(); </script>");
 		} else if (check) {
 			out.println("<script> alert('금칙어가 포함되어 있습니다.'); history.back(); </script>");
 		} else {	
 			vo.setPostWriter((String) session.getAttribute("nowLoginName"));
 			vo.setPostTitle(postTitle);
 			vo.setPostType(postType);
-			vo.setPostSet(postSet);
-			vo.setPostContents(postContent);
-			vo.setPostPhoto(postPhoto);
+			vo.setPostCategory(postCategory);
+			vo.setPostContent(postContent);
+			vo.setPostImage(postImage);
 			System.out.println("이미지가 저장되는 실제 경로: " + request.getRealPath("/postImage"));
-			n = dao.uploadPost(vo);
+			n = dao.writePost(vo);
 
 			if (n > 0) {
-				out.println("<script> alert('게시글 업로드가 성공적으로 완료되었습니다.'); window.location.href='./index.jsp'; </script>");
+				out.println("<script> alert('게시글이 업로드 되었습니다.'); window.location.href='./post/postList.jsp'; </script>");
 			} else {
 				out.println("<script> alert('게시글 업로드에 실패했습니다.'); history.back(); </script>");
 			}

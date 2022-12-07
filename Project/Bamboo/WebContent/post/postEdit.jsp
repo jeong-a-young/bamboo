@@ -1,5 +1,5 @@
-<%@page import="dao.CommentDAO"%>
-<%@page import="vo.CommentVO"%>
+<%@page import="dao.ReplyDAO"%>
+<%@page import="vo.ReplyVO"%>
 <%@page import="vo.PostVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.PostDAO"%>

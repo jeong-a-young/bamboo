@@ -1,2 +1,4 @@
 - 전체적인 디자인 수정 (구상하기)
 - 코드 정리하기
+- post_comment => reply로 변경하기
+- reply 테이블에 post_id foreign키

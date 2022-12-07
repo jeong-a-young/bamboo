@@ -46,7 +46,7 @@ public class MemberEditServlet extends HttpServlet {
 			n = dao.editMember(id, pwd, name, email, type);
 			
 			if (n > 0) {
-				out.println("<script> alert('회원 정보가 정상적으로 수정 되었습니다.'); history.back(); </script>");
+				out.println("<script> alert('회원 정보가 수정되었습니다.'); history.back(); </script>");
 			} else {
 				out.println("<script> alert('회원 정보 수정에 실패하였습니다.'); history.back(); </script>");
 			}

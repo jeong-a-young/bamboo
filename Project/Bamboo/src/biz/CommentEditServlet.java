@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.CommentDAO;
-import vo.CommentVO;
+import dao.ReplyDAO;
+import vo.ReplyVO;
 
 @WebServlet("/commentEdit")
 public class CommentEditServlet extends HttpServlet {
@@ -26,23 +26,21 @@ public class CommentEditServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
-		HttpSession session = request.getSession();
-		CommentVO vo = new CommentVO();
-		CommentDAO dao = new CommentDAO();
-		String commentId = request.getParameter("commentId");
+		ReplyVO vo = new ReplyVO();
+		ReplyDAO dao = new ReplyDAO();
+		String replyId = request.getParameter("replyId");
 		String postId = request.getParameter("postId");
-		String content = request.getParameter("editTextarea");
+		String replyContent = request.getParameter("editReplyContent");
 		int n = 0;
 		
-		if (content == null) {
-			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
+		if (replyContent == null) {
+			out.println("<script> alert('입력되지 않은 값이 있습니다.'); history.back(); </script>");
 		} else {
-			vo.setCommentContents(content);
-			n = dao.editComment(content, Integer.parseInt(postId), Integer.parseInt(commentId));
+			vo.setReplyContent(replyContent);
+			n = dao.editReply(Integer.parseInt(postId), Integer.parseInt(replyId), replyContent);
 			
 			if (n > 0) {
-				out.println("<script> alert('댓글이 정상적으로 수정 되었습니다.'); </script>");
-				out.println("<script> window.location=document.referrer </script>");
+				out.println("<script> alert('댓글이 수정되었습니다.'); window.location=document.referrer; </script>");
 			} else {
 				out.println("<script> alert('댓글 수정에 실패하였습니다.'); history.back(); </script>");
 			}

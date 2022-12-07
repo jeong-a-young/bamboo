@@ -8,18 +8,18 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import common.JDBCUtil;
-import vo.CommentVO;
+import vo.ReplyVO;
 
-public class CommentDAO {
+public class ReplyDAO {
 	
 	// 댓글 가져오기
-	public ArrayList<CommentVO> getComment(int postId) {
+	public ArrayList<ReplyVO> getReply(int postId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post_comment WHERE post_id=?";
+		String sql = "SELECT * FROM reply WHERE post_id=?";
 			
-		ArrayList<CommentVO> list = new ArrayList<CommentVO>();
+		ArrayList<ReplyVO> data = new ArrayList<ReplyVO>();
 			
 		try {
 			conn = JDBCUtil.getConnection();
@@ -31,15 +31,15 @@ public class CommentDAO {
 			
 			// 실행 결과를 내려가면서 읽는다
 			while (rs.next()) {
-				CommentVO vo = new CommentVO();
+				ReplyVO vo = new ReplyVO();
 				vo.setPostId(postId);
-				vo.setCommentId(rs.getInt("comment_id"));
-				vo.setCommentWriter(rs.getString("comment_writer"));
-				vo.setCommentSet(rs.getString("comment_set"));
-				vo.setCommentContents(rs.getString("comment_contents"));
-				vo.setCommentTime(rs.getDate("comment_time"));
-				// 실행 결과를 list에 담는다
-				list.add(vo);
+				vo.setReplyId(rs.getInt("reply_id"));
+				vo.setReplyWriter(rs.getString("reply_writer"));
+				vo.setReplyType(rs.getString("reply_type"));
+				vo.setReplyContent(rs.getString("reply_content"));
+				vo.setReplyDate(rs.getDate("reply_date"));
+				// 실행 결과를 data에 담는다
+				data.add(vo);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,15 +47,17 @@ public class CommentDAO {
 			JDBCUtil.close(conn, pstmt, rs);
 		}
 		
-		// 실행 결과가 담긴 list를 돌려준다
-		return list;
+		// 실행 결과가 담긴 data를 돌려준다
+		return data;
 	}
 	
+	// 1. write
+	
 	// 댓글 업로드
-	public int uploadComment(CommentVO vo, int postId) {
+	public int writeReply(ReplyVO vo, int postId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO post_comment (post_id, comment_id, comment_writer, comment_set, comment_contents, comment_time) VALUES (?,post_comment_seq.nextval,?,?,?,?)";
+		String sql = "INSERT INTO reply (post_id, reply_id, reply_writer, reply_type, reply_content, reply_date) VALUES (?,reply_seq.nextval,?,?,?,?)";
 		
 		int n = 0;
 		
@@ -68,9 +70,9 @@ public class CommentDAO {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, postId);
-			pstmt.setString(2, vo.getCommentWriter());
-			pstmt.setString(3, vo.getCommentSet());
-			pstmt.setString(4, vo.getCommentContents());
+			pstmt.setString(2, vo.getReplyWriter());
+			pstmt.setString(3, vo.getReplyType());
+			pstmt.setString(4, vo.getReplyContent());
 			pstmt.setDate(5, sqlDate);
 			// 쿼리가 실행되면 n의 값이 증가한다
 			n = pstmt.executeUpdate();
@@ -84,14 +86,13 @@ public class CommentDAO {
 	}
 	
 	// 금칙어 확인
-	public boolean checkForbiddenComment (String content) {
-		// 선생님... 죄송합니다 익명 게시판 특성 상 금칙어를 설정하기 위해 어쩔 수 없이 욕설을 적어놓을 수 밖에 없었어요 (T_T)
+	public boolean checkForbiddenReply(String replyContent) {
 		String [] forbidden = { "개새끼", "개새기", "개소리", "꺼져", "병신", "븅신", "시발", "씨발", "좆", "지랄", "또라이", "똘아이", "닥쳐", "등신", "대가리" };
 		boolean check = false;
 		
 		for (int i = 0; i <= forbidden.length - 1; i++) {
-			// content 중에 forbidden 배열에 들어있는 단어와 일치하는 단어가 있을 시 true로 변경
-			if (content.indexOf(forbidden[i]) != -1) {
+			// replyContent 중에 forbidden 배열에 들어있는 단어와 일치하는 단어가 있을 시 true로 변경
+			if (replyContent.indexOf(forbidden[i]) != -1) {
 				check = true;
 			}
 		}
@@ -99,30 +100,10 @@ public class CommentDAO {
 		return check;
 	}
 	
-	// 게시글 삭제
-	public int deleteComment (int commentId) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM post_comment WHERE comment_id=?";
-		
-		int n = 0;
-			
-		try {
-			conn = JDBCUtil.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, commentId);
-			n = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(conn, pstmt);
-		}
-		
-		return n;
-	}
+	// 2. edit
 	
 	// 게시글 수정
-	public int editComment(String content, int postId, int commentId) {
+	public int editReply(int postId, int commentId, String content) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE post_comment SET comment_contents=? WHERE post_id=? AND comment_id=?";
@@ -135,6 +116,30 @@ public class CommentDAO {
 			pstmt.setString(1, content);
 			pstmt.setInt(2, postId);
 			pstmt.setInt(3, commentId);
+			n = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+		
+		return n;
+	}
+	
+	// 3. delete
+	
+	// 게시글 삭제
+	public int deleteReply(int replyId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM reply WHERE reply_id=?";
+		
+		int n = 0;
+			
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, replyId);
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

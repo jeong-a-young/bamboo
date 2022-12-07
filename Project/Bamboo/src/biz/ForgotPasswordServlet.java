@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.MailDAO;
 
@@ -24,18 +25,18 @@ public class ForgotPasswordServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		HttpSession session = request.getSession();
 		MailDAO dao = new MailDAO();
 		String id = request.getParameter("id");
 		String email = request.getParameter("email");
 		String pwd = dao.idEmailToPwd(id, email);
-		String code = request.getParameter("code");
 		
 		if (pwd == null) {
 			out.println("<script> alert('ID 또는 이메일이 존재하지 않습니다.'); history.back(); </script>");
-		} else if (!code.equals("bamboo")) {
-			out.println("<script> alert('인증 코드가 일치하지 않습니다.'); history.back(); </script>");
+		} else if (session.getAttribute("mailAuthentication") == null) {
+			out.println("<script> alert('이메일 인증에 실패했습니다.'); history.back(); </script>");
 		} else {
-			dao.forgotPasswordMailSend(id, pwd, email);
+			dao.sendForgotPasswordMail(id, pwd, email);
 			out.println("<script> alert('메일함을 확인해 주세요.'); history.back(); </script>");
 		}
 	}
