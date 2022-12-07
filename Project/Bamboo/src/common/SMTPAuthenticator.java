@@ -10,7 +10,7 @@ public class SMTPAuthenticator extends Authenticator {
     public SMTPAuthenticator() {
         String email = "a01025869419@gmail.com";
         String pwd = "tknmnhfprbfjfkru";
-        
+  
         pwa = new PasswordAuthentication(email, pwd);
     }
     

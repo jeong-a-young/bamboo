@@ -26,6 +26,7 @@ public class RegisterServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		HttpSession session = request.getSession();
 		MemberVO vo = new MemberVO();
 		MemberDAO dao = new MemberDAO();
 		String pwd = request.getParameter("pwd");
@@ -35,7 +36,6 @@ public class RegisterServlet extends HttpServlet {
 		boolean overlapEmail = dao.overlapEmail(request.getParameter("email"));
 		int n = 0;
 
-		HttpSession session = request.getSession();
 		if (overlapId) {
 			out.println("<script> alert('이미 존재하는 ID입니다.'); history.back(); </script>");
 		} else if (!pwd.equals(pwdCk)) {

@@ -42,7 +42,7 @@ public class UnregisterServlet extends HttpServlet {
 				session.removeAttribute("nowLoginName");
 				session.removeAttribute("nowLoginEmail");
 				session.removeAttribute("nowLoginType");
-				out.println("<script> alert('회원 탈퇴가 성공적으로 진행 되었습니다.'); window.location.href='./index.jsp'; </script>");
+				out.println("<script> alert('회원 탈퇴되었습니다.'); window.location.href='./index.jsp'; </script>");
 			} else {
 				out.println("<script> alert('회원 탈퇴에 실패하였습니다.'); history.back(); </script>");
 			}
