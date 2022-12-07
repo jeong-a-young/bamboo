@@ -94,7 +94,7 @@ public class PostDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post WHERE post_title LIKE (?)";
+		String sql = "SELECT * FROM post WHERE post_title LIKE (?) OR post_contents LIKE (?)";
 			
 		ArrayList<PostVO> list = new ArrayList<PostVO>();
 			
@@ -102,6 +102,7 @@ public class PostDAO {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setString(2, "%" + keyword + "%");
 			rs = pstmt.executeQuery();
 				
 			while (rs.next()) {
