@@ -17,5 +17,4 @@ public class SMTPAuthenticator extends Authenticator {
     public PasswordAuthentication getPasswordAuthentication() {
         return pwa;
     }
-    
 }
