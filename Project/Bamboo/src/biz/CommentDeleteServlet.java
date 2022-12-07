@@ -27,7 +27,8 @@ public class CommentDeleteServlet extends HttpServlet {
 		int n = dao.deleteComment(Integer.parseInt(request.getParameter("commentId")));
 
 		if (n > 0) {
-			out.println("<script> alert('댓글 삭제에 성공했습니다.'); history.back(); </script>");
+			out.println("<script> alert('댓글 삭제에 성공했습니다.'); </script>");
+			out.println("<script> window.location=document.referrer </script>");
 		} else {
 			out.println("<script> alert('댓글 삭제에 실패했습니다.'); history.back(); </script>");
 		}

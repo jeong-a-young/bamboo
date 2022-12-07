@@ -131,7 +131,7 @@
 						if (cv.getCommentWriter().equals(hs.getAttribute("nowLoginName"))) {
 					%>
 	
-					<td><button onclick="answerEdit(cv.getCommentId(), cv.getCommentContents())"></button><a href="/commentDelete?commentId=<%=cv.getCommentId()%>">수정</a></td>
+					<td><button onclick="answerEdit(<%= cv.getCommentId() %>, '<%= cv.getCommentContents() %>');">수정</button></td>
 					<td><a href="/commentDelete?commentId=<%= cv.getCommentId() %>">삭제</a></td>
 
 					<%
@@ -152,7 +152,7 @@
 						}
 					%>
 
-					<td><%=cv.getCommentContents()%></td>
+					<td id="<%= "comment" + cv.getCommentId() %>"><%=cv.getCommentContents()%></td>
 				</tr>
 
 				<%
@@ -164,5 +164,12 @@
 		</div>
 	</div>
 	</div>
-
+	<script>
+	function answerEdit(answer_idx, acontent){
+		$('#comment'+answer_idx).html('<textarea>' + acontent + '</textarea>');
+	    $('#abt'+answer_idx).html(
+	        "<a onclick='answerEditSave("+answer_idx+")' id='btnEdit'>완료</a> "
+	    );
+	}
+	</script>
 <%@ include file="/footer.jsp"%>

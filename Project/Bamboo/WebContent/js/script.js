@@ -42,10 +42,7 @@ $(".mainMenu > li").hover (
 
 // 댓글 수정 시 textarea로 변환 효과
 function answerEdit(answer_idx, acontent){
-    $('#acontent'+answer_idx).html(
-        "<textarea id='edit_acontent"+answer_idx+"'>"+acontent+"</textarea>"
-        +"<style>#edit_acontent"+answer_idx+"{width:740px; height:80px; resize:none;} </style>"
-    );
+	$('#comment'+answer_idx).html('<textarea>' + acontent + '</textarea>');
     
     $('#abt'+answer_idx).html(
         "<a onclick='answerEditSave("+answer_idx+")' id='btnEdit'>완료</a> "
