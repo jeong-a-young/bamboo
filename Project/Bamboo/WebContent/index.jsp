@@ -29,14 +29,7 @@
 
 	<%
 		} else {
-	%>
 
-	<p id="recent_notice">어서오세요!<br>아래에서 최근 업로드 된 게시글을 확인해 보세요.</p>
-			
-	<button class="greenBtn" id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
-	<button id="post_list_btn" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?postType=전체'">게시글 목록</button>
-
-	<%
 		// 최근에 업로드 된 게시글
 		PostDAO dao = new PostDAO();
 		ArrayList<PostVO> list = dao.getRecentPost();
@@ -45,7 +38,14 @@
 	<div class="recentPost">
 			
 	<%
-		if (list != null) {
+		if (!list.isEmpty()) {
+	%>
+	
+	<p id="recent_notice">어서오세요!<br>아래에서 최근 업로드 된 게시글을 확인해 보세요.</p>
+	<button class="greenBtn" id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
+	<button id="post_list_btn" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?postType=전체'">게시글 목록</button>
+
+	<%
 			for (PostVO data : list) {
 	%>
 		
@@ -91,8 +91,15 @@
 	</div>
 					
 		<%
-					}
-				}
+					} 
+				} else if (list.isEmpty()) {
+					System.out.print('d');
+		%>
+			<p id="recent_notice">어서오세요!<br>bamboo의 첫 게시글을 작성해 보세요.</p>
+			<button class="greenBtn" id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
+	<button id="post_list_btn" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?postType=전체'">게시글 목록</button>
+		<%
+				} 
 			}
 		%>
 					
