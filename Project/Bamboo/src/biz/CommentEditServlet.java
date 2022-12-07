@@ -29,20 +29,20 @@ public class CommentEditServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		CommentVO vo = new CommentVO();
 		CommentDAO dao = new CommentDAO();
-		int commentId = (int) session.getAttribute("commentId");
-		int postId = (int) session.getAttribute("postId");
-		String content = request.getParameter("commentContent");
+		String commentId = request.getParameter("commentId");
+		String postId = request.getParameter("postId");
+		String content = request.getParameter("editTextarea");
 		int n = 0;
 		
 		if (content == null) {
 			out.println("<script> alert('입력하지 않은 값이 있습니다.'); history.back(); </script>");
 		} else {
 			vo.setCommentContents(content);
-			n = dao.editComment(content, postId, commentId);
+			n = dao.editComment(content, Integer.parseInt(postId), Integer.parseInt(commentId));
 			
 			if (n > 0) {
-				out.println("<script> alert('댓글이 정상적으로 수정 되었습니다.'); window.location.href='./index.jsp'; </script>");
-				session.removeAttribute("editPostId");
+				out.println("<script> alert('댓글이 정상적으로 수정 되었습니다.'); </script>");
+				out.println("<script> window.location=document.referrer </script>");
 			} else {
 				out.println("<script> alert('댓글 수정에 실패하였습니다.'); history.back(); </script>");
 			}
