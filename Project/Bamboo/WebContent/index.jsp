@@ -14,7 +14,6 @@
 	</div>
 
 	<%
-		System.out.println(request.getContextPath());
 		if (loginOk == null) {
 	%>
 

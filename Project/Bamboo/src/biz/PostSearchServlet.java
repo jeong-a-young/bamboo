@@ -27,13 +27,14 @@ public class PostSearchServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 
+		HttpSession session = request.getSession();
 		PostDAO dao = new PostDAO();
-		String keyword = request.getParameter("search");
+		String keyword = request.getParameter("searchKeyword");
+		String type = request.getParameter("searchType");
 		
 		if (keyword == null) {
 			out.println("<script> alert('검색어를 입력해 주세요.'); history.back(); </script>");
 		} else {
-			HttpSession session = request.getSession();
 			ArrayList<PostVO> data = dao.getSearchPost(keyword);
 			session.setAttribute("searchPost", data);
 			response.sendRedirect("./post/postSearch.jsp");

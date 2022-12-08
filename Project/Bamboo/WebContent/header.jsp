@@ -43,6 +43,11 @@
 			
 		<div class="search">
 			<form method="post">
+				<select name="searchType">
+					<option value="제목">제목</option>
+					<option value="내용">내용</option>
+					<option value="제목 + 내용">제목 + 내용</option>
+				</select>
 				<input type="text" name="search" id="search_box">
 				<button id="search_btn"  formaction="/postSearch"><img src="${pageContext.request.contextPath}/images/search.png" width="50px" height="50px"></button>
 			</form>
