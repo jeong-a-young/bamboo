@@ -96,7 +96,7 @@
 		%>
 			<p id="recent_notice">어서오세요!<br>bamboo의 첫 게시글을 작성해 보세요.</p>
 			<button class="greenBtn" id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
-	<button id="post_list_btn" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?postType=전체'">게시글 목록</button>
+			<button id="post_list_btn" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?postType=전체'">게시글 목록</button>
 		<%
 				} 
 			}

@@ -31,11 +31,12 @@ public class PostSearchServlet extends HttpServlet {
 		PostDAO dao = new PostDAO();
 		String keyword = request.getParameter("searchKeyword");
 		String type = request.getParameter("searchType");
+		ArrayList<PostVO> data;
 		
 		if (keyword == null) {
 			out.println("<script> alert('검색어를 입력해 주세요.'); history.back(); </script>");
 		} else {
-			ArrayList<PostVO> data = dao.getSearchPost(keyword);
+			data = dao.getSearchPost(keyword, type);
 			session.setAttribute("searchPost", data);
 			response.sendRedirect("./post/postSearch.jsp");
 		}
