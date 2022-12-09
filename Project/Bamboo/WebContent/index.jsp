@@ -43,5 +43,95 @@
                 </div>
             </div>
         </header>
-
+        <!-- About-->
+		<section class="page-section bg-primary" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="text-white mt-0">지금 로그인하고 새 글을 확인해 보세요</h2>
+                        <hr class="divider divider-light" />
+                        <p class="text-white-75 mb-4">bamboo는 양영디지털고등학교 <br>로그인을 하셔야 이용하실 수 있습니다.</p>
+                        <a class="btn btn-light btn-xl" href="#services">로그인</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <h2 class="text-center mt-0">어서오세요!<br>아래에서 최근 업로드 된 게시글을 확인해 보세요.</h2>
+            <hr class="divider" />
+            <div id="recent_post">
+                <div class="postTitle">
+                    <h1>게시글 제목</h1>
+                </div>
+                <div class="postInfo">
+                    <p>게시글 작성자</p>
+                    <p>카테고리</p>
+                    <p>날짜</p>
+                </div>
+                <hr class="postHr">
+                <div class="postContents">
+                    <p>게시글 내용</p>
+                    <img src="./assets/img/portfolio/fullsize/1.jpg">
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio-->
+        <div id="portfolio">
+            <h2 class="text-center mt-0">게시판</h2>
+            <hr class="divider" />
+            <div class="container-fluid p-0">
+                <div class="row g-0">
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category1.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-name">공지게시판</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category2.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-name">자유게시판</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category3.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-name">질문게시판</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category1.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-name">정보게시판</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category2.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-name">분실물게시판</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category3.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-name">과별게시판</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
 <%@ include file="/footer.jsp"%>
