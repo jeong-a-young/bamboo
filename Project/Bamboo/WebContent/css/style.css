@@ -11465,7 +11465,7 @@ header.masthead h1, header.masthead .h1 {
 #header_search {
   display: flex;
   justify-content: flex-end;
-  width: 590px;
+  width: 47vw;
 }
 
 #header_search > form > select {
@@ -11479,6 +11479,7 @@ header.masthead h1, header.masthead .h1 {
 }
 
 #header_search > form > input {
+  padding: 0 0 5px 5px;
   width: 400px;
   border: none;
   border-bottom: 1px solid white;
@@ -11496,8 +11497,8 @@ header.masthead h1, header.masthead .h1 {
 }
 
 #header_search > form > button > img { 
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 #services {
@@ -11530,4 +11531,9 @@ header.masthead h1, header.masthead .h1 {
 
 .postContents {
   padding: 10px 30px 30px 30px;
+}
+
+#navbarResponsive {
+	width: 10vw;
+    justify-content: flex-end;
 }

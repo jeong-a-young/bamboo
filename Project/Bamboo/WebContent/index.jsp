@@ -8,100 +8,40 @@
 <!-- 서버 경로: / -->
 <!-- SQL 실행 방법: orcl/hr/hr -->
 			
-<section>
-	<div class="welcome">
-		bamboo에서<br>양영디지털고등학교의<br>소식을 만나보세요
-	</div>
-
-	<%
-		if (loginOk == null) {
-	%>
-
-	<div class="notice">
-		<p>지금 로그인 하고 새 글을 확인해 보세요.</p>
-		
-		<div class="indexBtn">
-			<button id="index_login_btn" onclick="location.href='${pageContext.request.contextPath}/member/login.jsp'">로그인</button>
-			<button id="index_register_btn" onclick="location.href='${pageContext.request.contextPath}/member/register.jsp'">회원가입</button>
-		</div>
-	</div>
-
-	<%
-		} else {
-
-		// 최근에 업로드 된 게시글
-		PostDAO dao = new PostDAO();
-		ArrayList<PostVO> list = dao.getRecentPost();
-	%>
-
-	<div class="recentPost">
-			
-	<%
-		if (!list.isEmpty()) {
-	%>
-	
-	<p id="recent_notice">어서오세요!<br>아래에서 최근 업로드 된 게시글을 확인해 보세요.</p>
-	<button class="greenBtn" id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
-	<button id="post_list_btn" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?postType=전체'">게시글 목록</button>
-
-	<%
-			for (PostVO data : list) {
-	%>
-		
-		<p id="recent_post_title"><%= data.getPostTitle() %></p>
-						
-		<div class="recentInfo">
-						
-		<%
-			if (data.getPostSet().equals("a")) {
-		%>	
-					
-			<p id="recent_post_writer">익명</p>
-				
-			<%
-				} else {
-			%>	
-				
-			<p id="recent_post_writer"><%= data.getPostWriter() %></p><p> | </p>
-					
-			<%
-				}
-			%>
-						
-			<p><%= data.getPostType() %></p><p> | </p>
-			<p><%= data.getPostTime() %></p>
-		</div>
-			
-		<hr class="contourLine">
-					
-		<p id="recent_post_contents"><%= data.getPostContents() %></p>
-			
-		<%
-			// 사진이 첨부된 글이라면
-			if (!data.getPostPhoto().equals("/postImage/null")) {
-		%>
-			
-		<img src="<%=request.getContextPath()%><%= data.getPostPhoto() %>" id="recent_post_image">
-			
-		<%
-			}
-		%>
-					
-	</div>
-					
-		<%
-					} 
-				} else if (list.isEmpty()) {
-					System.out.print('d');
-		%>
-			<p id="recent_notice">어서오세요!<br>bamboo의 첫 게시글을 작성해 보세요.</p>
-			<button class="greenBtn" id="post_write_btn" onclick="location.href='${pageContext.request.contextPath}/post/postWrite.jsp'">글쓰기</button>
-			<button id="post_list_btn" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?postType=전체'">게시글 목록</button>
-		<%
-				} 
-			}
-		%>
-					
-</section>
+<!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 
+                align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end">
+                        <h1 class="text-white font-weight-bold" style="font-weight: 600;">bamboo에서<br>양영디지털고등학교의<br>소식을 만나보세요</h1>
+                        <hr class="divider" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                    
+                    <%
+						if (loginOk == null) {
+                	%>
+                	
+                        <p class="text-white-75 mb-5">bamboo는 양영디지털고등학교에 재학중인 학생들과<br>교직원들만 이용할 수 있는 익명 커뮤니티 사이트입니다.<br>학교 생활, 전공 관련 질문 등 학교에서는 말할 수 없던 이야기를 나눠보세요.</p>
+                        <p class="text-white-75" style="margin-bottom: 8.5px;"><b>아직 회원이 아니신가요?</b></p>
+                        <a class="btn btn-primary btn-xl" href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a>
+                    
+                    <%
+						} else {
+                	%>
+                	
+                		<p class="text-white-75 mb-4"><%= session.getAttribute("nowLoginName") %>님,<br>bamboo에 오신 것을 환영합니다!</p>
+                        <p class="text-white-75" style="margin-bottom: 8.5px;"><b>하고 싶은 이야기를<br>익명으로 부담없이 작성해 보세요.</b></p>
+                        <a class="btn btn-primary btn-xl" href="${pageContext.request.contextPath}/post/postWrite.jsp">글쓰기</a>
+                    
+                    <%
+						}
+                	%>
+                	
+                    </div>
+                </div>
+            </div>
+        </header>
 
 <%@ include file="/footer.jsp"%>
