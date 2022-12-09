@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>bamboo</title>
     <link rel="stylesheet" href="../css/loginStyle.css">
-    <script src="./js/jquery-3.1.1.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
     <div id="container" class="container">
@@ -21,29 +21,39 @@
               <div class="form sign-up">
                 <div class="input-group">
                   <i class='bx bxs-user'></i>
-                  <input type="text" placeholder="Username">
+                  <input type="text" placeholder="ID">
+                </div>
+                <div class="input-group">
+                  <i class='bx bxs-lock-alt'></i>
+                  <input id="password" type="password" placeholder="비밀번호">
+                </div>
+                <div class="input-group">
+                  <i class='bx bxs-lock-alt'></i>
+                  <input id="password_check_input" type="password" placeholder="비밀번호 확인">
+                  <p id="password_check_p"></p>
                 </div>
                 <div class="input-group">
                   <i class='bx bx-mail-send'></i>
-                  <input type="email" placeholder="Email">
+                  <div id="email_div">
+                    <input type="email" placeholder="이메일" style="width: 70%;">
+                    <p id="email_domain_p">@y-y.hs.kr</p>
+                    <button id="email_authentication_button">인증하기</button>
+                  </div>
                 </div>
                 <div class="input-group">
-                  <i class='bx bxs-lock-alt'></i>
-                  <input type="password" placeholder="Password">
-                </div>
-                <div class="input-group">
-                  <i class='bx bxs-lock-alt'></i>
-                  <input type="password" placeholder="Confirm password">
+                  <i class='bx bx-user-type'></i>
+                  <input type="radio" name="registerType" value="S"> 학생
+                  <input type="radio" name="registerType" value="T"> 교직원
                 </div>
                 <button>
-                  Sign up
+                	회원가입
                 </button>
                 <p>
                   <span>
-                    Already have an account?
+                    	이미 bamboo에 가입하셨나요?
                   </span>
                   <b onclick="toggle()" class="pointer">
-                    Sign in here
+                    	로그인하러 가기
                   </b>
                 </p>
               </div>

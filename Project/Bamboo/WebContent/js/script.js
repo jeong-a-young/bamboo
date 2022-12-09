@@ -1,17 +1,17 @@
 // 회원가입 시 비밀번호 일치 확인
 $(function(){
     $('#password').keyup(function() {
-      $('#pwdCheck').html('');
+      $('#password_check_p').html('');
     });
 
-    $('#password_check').keyup(function() {
+    $('#password_check_input').keyup(function() {
 
-        if($('#password').val() != $('#password_check').val()){
-          $('#pwdCheck').html('비밀번호가 일치하지 않습니다.');
-          $('#pwdCheck').css('color', '#e30000');
+        if($('#password').val() != $('#password_check_input').val()){
+          $('#password_check_p').html('비밀번호가 일치하지 않습니다.');
+          $('#password_check_p').css('color', '#e30000');
         } else{
-          $('#pwdCheck').html('비밀번호가 일치합니다.');
-          $('#pwdCheck').css('color', '#7DB249');
+          $('#password_check_p').html('비밀번호가 일치합니다.');
+          $('#password_check_p').css('color', '#7DB249');
         }
 
     });

@@ -83,7 +83,7 @@ body {
 
 .input-group input {
     width: 100%;
-    padding: 1rem 3rem;
+    padding: 1rem;
     font-size: 1rem;
     background-color: var(--gray);
     border-radius: .5rem;
@@ -101,9 +101,9 @@ body {
     padding: .6rem 0;
     border-radius: .5rem;
     border: none;
-    background-color: var(--primary-color);
+    background-color: #7DB249;
     color: var(--white);
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     outline: none;
 }
 
@@ -256,7 +256,7 @@ body {
     height: 100vh;
     width: 300vw;
     transform: translate(35%, 0);
-    background-image: linear-gradient(-45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background-image: linear-gradient(-45deg, #7DB249 0%, #568A35 100%);
     transition: 1s ease-in-out;
     z-index: 6;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -342,4 +342,26 @@ body {
         margin: .5rem;
         font-size: 2rem;
     }
+}
+
+#password_check_p {
+    display: flex;
+    margin: 3px 0 -10px 3px;
+}
+
+#email_domain_p { 
+    width: 30%;
+    margin-left: -10px;
+    color: gray;
+    font-size: 1.0rem;
+}
+
+#email_authentication_button {
+    width: 25%;
+    height: 40px;
+}
+
+#email_div {
+    display: flex;
+    align-items: center;
 }
