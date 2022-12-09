@@ -53,7 +53,7 @@
                     	이미 bamboo에 가입하셨나요?
                   </span>
                   <b onclick="toggle()" class="pointer">
-                    	로그인하러 가기
+                    	로그인
                   </b>
                 </p>
               </div>
@@ -67,26 +67,29 @@
               <div class="form sign-in">
                 <div class="input-group">
                   <i class='bx bxs-user'></i>
-                  <input type="text" placeholder="Username">
+                  <input type="text" placeholder="ID">
                 </div>
                 <div class="input-group">
                   <i class='bx bxs-lock-alt'></i>
-                  <input type="password" placeholder="Password">
+                  <input type="password" placeholder="비밀번호">
                 </div>
                 <button>
-                  Sign in
+                  로그인
                 </button>
                 <p>
                   <b>
-                    Forgot password?
+                    <a href="../member/forgotID.jsp">ID 찾기</a>
+                  </b>
+                  <b>
+                    <a href="../member/forgotPassword.jsp">비밀번호 찾기</a>
                   </b>
                 </p>
                 <p>
                   <span>
-                    Don't have an account?
+                    계정이 없으신가요?
                   </span>
                   <b onclick="toggle()" class="pointer">
-                    Sign up here
+                    회원가입
                   </b>
                 </p>
               </div>
@@ -104,7 +107,7 @@
           <div class="col align-items-center flex-col">
             <div class="text sign-in">
               <h2>
-                Welcome
+                로그인
               </h2>
       
             </div>
@@ -120,7 +123,7 @@
             </div>
             <div class="text sign-up">
               <h2>
-                Join with us
+                회원가입
               </h2>
       
             </div>
