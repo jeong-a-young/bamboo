@@ -1,44 +1,38 @@
-// 회원가입 시 비밀번호 일치 확인
+const inputs = document.querySelectorAll(".input");
+
+function addcl(){
+  let parent = this.parentNode.parentNode;
+  parent.classList.add("focus");
+}
+
+function remcl(){
+  let parent = this.parentNode.parentNode;
+  if(this.value == ""){
+    parent.classList.remove("focus");
+  }
+}
+
+inputs.forEach(input => {
+  input.addEventListener("focus", addcl);
+  input.addEventListener("blur", remcl);
+});
+
 $(function(){
-    $('#password').keyup(function() {
+    $('#password_input').keyup(function() {
       $('#password_check_p').html('');
     });
 
     $('#password_check_input').keyup(function() {
 
-        if($('#password').val() != $('#password_check_input').val()){
+        if($('#password_input').val() != $('#password_check_input').val()){
           $('#password_check_p').html('비밀번호가 일치하지 않습니다.');
           $('#password_check_p').css('color', '#e30000');
         } else{
           $('#password_check_p').html('비밀번호가 일치합니다.');
           $('#password_check_p').css('color', '#7DB249');
         }
-
     });
 });
-
-// 검색창을 눌렀을 때 shadow 효과
-$("#search_box").click (
-    function() {
-        $(this).css('box-shadow', '0px 3px 10px 0.1px #999');
-    }
-);
-
-$("#login_btn").hover (
-    function() {
-        $(this).css('box-shadow', '0px 3px 10px 0.1px #999');
-    }
-);
-
-// 메뉴창에 hover 했을 때 slide 효과
-$(".mainMenu > li").hover (
-    function() {
-        $(this).children("#major_type").stop().slideDown("slow");
-    },
-    function() {
-        $(this).children("#major_type").stop().slideUp("slow");
-    }
-);
 
 // 댓글 수정 시 textarea로 변환 효과
 function answerEdit(postId, answer_idx, acontent){
@@ -64,15 +58,6 @@ toggle = () => {
 setTimeout(() => {
   container.classList.add('sign-in')
 }, 200)
-
-/*!
-* Start Bootstrap - Creative v7.0.6 (https://startbootstrap.com/theme/creative)
-* Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -118,3 +103,4 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 });
+
