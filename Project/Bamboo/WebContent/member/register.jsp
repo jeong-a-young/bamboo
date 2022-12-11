@@ -59,7 +59,7 @@
                   <h5>이메일</h5>
                   <input type="text" class="input" name="email" style="width: 50%;">
                   <p class="registerEmailP">@y-y.hs.kr</p>
-                  <button><input type="submit" formaction="/sendAuthenticationMail" style="border: none;"></button>
+                  <button><input type="submit" value="인증" formaction="/sendAuthenticationMail" style="border: none;"></button>
                </div>
             </div>
             <a href="https://support.bespinglobal.com/ko/support/solutions/articles/73000545270--gmail-pop-%EB%B0%8F-imap-%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%98%EA%B8%B0" target="_black">이메일이 오지 않았을 땐?</a>

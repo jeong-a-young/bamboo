@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="a">
-                        <a href="${pageContext.request.contextPath}/member/forgotID.jsp">ID 찾기</a>
+                        <a href="${pageContext.request.contextPath}/member/forgotId.jsp">ID 찾기</a>
                         <a href="${pageContext.request.contextPath}/member/forgotPassword.jsp">비밀번호 찾기</a>
                     </div>
                     <input type="submit" class="btn" value="로그인">
