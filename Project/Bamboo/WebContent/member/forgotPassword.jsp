@@ -1,24 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
-
-    <h1 id="forgotID_title">비밀번호 찾기</h1>
-
-    <form method="post">
-		<div class="forgotPasswordDiv">
-			<p class="subTitle">ID</p>
-			<input class="forgotPasswordInput" type="text" name="id" placeholder="ID를 입력해 주세요."><br>
-			
-			<p class="subTitle">이메일</p>
-			<input class="forgotPasswordInput" type="email" name="email" placeholder="가입할 때 입력하신 이메일을 입력해 주세요."><br>
-			<input id="forgotPasswordCode" type="submit" value="인증 코드 받기" formaction="/codeMailSend"><br>
-			<p class="subTitle" style="margin-top: -15px;">인증 코드</p>
-			<input class="forgotPasswordInput" type="text" name="code" placeholder="위 이메일로 발송된 인증 코드를 입력해 주세요.">
-			
-			<input class="greenBtn" id="forgotPasswordBtn" type="submit" value="확인" formaction="/forgotPassword">
-			
-			<a href="${pageContext.request.contextPath}/member/forgotID.jsp" style="position: relative; top: 70px;">ID 찾기</a>
-		</div>
-    </form>
-
-<%@ include file="/footer.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bamboo</title>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
+    <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<img class="wave" src="${pageContext.request.contextPath}/images/wave.png">
+  <div class="container">
+    <div class="img">
+      <img src="${pageContext.request.contextPath}/images/bg.png">
+    </div>
+    <div class="login-content">
+      <form action="/forgotPassword" method="post">
+        <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" class="logo"></a>
+        <h2 class="title">비밀번호 찾기</h2>
+              <div class="input-div one">
+                 <div class="i">
+                    <i class="fas fa-user"></i>
+                 </div>
+                 <div class="div">
+                    <h5>ID</h5>
+                    <input type="text" class="input" name="id">
+                 </div>
+              </div>
+            <div class="input-div pass">
+               <div class="i"> 
+                  <i class="fa fa-envelope"></i>
+               </div>
+               <div class="div">
+                  <h5>이메일</h5>
+                  <input type="text" class="input" name="email" style="width: 50%;">
+                  <p class="registerEmailP">@y-y.hs.kr</p>
+                  <button><input type="submit" value="인증" style="border: none;"></button>
+               </div>
+            </div>
+              <div class="a">
+                <a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a>
+                <a href="${pageContext.request.contextPath}/member/forgotId.jsp">ID 찾기</a>
+              </div>
+            </form>
+        </div>
+    </div>
+    <script src="${pageContext.request.contextPath}/js/script.js"></script>
+</body>
+</html>
