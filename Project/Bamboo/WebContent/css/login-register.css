@@ -251,9 +251,13 @@ a:hover{
     color: #777;
 }
 
+.div > button > input {
+	border: none;	
+}
+
 .registerTypeWrap {
     display: flex;
-    margin: 34px 0 10PX 4px;
+    margin: 20px 0 10PX 4px;
 }
 
 .registerTypeDiv {

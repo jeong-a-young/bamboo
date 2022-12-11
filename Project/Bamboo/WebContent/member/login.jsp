@@ -18,8 +18,8 @@
             <img src="${pageContext.request.contextPath}/images/bg.png">
         </div>
         <div class="login-content">
-            <form form action="/login" method="post">
-                <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png"></a>
+            <form action="/login" method="post">
+                <a href="${pageContext.request.contextPath}/index.jsp" style="position: relative; left: -10%;"><img src="${pageContext.request.contextPath}/images/logo.png"></a>
                 <h2 class="title">로그인</h2>
                     <div class="input-div one">
                         <div class="i">
