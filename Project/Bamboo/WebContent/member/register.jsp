@@ -30,6 +30,15 @@
                     <input type="text" class="input" name="id">
                  </div>
               </div>
+              <div class="input-div one">
+               <div class="i">
+                  <i class="fas fa-user"></i>
+               </div>
+               <div class="div">
+                  <h5>이름</h5>
+                  <input type="text" class="input" name="name">
+               </div>
+            </div>
               <div class="input-div pass">
                  <div class="i"> 
                     <i class="fas fa-lock"></i>

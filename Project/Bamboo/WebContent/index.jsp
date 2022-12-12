@@ -31,7 +31,7 @@
 						} else {
                 	%>
                 	
-                		<p class="text-white-75 mb-4"><%= session.getAttribute("nowLoginName") %>님,<br>bamboo에 오신 것을 환영합니다!</p>
+                		<p class="text-white-75 mb-4"><%= loginOk.getMemberName() %>님,<br>bamboo에 오신 것을 환영합니다!</p>
                         <p class="text-white-75" style="margin-bottom: 8.5px;"><b>하고 싶은 이야기를<br>익명으로 부담없이 작성해 보세요.</b></p>
                         <a class="btn btn-primary btn-xl" href="${pageContext.request.contextPath}/post/postWrite.jsp">글쓰기</a>
                     
@@ -48,10 +48,29 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8 text-center">
+                    
+                    <%
+						if (loginOk == null) {
+                	%>
+                	
                         <h2 class="text-white mt-0">지금 로그인하고 새 글을 확인해 보세요</h2>
                         <hr class="divider divider-light" />
                         <p class="text-white-75 mb-4">bamboo는 양영디지털고등학교 <br>로그인을 하셔야 이용하실 수 있습니다.</p>
                         <a class="btn btn-light btn-xl" href="#services">로그인</a>
+                    
+                    <%
+						} else {
+                	%>
+                	
+                        <h2 class="text-white mt-0">새 글을 작성해 보세요</h2>
+                        <hr class="divider divider-light" />
+                        <p class="text-white-75 mb-4">궁금한 질문이 있다면 <br>자유롭게 작성해 보세요.</p>
+                        <a class="btn btn-light btn-xl" href="#services">글쓰기</a>
+                    
+                     <%
+						}
+                	 %>
+                	
                     </div>
                 </div>
             </div>
@@ -60,21 +79,75 @@
         <section class="page-section" id="services">
             <h2 class="text-center mt-0">어서오세요!<br>아래에서 최근 업로드 된 게시글을 확인해 보세요.</h2>
             <hr class="divider" />
+            
+            <%
+				// 최근에 업로드 된 게시글
+				PostDAO dao = new PostDAO();
+				ArrayList<PostVO> list = dao.getRecentPost();
+			%>
+			
             <div id="recent_post">
                 <div class="postTitle">
-                    <h1>게시글 제목</h1>
+                
+                <%
+					if (!list.isEmpty()) {
+						for (PostVO data : list) {
+				%>
+				
+                    <h1><%= data.getPostTitle() %></h1>
                 </div>
                 <div class="postInfo">
-                    <p>게시글 작성자</p>
-                    <p>카테고리</p>
-                    <p>날짜</p>
+                
+                <%
+					if (data.getPostType().equals("a")) {
+				%>	
+				
+                    <p>익명</p>
+                    
+                <%
+					} else {
+				%>	
+				
+					<p id="recent_post_writer"><%= data.getPostWriter() %></p><p> | </p>
+					
+				<%
+					}
+				%>
+						
+                    <p><%= data.getPostCategory() %></p><p> | </p>
+					<p><%= data.getPostDate() %></p>
                 </div>
                 <hr class="postHr">
                 <div class="postContents">
-                    <p>게시글 내용</p>
-                    <img src="./assets/img/portfolio/fullsize/1.jpg">
-                </div>
-            </div>
+                    <p><%= data.getPostContent() %></p>
+                    
+                    <%
+						// 사진이 첨부된 글이라면
+						if (!data.getPostImage().equals("/postImage/null")) {
+					%>
+						
+					<img src="<%=request.getContextPath()%><%= data.getPostImage() %>">
+						
+					<%
+						} else {
+					%>
+			                </div>
+			            </div>
+             
+            <%
+						}
+					}
+				} else {
+			%> 	
+			
+			<div>
+				<p>새 글을 작성해 주세요.</p>
+			</div>
+			
+			<%
+				}
+			%>
+
         </section>
         <!-- Portfolio-->
         <div id="portfolio">

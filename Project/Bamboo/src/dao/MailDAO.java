@@ -47,7 +47,7 @@ public class MailDAO {
 			// 발송자 메일, 발송자명
 			msg.setFrom(new InternetAddress("a01025869419@gmail.com", "bamboo"));
             // 수신자 메일
-			InternetAddress to = new InternetAddress(email);
+			InternetAddress to = new InternetAddress(email + "@y-y.hs.kr");
             // Message 클래스의 setRecipient() 메소드를 사용하여 수신자를 설정
 			msg.setRecipient(Message.RecipientType.TO, to);
             // 메일 제목
