@@ -27,7 +27,7 @@
                  </div>
                  <div class="div">
                     <h5>ID</h5>
-                    <input type="text" class="input" name="id">
+                    <input type="text" class="input" name="id" value="<%= session.getAttribute("nowLoginId") %>" readonly>
                  </div>
               </div>
               <div class="input-div one">
@@ -36,9 +36,9 @@
                </div>
                <div class="div">
                   <h5>이름</h5>
-                  <input type="text" class="input" name="name">
+                  <input type="text" class="input" name="name" value="<%= session.getAttribute("nowLoginName") %>">
                </div>
-            </div>
+              </div>
               <div class="input-div pass">
                  <div class="i"> 
                     <i class="fas fa-lock"></i>
@@ -66,7 +66,7 @@
                </div>
                <div class="div">
                   <h5>이메일</h5>
-                  <input type="text" class="input" name="email" style="width: 50%;">
+                  <input type="text" class="input" name="email" value="<%= session.getAttribute("nowLoginEmail") %>" style="width: 50%;" readonly>
                   <p class="informationEmailP">@y-y.hs.kr</p>
                </div>
             </div>
@@ -75,12 +75,30 @@
                   <i class="fa fa-address-card"></i>
                </div>
                <div class="registerTypeDiv">
-                  <input type="radio" name="type" value="S"><p>학생</p>
+               
+               <%
+            		// 회원가입 할 때 타입을 S로 설정했으면 학생, T로 설정했으면 교사
+					if (session.getAttribute("nowLoginType").equals("S")) {
+               %>
+               
+                  <input type="radio" name="type" value="S" checked="checked"><p>학생</p>
                   <input type="radio" name="type" value="T"><p>교직원</p>
+                  
+              <%
+					} else {
+              %>
+              
+                  <input type="radio" name="type" value="S"><p>학생</p>
+                  <input type="radio" name="type" value="T" checked="checked"><p>교직원</p>
+                 
+              <%
+					}
+              %>
+              
                </div>
             </div>
-              <input type="submit" class="btn" value="수정" formaction="/register" style="margin-top: 50px;">
-              <input type="submit" class="btn" value="탈퇴하기" formaction="/register" style="background-image: linear-gradient(to right, #cccccc, #bfbfbf, #b3b3b3);">
+            	<button id="edit_btn" formaction="/memberEdit">수정</button>
+				<button id="unregister_btn" formaction="/unregister">탈퇴하기</button>
             </form>
         </div>
     </div>
