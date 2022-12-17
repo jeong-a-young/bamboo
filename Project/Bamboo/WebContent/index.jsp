@@ -76,23 +76,21 @@
             </div>
         </section>
         <!-- Services-->
+        <%
+			// 최근에 업로드 된 게시글
+			PostDAO dao = new PostDAO();
+			ArrayList<PostVO> list = dao.getRecentPost();
+		
+			if (!list.isEmpty()) {
+				for (PostVO data : list) {
+		%>
+		
         <section class="page-section" id="services">
             <h2 class="text-center mt-0">어서오세요!<br>아래에서 최근 업로드 된 게시글을 확인해 보세요.</h2>
             <hr class="divider" />
-            
-            <%
-				// 최근에 업로드 된 게시글
-				PostDAO dao = new PostDAO();
-				ArrayList<PostVO> list = dao.getRecentPost();
-			%>
-			
+	
             <div id="recent_post">
                 <div class="postTitle">
-                
-                <%
-					if (!list.isEmpty()) {
-						for (PostVO data : list) {
-				%>
 				
                     <h1><%= data.getPostTitle() %></h1>
                 </div>
@@ -131,8 +129,10 @@
 					<%
 						} else {
 					%>
+					
 			                </div>
-			        </div>
+			        	</div>      
+        			</section>
              
             <%
 						}
@@ -140,13 +140,18 @@
 				} else {
 			%> 	
 			
-			<p>새 글을 작성해 주세요.</p>
+			<section class="page-section" id="services" style="padding-bottom: 80px;">
+	            <h2 class="text-center mt-0">최근 작성된 게시글이 없습니다.<br>새로운 게시글을 작성해 주세요!</h2>
+	            <hr class="divider" />
+	            <div class="indexWriteBtn">
+					<a class="btn btn-primary btn-xl" href="#">글쓰기</a>
+	            </div>
+        	</section>
 			
 			<%
 				}
 			%>
 
-        </section>
         <!-- Portfolio-->
         <div id="portfolio">
             <h2 class="text-center mt-0">게시판</h2>
