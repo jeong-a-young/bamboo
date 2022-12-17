@@ -1,61 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
-
-    <h1 id="information_title">회원정보</h1>
-    
-    <form method="post">
-	    <div class="information">
-	    	<table>
-				<tr>
-					<th class="boxTitle">ID</th>
-					<!-- session을 이용해 'nowLoginId'라는 이름으로 저장 되어있는 값을 가져온다 -->
-					<td class="fixValue"><%= session.getAttribute("nowLoginId") %></td>
-				</tr>
-				<tr>
-					<th class="boxTitle">비밀번호</th>
-					<td><input type="text" class="informationTextBox" name="editPwd" value="<%= session.getAttribute("nowLoginPwd") %>"></td>
-				</tr>
-				<tr>
-					<th class="boxTitle">이름</th>
-					<td><input type="text" class="informationTextBox" name="editName" value="<%= session.getAttribute("nowLoginName") %>"></td>
-				</tr>
-				<tr>
-					<th class="boxTitle">이메일</th>
-					<td><input type="text" class="informationTextBox" name="editEmail" value="<%= session.getAttribute("nowLoginEmail") %>"></td>
-				</tr>
-				<tr>
-					<th class="boxTitle">구분</th>
-					<td class="fixValue">
-					
-						<%
-							// 회원가입 할 때 타입을 S로 설정했으면 학생, T로 설정했으면 교사
-							if (session.getAttribute("nowLoginType").equals("S")) {
-						%>
-						
-						<input type="radio" name="editType" value="S" checked="checked"> 학생	
-						<input type="radio" name="editType" value="T"> 교사
-						
-						<%
-							} else {
-						%>	
-						
-						<input type="radio" name="editType" value="S"> 학생
-						<input type="radio" name="editType" value="T" checked="checked"> 교사
-							
-						<%
-							}
-						%>
-						
-					</td>
-				</tr>
-			</table>
-	    </div>
-	
-		<div class="informationBtn">
-			<button id="edit_btn" formaction="/memberEdit">수정</button>
-			<button id="unregister_btn" formaction="/unregister">탈퇴하기</button>
-		</div>
-    </form>
-	
-<%@ include file="/footer.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bamboo</title>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
+    <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<img class="wave" src="${pageContext.request.contextPath}/images/wave.png">
+  <div class="container">
+    <div class="img">
+      <img src="${pageContext.request.contextPath}/images/bg.png">
+    </div>
+    <div class="login-content">
+      <form method="post">
+        <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" class="logo"></a>
+        <h2 class="title" style="margin: 5px 0 40px 0;">회원정보</h2>
+              <div class="input-div one">
+                 <div class="i">
+                    <i class="fas fa-user"></i>
+                 </div>
+                 <div class="div">
+                    <h5>ID</h5>
+                    <input type="text" class="input" name="id">
+                 </div>
+              </div>
+              <div class="input-div one">
+               <div class="i">
+                  <i class="fas fa-user"></i>
+               </div>
+               <div class="div">
+                  <h5>이름</h5>
+                  <input type="text" class="input" name="name">
+               </div>
+            </div>
+              <div class="input-div pass">
+                 <div class="i"> 
+                    <i class="fas fa-lock"></i>
+                 </div>
+                 <div class="div">
+                    <h5>비밀번호</h5>
+                    <input type="password" class="input" id="password_input" name="pwd">
+                 </div>
+              </div>
+              <div class="input-div pass">
+               <div class="i"> 
+                  <i class="fas fa-lock"></i>
+               </div>
+               <div class="div">
+                  <h5>비밀번호 확인</h5>
+                  <input type="password" class="input" id="password_check_input" name="pwdCk">
+               </div>
+            </div>
+            <div>
+               <p id="password_check_p"></p>
+            </div>
+            <div class="input-div pass" style="margin-top: 15px;">
+               <div class="i"> 
+                  <i class="fa fa-envelope"></i>
+               </div>
+               <div class="div">
+                  <h5>이메일</h5>
+                  <input type="text" class="input" name="email" style="width: 50%;">
+                  <p class="informationEmailP">@y-y.hs.kr</p>
+               </div>
+            </div>
+            <div class="informationTypeWrap">
+               <div class="i"> 
+                  <i class="fa fa-address-card"></i>
+               </div>
+               <div class="registerTypeDiv">
+                  <input type="radio" name="type" value="S"><p>학생</p>
+                  <input type="radio" name="type" value="T"><p>교직원</p>
+               </div>
+            </div>
+              <input type="submit" class="btn" value="수정" formaction="/register" style="margin-top: 50px;">
+              <input type="submit" class="btn" value="탈퇴하기" formaction="/register" style="background-image: linear-gradient(to right, #cccccc, #bfbfbf, #b3b3b3);">
+            </form>
+        </div>
+    </div>
+    <script src="${pageContext.request.contextPath}/js/script.js"></script>
+</body>
+</html>

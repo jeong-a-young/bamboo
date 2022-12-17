@@ -267,7 +267,7 @@ a:hover{
 }
 
 .registerTypeDiv > input {
-    margin: 0 5px;
+    margin: 0 7px;
 }
 
 .registerTypeDiv > p {
@@ -278,4 +278,16 @@ a:hover{
 .a {
     display: flex;
     justify-content: flex-end;
+}
+
+.informationEmailP {
+    position: relative;
+    top: 32%;
+    left: 30%;
+    color: #555;
+}
+
+.informationTypeWrap {
+    display: flex;
+    margin: 38px 0 10PX 4px;
 }

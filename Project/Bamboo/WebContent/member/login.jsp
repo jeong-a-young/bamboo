@@ -42,8 +42,9 @@
                     <div class="a">
                         <a href="${pageContext.request.contextPath}/member/forgotId.jsp">ID 찾기</a>
                         <a href="${pageContext.request.contextPath}/member/forgotPassword.jsp">비밀번호 찾기</a>
+                    	<a href="${pageContext.request.contextPath}/member/register.jsp">회원가입</a>
                     </div>
-                    <input type="submit" class="btn" value="로그인">
+                    <input type="submit" class="btn" value="로그인" style="margin-top: 30px;">
             </form>
         </div>
     </div>
