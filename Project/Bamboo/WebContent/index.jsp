@@ -65,7 +65,7 @@
                         <h2 class="text-white mt-0">새 글을 작성해 보세요</h2>
                         <hr class="divider divider-light" />
                         <p class="text-white-75 mb-4">궁금한 질문이 있다면 <br>자유롭게 작성해 보세요.</p>
-                        <a class="btn btn-light btn-xl" href="#services">글쓰기</a>
+                        <a class="btn btn-light btn-xl" href="${pageContext.request.contextPath}/post/postWrite.jsp">글쓰기</a>
                     
                      <%
 						}
@@ -77,6 +77,17 @@
         </section>
         <!-- Services-->
         <%
+        	if (loginOk == null) {
+        %>
+        
+        	<!-- 로그인 하지 않으면 게시글을 확인하거나 작성할 수 없음 -->
+        	<div></div>
+        	
+        <%
+        	} else {
+        %>
+        
+        <%	
 			// 최근에 업로드 된 게시글
 			PostDAO dao = new PostDAO();
 			ArrayList<PostVO> list = dao.getRecentPost();
@@ -144,7 +155,7 @@
 	            <h2 class="text-center mt-0">최근 작성된 게시글이 없습니다.<br>새로운 게시글을 작성해 주세요!</h2>
 	            <hr class="divider" />
 	            <div class="indexWriteBtn">
-					<a class="btn btn-primary btn-xl" href="#">글쓰기</a>
+					<a class="btn btn-primary btn-xl" href="${pageContext.request.contextPath}/post/postWrite.jsp">글쓰기</a>
 	            </div>
         	</section>
 			
@@ -209,5 +220,9 @@
                 </div>
             </div>
         </div>
+        
+        <%
+        	}
+        %>
         
 <%@ include file="/footer.jsp"%>

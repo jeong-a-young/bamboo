@@ -43,7 +43,7 @@
 				%>
 				
                 <div id="header_search">
-                    <form>
+                    <form class="searchForm">
                         <select>
                             <option value="제목">제목</option>
                             <option value="내용">내용</option>
