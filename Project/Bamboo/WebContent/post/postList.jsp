@@ -1,18 +1,12 @@
+<%@page import="vo.PostVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.PostDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
 
-<section class="list_post_section">
-    <h1 style="text-align: center;">게시글 목록</h1>
-
-    <div class="selectWrap">
-        <select name="" id="" class="list_post_category">
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
-            <option value="">4</option>
-        </select>
-    </div>
+<section id="list_post_section">
+    <h1 class="mb-4" style="text-align: center;">게시글 목록</h1>
 
     <div class="w-100">
         <table>
@@ -23,32 +17,236 @@
                     <th>작성자</th>
                     <th>작성일</th>
                 </tr>
-            </thead>
+            </thead>		
             <tbody>
+            
+            <%
+				PostDAO dao = new PostDAO();
+	            // category가 '전체'라면
+				if (request.getParameter("category").equals("전체")) {
+					// 모든 게시글 목록을 불러오는 함수 호출
+					ArrayList<PostVO> list = dao.getPost();
+					
+					for (PostVO data : list) {
+			%>
+			
                 <tr>
-                    <td>James</td>
-                    <td>Matman</td>
-                    <td>(713) 123-8965</td>
-                    <td><a href="mailto:jmatman@stewart.com">jmatman@stewart.com</a></td>
+                    <td><%= data.getPostCategory() %></td>
+                    <td><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
+                    
+                    <%
+						if (data.getPostType().equals("A")) {
+					%>
+					
+                    <td>익명</td>
+                    
+                    <%
+						} else {
+					%>
+					
+					<td><%= data.getPostWriter() %></td>
+					
+					<%
+						}
+					%>
+					
+                    <td><%= data.getPostDate() %></td>
                 </tr>
-                <tr>
-                    <td>Johnny</td>
-                    <td>Smith</td>
-                    <td>(713) 584-9614</td>
-                    <td><a href="mailto:jsmith@stewart.com">jsmith@stewart.com</a></td>
+                
+            <%
+					}
+				} else if (request.getParameter("category").equals("공지게시판")) {
+					// category가 '공지게시판'인 게시글 목록을 불러오는 함수 호출
+					ArrayList<PostVO> list = dao.getCategoryPost("공지게시판");
+				
+					for (PostVO data : list) {
+			%>
+			
+				<tr>
+                    <td><%= data.getPostCategory() %></td>
+                    <td><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
+                    
+                    <%
+						if (data.getPostType().equals("A")) {
+					%>
+					
+                    <td>익명</td>
+                    
+                    <%
+						} else {
+					%>
+					
+					<td><%= data.getPostWriter() %></td>
+					
+					<%
+						}
+					%>
+					
+                    <td><%= data.getPostDate() %></td>
                 </tr>
-                <tr>
-                    <td>Susan</td>
-                    <td>Johnson</td>
-                    <td>(713) 847-1124</td>
-                    <td><a href="mailto:sjohnson@stewart.com">sjohnson@stewart.com</a></td>
+                
+            <%
+					}
+				} else if (request.getParameter("category").equals("자유게시판")) {
+					ArrayList<PostVO> list = dao.getCategoryPost("자유게시판");
+				
+					for (PostVO data : list) {
+			%>
+			
+				<tr>
+                    <td><%= data.getPostCategory() %></td>
+                    <td><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
+                    
+                    <%
+						if (data.getPostType().equals("A")) {
+					%>
+					
+                    <td>익명</td>
+                    
+                    <%
+						} else {
+					%>
+					
+					<td><%= data.getPostWriter() %></td>
+					
+					<%
+						}
+					%>
+					
+                    <td><%= data.getPostDate() %></td>
                 </tr>
-                <tr>
-                    <td>Tracy</td>
-                    <td>Richardson</td>
-                    <td>(713) 245-4821</td>
-                    <td><a href="mailto:trichard@stewart.com">trichard@stewart.com</a></td>
+                
+            <%
+					}
+				} else if (request.getParameter("category").equals("질문게시판")) {
+					ArrayList<PostVO> list = dao.getCategoryPost("질문게시판");
+				
+					for (PostVO data : list) {
+			%>
+			
+				<tr>
+                    <td><%= data.getPostCategory() %></td>
+                    <td><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
+                    
+                    <%
+						if (data.getPostType().equals("A")) {
+					%>
+					
+                    <td>익명</td>
+                    
+                    <%
+						} else {
+					%>
+					
+					<td><%= data.getPostWriter() %></td>
+					
+					<%
+						}
+					%>
+					
+                    <td><%= data.getPostDate() %></td>
                 </tr>
+                
+            <%
+					}
+				} else if (request.getParameter("category").equals("정보게시판")) {
+					ArrayList<PostVO> list = dao.getCategoryPost("정보게시판");
+				
+					for (PostVO data : list) {
+			%>
+			
+				<tr>
+                    <td><%= data.getPostCategory() %></td>
+                    <td><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
+                    
+                    <%
+						if (data.getPostType().equals("A")) {
+					%>
+					
+                    <td>익명</td>
+                    
+                    <%
+						} else {
+					%>
+					
+					<td><%= data.getPostWriter() %></td>
+					
+					<%
+						}
+					%>
+					
+                    <td><%= data.getPostDate() %></td>
+                </tr>
+                
+            <%
+					}
+				} else if (request.getParameter("category").equals("분실물게시판")) {
+					ArrayList<PostVO> list = dao.getCategoryPost("분실물게시판");
+				
+					for (PostVO data : list) {
+			%>
+			
+				<tr>
+                    <td><%= data.getPostCategory() %></td>
+                    <td><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
+                    
+                    <%
+						if (data.getPostType().equals("A")) {
+					%>
+					
+                    <td>익명</td>
+                    
+                    <%
+						} else {
+					%>
+					
+					<td><%= data.getPostWriter() %></td>
+					
+					<%
+						}
+					%>
+					
+                    <td><%= data.getPostDate() %></td>
+                </tr>
+                
+            <%
+					}
+				} else if (request.getParameter("category").equals("과별게시판")) {
+					// category가 '스마트전자과게시판', '정보통신과게시판', '소프트웨어개발과게시판',
+					// '바이오화학과게시판', '생명정보과게시판'중 하나인 게시글 목록을 불러오는 함수 호출
+					ArrayList<PostVO> list = dao.getMajorPost();
+				
+					for (PostVO data : list) {
+			%>
+			
+				<tr>
+                    <td><%= data.getPostCategory() %></td>
+                    <td><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
+                    
+                    <%
+						if (data.getPostType().equals("A")) {
+					%>
+					
+                    <td>익명</td>
+                    
+                    <%
+						} else {
+					%>
+					
+					<td><%= data.getPostWriter() %></td>
+					
+					<%
+						}
+					%>
+					
+                    <td><%= data.getPostDate() %></td>
+                </tr>
+                
+            <%
+					}
+				}
+            %>
+	  
             </tbody>
         </table>
     </div>

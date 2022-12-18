@@ -45,8 +45,8 @@ public class RegisterServlet extends HttpServlet {
 			out.println("<script> alert('이메일 인증에 실패했습니다.'); history.back(); </script>");
 		} else {
 			vo.setMemberId(request.getParameter("id"));
-			vo.setMemberPwd(request.getParameter("pwd"));
 			vo.setMemberName(request.getParameter("name"));
+			vo.setMemberPwd(request.getParameter("pwd"));
 			vo.setMemberEmail(request.getParameter("email")+"@y-y.hs.kr");
 			vo.setMemberType(request.getParameter("type"));
 			n = dao.registerMember(vo);
@@ -54,8 +54,8 @@ public class RegisterServlet extends HttpServlet {
 			if (n > 0) {
 				session.setAttribute("loginOK", vo);
 				session.setAttribute("nowLoginId", vo.getMemberId());
-				session.setAttribute("nowLoginPwd", vo.getMemberPwd());
 				session.setAttribute("nowLoginName", vo.getMemberName());
+				session.setAttribute("nowLoginPwd", vo.getMemberPwd());
 				session.setAttribute("nowLoginEmail", vo.getMemberEmail());
 				session.setAttribute("nowLoginType", vo.getMemberType());
 				session.removeAttribute("mailAuthentication");

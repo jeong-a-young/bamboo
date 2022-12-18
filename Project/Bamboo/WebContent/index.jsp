@@ -30,7 +30,7 @@
     <!-- SQL 실행 방법: orcl/hr/hr -->
 
     <body id="page-top">
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="indexNav">
             <div class="container px-4">
                 <a href="${pageContext.request.contextPath}/index.jsp"><img class="headerLogo" src="${pageContext.request.contextPath}/images/logo.png"></a>
                 
@@ -50,14 +50,14 @@
 				%>
 				
                 <div class="searchWrap">
-                    <form class="searchForm">
-                        <select>
+                    <form action="/postSearch" method="post" class="searchForm">
+                        <select name="searchType">
                             <option value="제목">제목</option>
                             <option value="내용">내용</option>
                             <option value="제목 + 내용">제목 + 내용</option>
                         </select>
 
-                        <input type="text" placeholder="검색어를 입력해 주세요.">
+                        <input type="text" name="searchKeyword" placeholder="검색어를 입력해 주세요.">
 
                         <button><img src="${pageContext.request.contextPath}/images/search.png"></button>
                     </form>
@@ -148,10 +148,10 @@
                         } else {
                     %>
                     
-                        <h2 class="text-white mt-0">새 글을 작성해 보세요</h2>
+                        <h2 class="text-white mt-0">올라온 글들을 확인해 보세요</h2>
                         <hr class="divider divider-light" />
-                        <p class="text-white-75 mb-4">궁금한 질문이 있다면 <br>자유롭게 작성해 보세요.</p>
-                        <a class="btn btn-light btn-xl" href="${pageContext.request.contextPath}/post/postWrite.jsp">글쓰기</a>
+                        <p class="text-white-75 mb-4">글에 댓글을 달면서 <br>소통해 보세요.</p>
+                        <a class="btn btn-light btn-xl" href="${pageContext.request.contextPath}/post/postList.jsp?category=전체">글 목록</a>
                     
                     <%
                         }
@@ -191,10 +191,10 @@
                 <div class="postInfo">
             
                 <%
-                    if (data.getPostType().equals("a")) {
+                    if (data.getPostType().equals("A")) {
                 %>	
             
-                    <p>익명</p>
+                    <p>익명</p><p> | </p>
                 
                 <%
                     } else {
@@ -220,7 +220,7 @@
                         if (!data.getPostImage().equals("/postImage/null")) {
                     %>
                     
-                    <img src="<%=request.getContextPath()%><%= data.getPostImage() %>">
+                    <img src="<%=request.getContextPath()%><%= data.getPostImage() %>" style="width: 100%;">
                     
                     <%
                         // 사진이 없을 시 빈 공간으로 놔둠
@@ -263,7 +263,7 @@
                     <div class="col-lg-4 col-sm-6">
                         <a class="portfolio-box">
                             <img class="img-fluid" src="${pageContext.request.contextPath}/images/category1.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?category=공지게시판';">
                                 <div class="project-name">공지게시판</div>
                             </div>
                         </a>
@@ -272,7 +272,7 @@
                     <div class="col-lg-4 col-sm-6">
                         <a class="portfolio-box">
                             <img class="img-fluid" src="${pageContext.request.contextPath}/images/category2.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?category=자유게시판';">
                                 <div class="project-name">자유게시판</div>
                             </div>
                         </a>
@@ -281,7 +281,7 @@
                     <div class="col-lg-4 col-sm-6">
                         <a class="portfolio-box">
                             <img class="img-fluid" src="${pageContext.request.contextPath}/images/category3.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?category=질문게시판';">
                                 <div class="project-name">질문게시판</div>
                             </div>
                         </a>
@@ -289,8 +289,8 @@
 
                     <div class="col-lg-4 col-sm-6">
                         <a class="portfolio-box">
-                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category1.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category4.jpg" alt="..." />
+                            <div class="portfolio-box-caption" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?category=정보게시판';">
                                 <div class="project-name">정보게시판</div>
                             </div>
                         </a>
@@ -298,8 +298,8 @@
 
                     <div class="col-lg-4 col-sm-6">
                         <a class="portfolio-box">
-                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category2.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category5.jpg" alt="..." />
+                            <div class="portfolio-box-caption" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?category=분실물게시판';">
                                 <div class="project-name">분실물게시판</div>
                             </div>
                         </a>
@@ -307,8 +307,8 @@
 
                     <div class="col-lg-4 col-sm-6">
                         <a class="portfolio-box">
-                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category3.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/category6.jpg" alt="..." />
+                            <div class="portfolio-box-caption" onclick="location.href='${pageContext.request.contextPath}/post/postList.jsp?category=과별게시판';">
                                 <div class="project-name">과별게시판</div>
                             </div>
                         </a>

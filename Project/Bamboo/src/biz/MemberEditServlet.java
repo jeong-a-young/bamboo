@@ -30,21 +30,24 @@ public class MemberEditServlet extends HttpServlet {
 		MemberVO vo = new MemberVO();
 		MemberDAO dao = new MemberDAO();
 		String id = (String) session.getAttribute("nowLoginId");
-		String pwd = request.getParameter("editPwd");
-		String name = request.getParameter("editName");
-		String email = request.getParameter("editEmail");
-		String type = request.getParameter("editType");
+		String name = request.getParameter("name");
+		String pwd = request.getParameter("pwd");
+		String pwdCk = request.getParameter("pwdCk");
+		String email = request.getParameter("email") + "@y-y.hs.kr";
+		String type = request.getParameter("type");
 		int n = 0;
-		
-		if (!email.contains("@y-y.hs.kr")) {
-			out.println("<script> alert('이메일 형식이 옳지 않습니다. @y-y.hs.kr이 들어가야 합니다.'); history.back(); </script>");
+
+		if (!pwd.equals(pwdCk)) {
+			out.println("<script> alert('비밀번호가 일치하지 않습니다.'); history.back(); </script>");
+		} else if (id.equals("") || name.equals("") || pwd.equals("") || pwdCk.equals("") || email.equals("") || type == null) {
+			out.println("<script> alert('입력되지 않은 값이 있습니다.'); history.back(); </script>");
 		} else {
 			vo.setMemberPwd(pwd);
 			vo.setMemberName(name);
 			vo.setMemberEmail(email);
 			vo.setMemberType(type);
 			n = dao.editMember(id, pwd, name, email, type);
-			
+				
 			if (n > 0) {
 				out.println("<script> alert('회원 정보가 수정되었습니다.'); history.back(); </script>");
 			} else {

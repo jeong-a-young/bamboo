@@ -14,9 +14,9 @@
 		for (PostVO data : list) {
 %>
 
-	<div>
+	<div style="height: 90vh;">
 		<form action="/postEdit" method="post">
-			<div id="info_wrap">
+			<div class="infoWrap">
 				<p id="title">제목</p>
 				<input type="text" name="editPostTitle" id="title_input" value="<%= data.getPostTitle() %>">
 

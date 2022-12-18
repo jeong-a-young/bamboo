@@ -46,7 +46,7 @@ public class PostEditServlet extends HttpServlet {
 			n = dao.editPost(postId, postTitle, postType, postCategory, postContent);
 			
 			if (n > 0) {
-				out.println("<script> alert('게시글이 수정되었습니다.'); window.location.href='./postView.jsp?postId=" + postId + "' </script>");
+				out.println("<script> alert('게시글이 수정되었습니다.'); window.location.href='./post/postView.jsp?postId=" + postId + "' </script>");
 				session.removeAttribute("editPostId");
 			} else {
 				out.println("<script> alert('게시글 수정에 실패하였습니다.'); history.back(); </script>");

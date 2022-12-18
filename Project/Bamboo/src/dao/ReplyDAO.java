@@ -103,10 +103,10 @@ public class ReplyDAO {
 	// 2. edit
 	
 	// 게시글 수정
-	public int editReply(int postId, int commentId, String content) {
+	public int editReply(int postId, int replyId, String content) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE post_comment SET comment_contents=? WHERE post_id=? AND comment_id=?";
+		String sql = "UPDATE reply SET reply_content=? WHERE post_id=? AND reply_id=?";
 
 		int n = 0;
 		
@@ -115,7 +115,7 @@ public class ReplyDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, content);
 			pstmt.setInt(2, postId);
-			pstmt.setInt(3, commentId);
+			pstmt.setInt(3, replyId);
 			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -8,16 +8,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.ReplyDAO;
 import vo.ReplyVO;
 
-@WebServlet("/commentEdit")
-public class CommentEditServlet extends HttpServlet {
+@WebServlet("/replyEdit")
+public class ReplyEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public CommentEditServlet() {
+    public ReplyEditServlet() {
         super();
     }
 
@@ -26,11 +25,12 @@ public class CommentEditServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		System.out.println("타긴 탐");
 		ReplyVO vo = new ReplyVO();
 		ReplyDAO dao = new ReplyDAO();
 		String replyId = request.getParameter("replyId");
 		String postId = request.getParameter("postId");
-		String replyContent = request.getParameter("editReplyContent");
+		String replyContent = request.getParameter("editContent");
 		int n = 0;
 		
 		if (replyContent == null) {

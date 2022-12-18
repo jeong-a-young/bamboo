@@ -28,14 +28,14 @@
                     <a href="${pageContext.request.contextPath}/index.jsp"><img class="headerLogo" src="${pageContext.request.contextPath}/images/logo.png"></a>
                   
                     <div class="searchWrap">
-                        <form class="searchForm">
-                            <select>
+                        <form action="/postSearch" method="post" class="searchForm">
+                            <select name="searchType">
                                 <option value="제목">제목</option>
                                 <option value="내용">내용</option>
                                 <option value="제목 + 내용">제목 + 내용</option>
                             </select>
 
-                            <input type="text" placeholder="검색어를 입력해 주세요.">
+                            <input type="text" name="searchKeyword" placeholder="검색어를 입력해 주세요.">
                             
                             <button><img src="${pageContext.request.contextPath}/images/search.png"></button>
                         </form>

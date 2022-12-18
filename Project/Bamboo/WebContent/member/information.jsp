@@ -25,7 +25,7 @@
             <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" class="logo"></a>
             <h2 class="title" style="margin: 5px 0 40px 0;">회원정보</h2>
 
-            <div class="input-div one">
+            <div class="input-div one focus">
                <div class="i">
                   <i class="fas fa-user"></i>
                </div>
@@ -35,7 +35,7 @@
                </div>
             </div>
 
-            <div class="input-div one">
+            <div class="input-div one focus">
                <div class="i">
                   <i class="fas fa-user"></i>
                </div>
@@ -68,13 +68,19 @@
                <p id="password_check_p"></p>
             </div>
 
-            <div class="input-div pass" style="margin-top: 15px;">
+            <div class="input-div pass focus" style="margin-top: 15px;">
                <div class="i"> 
                   <i class="fa fa-envelope"></i>
                </div>
                <div class="div">
                   <h5>이메일</h5>
-                  <input type="text" class="input" name="email" value="<%= session.getAttribute("nowLoginEmail") %>" style="width: 50%;" readonly>
+                  
+                  <%
+                  	String nowLoginEmail = (String) session.getAttribute("nowLoginEmail");
+                  	String [] email = nowLoginEmail.split("@");
+                  %>
+                  
+                  <input type="text" class="input" name="email" value="<%= email[0] %>" style="width: 50%;" readonly>
                   <p class="informationEmailP">@y-y.hs.kr</p>
                </div>
             </div>

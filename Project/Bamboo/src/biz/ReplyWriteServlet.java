@@ -13,11 +13,11 @@ import javax.servlet.http.HttpSession;
 import dao.ReplyDAO;
 import vo.ReplyVO;
 
-@WebServlet("/commentWrite")
-public class CommentWriteServlet extends HttpServlet {
+@WebServlet("/replyWrite")
+public class ReplyWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public CommentWriteServlet() {
+    public ReplyWriteServlet() {
         super();
     }
 

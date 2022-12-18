@@ -93,7 +93,7 @@ public class PostDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post WHERE post_content='스마트전자과게시판' OR post_content='정보통신과게시판' OR post_content='소프트웨어개발과게시판' OR post_content='바이오화학과게시판' OR post_content='생명정보과게시판' ORDER BY post_id DESC";
+		String sql = "SELECT * FROM post WHERE post_category='스마트전자과게시판' OR post_category='정보통신과게시판' OR post_category='소프트웨어개발과게시판' OR post_category='바이오화학과게시판' OR post_category='생명정보과게시판' ORDER BY post_id DESC";
 
 		ArrayList<PostVO> data = new ArrayList<PostVO>();
 
@@ -147,8 +147,20 @@ public class PostDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setString(2, "%" + keyword + "%");
+			
+			switch (type) {
+			case "제목":
+				pstmt.setString(1, "%" + keyword + "%");
+				break;
+			case "내용":
+				pstmt.setString(1, "%" + keyword + "%");
+				break;
+			case "제목 + 내용":
+				pstmt.setString(1, "%" + keyword + "%");
+				pstmt.setString(2, "%" + keyword + "%");
+				break;
+			}
+			
 			rs = pstmt.executeQuery();
 				
 			while (rs.next()) {

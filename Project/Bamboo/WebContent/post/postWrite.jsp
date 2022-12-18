@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
 
-<div class="writeWrap" style="height: 64.7%;">
+<div class="writeWrap" style="height: 85vh;">
 	<form action="/postWrite" method="post" enctype="multipart/form-data">
-		<div>
+		<div class="infoWrap">
 			<p id="title">제목</p>
 			<input type="text" name="postTitle" id="title_input">
 
