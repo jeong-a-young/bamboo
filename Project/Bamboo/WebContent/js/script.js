@@ -82,6 +82,7 @@ $(function(){
 
 // 댓글 수정 시 textarea로 변환 효과
 function editReply(postId, replyId, replyContent){
+	console.log(postId, replyId, replyContent);
 	$('#reply'+ replyId).html('<form method="post"><textarea name="editContent">' + replyContent + '</textarea><button class="viewControlBtn" id="ok_btn">확인</button></form>');
 	$('#edit_btn' + replyId).remove();
 	$("#delete_btn" + replyId).remove();

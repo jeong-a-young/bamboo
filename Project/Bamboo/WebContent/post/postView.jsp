@@ -148,9 +148,11 @@
 				<%
 					// 현재 로그인 되어있는 사용자와 댓글 작성자가 동일할 때
 					if (rv.getReplyWriter().equals(hs.getAttribute("nowLoginName"))) {
+						System.out.println(rv.getReplyContent());
+						
 				%>
 
-					<td><a href="javacsript:void(0);" id="edit_btn<%=rv.getReplyId()%>" onclick="editReply(<%= rv.getPostId() %>, <%= rv.getReplyId() %>, <%= rv.getReplyContent() %>)">수정</a></td>
+					<td><a href="javacsript:void(0);" id="edit_btn<%=rv.getReplyId()%>" onclick="editReply(<%= rv.getPostId() %>, <%= rv.getReplyId() %>, '<%= rv.getReplyContent() %>')">수정</a></td>
 					<td><a href="/replyDelete?replyId=<%=rv.getReplyId()%>" id="delete_btn<%=rv.getReplyId()%>">삭제</a></td>
 
 				<%
