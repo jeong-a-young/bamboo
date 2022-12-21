@@ -17,6 +17,7 @@ var navbarShrink = function () {
 navbarShrink();
 
 // Shrink the navbar when page is scrolled
+// 스크롤 시 navbarShrink 안에 든 함수를 호출
 document.addEventListener('scroll', navbarShrink);
 
 // Activate Bootstrap scrollspy on the main nav element
@@ -69,7 +70,6 @@ $(function(){
     });
 
     $('#password_check_input').keyup(function() {
-
         if($('#password_input').val() != $('#password_check_input').val()){
           $('#password_check_p').html('비밀번호가 일치하지 않습니다.');
           $('#password_check_p').css('color', '#e30000');
@@ -83,7 +83,7 @@ $(function(){
 // 댓글 수정 시 textarea로 변환 효과
 function editReply(postId, replyId, replyContent){
 	console.log(postId, replyId, replyContent);
-	$('#reply'+ replyId).html('<form method="post"><textarea name="editContent">' + replyContent + '</textarea><button class="viewControlBtn" id="ok_btn">확인</button></form>');
+	$('#reply' + replyId).html('<form method="post"><textarea name="editContent">' + replyContent + '</textarea><button class="viewControlBtn" id="ok_btn">확인</button></form>');
 	$('#edit_btn' + replyId).remove();
 	$("#delete_btn" + replyId).remove();
 	$("#ok_btn").attr("formaction", "/replyEdit?postId=" + postId + "&replyId=" + replyId);

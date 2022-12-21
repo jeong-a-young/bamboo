@@ -8,6 +8,7 @@
 <%
 	HttpSession hs = request.getSession();
 	PostDAO dao = new PostDAO();
+	// 클릭한 게시글의 postId를 parameter로 받아 해당 게시글을 보여줌
 	ArrayList<PostVO> list = dao.getClickPost(Integer.parseInt(request.getParameter("postId")));
 	
 	if (list != null) {

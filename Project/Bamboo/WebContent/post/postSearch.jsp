@@ -22,6 +22,7 @@
             
             <%
 	            PostDAO dao = new PostDAO();
+            	// session에 저장된 검색 결과를 가져옴
 				ArrayList<PostVO> list = (ArrayList) session.getAttribute("searchPost");
 	
 				if (list != null) {
@@ -33,6 +34,7 @@
                     <td><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
                     
                     <%
+                 		// 게시글 세팅을 A로 했으면 익명, R로 했으면 실명
 						if (data.getPostType().equals("A")) {
 					%>
 					

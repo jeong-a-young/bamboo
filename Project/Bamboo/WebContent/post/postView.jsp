@@ -14,6 +14,7 @@
     <%
 		HttpSession hs = request.getSession();
 		PostDAO pd = new PostDAO();
+		// 게시물 목록에서 클릭한 게시글의 postId를 parameter로 받아 해당 게시글을 보여줌
 		ArrayList<PostVO> postList = pd.getClickPost(Integer.parseInt(request.getParameter("postId")));
 	
 		if (postList != null) {
@@ -27,6 +28,7 @@
         <div class="postInfo">
         
        	<%
+			// 게시글 세팅을 A로 했으면 익명, R로 했으면 실명
 			if (pv.getPostType().equals("A")) {
 		%>
 			
@@ -70,6 +72,7 @@
             <p><%=pv.getPostContent()%></p>
             
         <%
+        	// 게시글 이미지가 존재할 시
 			if (!pv.getPostImage().equals("/postImage/null")) {
 		%>
 	
@@ -77,7 +80,7 @@
 	
 		<%
 			}
-	
+					// 해당 게시글에 있는 댓글을 불러오기 위해 session에 postId를 저장함
 					hs.setAttribute("replyPostId", pv.getPostId());
 				}
 			}
@@ -100,6 +103,7 @@
             
             <%
 				ReplyDAO rd = new ReplyDAO();
+            	// postId를 가져와 해당 게시글에 있는 댓글을 가져옴
 				ArrayList<ReplyVO> replyList = rd.getReply(Integer.parseInt(request.getParameter("postId")));
 
 				// 게시글에 댓글이 없을 때
@@ -127,6 +131,7 @@
 	            
 	            <%
 					for (ReplyVO rv : replyList) {
+						// 게시글 세팅을 A로 했으면 익명, R로 했으면 실명
 						if (rv.getReplyType().equals("A")) {
 				%>
 	

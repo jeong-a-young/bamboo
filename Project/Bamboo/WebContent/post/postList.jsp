@@ -35,6 +35,7 @@
                     <td><a href="postView.jsp?postId=<%= data.getPostId() %>"><%= data.getPostTitle() %></a></td>
                     
                     <%
+                 		// 게시글 세팅을 A로 했으면 익명, R로 했으면 실명
 						if (data.getPostType().equals("A")) {
 					%>
 					
